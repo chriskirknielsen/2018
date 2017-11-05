@@ -1,0 +1,62 @@
+$icon-list: (behance, dribbble, github, codepen, linkedin);
+
+.icon {
+    display: inline-block;
+    width: $icon-size;
+    height: $icon-size;
+    font-size: 0;
+    color: transparent;
+    background: transparent url(../img/social.png) no-repeat;
+    background-image: none, url(../img/social.svg);
+}
+
+@for $icon from 1 through length($icon-list) {
+    $current-icon: nth($icon-list, $icon);
+    $current-icon-pos: ($icon - 1) * -1;
+
+    .icon__#{$current-icon} {
+        background-position: $icon-size*$current-icon-pos 0;
+    }
+}
+
+$tool-list: (photoshop, illustrator, indesign, premierepro, aftereffects, sketch, brackets);
+
+.tool-icon {
+    display: inline-block;
+    width: $tool-icon-size;
+    height: $tool-icon-size;
+    font-size: 1rem;
+    letter-spacing: -1rem;
+    color: transparent;
+    background: transparent url(../img/tools.png) no-repeat;
+    background-image: none, url(../img/tools.svg);
+    background-size: cover;
+}
+
+@for $tool from 1 through length($tool-list) {
+    $current-tool: nth($tool-list, $tool);
+    $current-tool-pos: ($tool - 1) * -1;
+
+    .tool-icon__#{$current-tool} {
+        background-position: $tool-icon-size*$current-tool-pos 0;
+    }
+}
+
+$contact-list: (email, phone, skype, geo);
+
+.contact__list-item--icon {
+    width: 3rem;
+//    height: 3rem;
+    height: #{3rem / $sqrt3}; // Horizontal rectangle Height = Width / sqrt(3)
+    background: transparent url(../img/contact.png) no-repeat;
+    background-image: none, url(../img/contact.svg);
+}
+
+@for $contact from 1 through length($contact-list) {
+    $current-contact: nth($contact-list, $contact);
+    $current-contact-pos: ($contact - 1) * -1;
+
+    .contact__list-item--icon_#{$current-contact} {
+        background-position: #{$contact-icon-size*$current-contact-pos} center;
+    }
+}

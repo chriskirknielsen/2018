@@ -1,0 +1,39 @@
+body:not(.main-font-loaded) .font__main {
+    font-family: 'Trebuchet MS', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    letter-spacing: -.0375em;
+    word-spacing: .05em;
+}
+
+body:not(.title-font-loaded) .font__title {
+    font-family: 'Georgia', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    letter-spacing: -0.035em;
+    word-spacing: -.0275em;
+    font-weight: bold;
+}
+
+body.main-font-loaded .font__main,
+body.no-js .font__main {
+    font-family: $font-main, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+body.title-font-loaded .font__title,
+body.no-js .font__title {
+    font-family: $font-title, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.text__uppercase { text-transform: uppercase; }
+.text__bold { font-weight: bold; }
+.text__italic { font-style: italic; }
+.text__left { text-align: left; }
+.text__center { text-align: center; }
+.text__right { text-align: right; }
+
+.color__a { color: color(a); }
+.color__a-m { color: color(a-m); }
+.color__m { color: color(m); }
+.color__z-m { color: color(z-m); }
+.color__z { color: color(z); }
+.color__main { color: color(main); }
+.color__comp { color: color(comp); }
+
+.margin__top { margin-top: 2rem; }

@@ -1,0 +1,292 @@
+$menu-height: 7rem;
+$menu-top-gutter: .5rem;
+$menu-content-gutter: 1rem;
+$menu-offset: $menu-height + $menu-top-gutter + $menu-content-gutter;
+$grid-gutter: .5rem;
+$grid-cell-min: 30vmin; // Project grid cell minimum size
+$grid-cell-size: minmax(#{$grid-cell-min}, 1fr);
+
+@if $loadall or $critical {
+    h1 { font-size: calc(.67rem + 2.33vw); }
+    h2 { font-size: calc(.67rem + 1.16vw); }
+    h3 { font-size: calc(.25rem + 1.67vw); }
+
+    .site {
+        padding: #{$menu-offset} 0 0;
+    }
+
+    .menu {
+        &__wrapper {
+            left: calc(.5rem + 0.25rem);
+            right: calc(.5rem + 0.25rem);
+            padding: .5rem;
+        }
+
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .75rem;
+
+        &__logo {
+            width: #{$sqrt3 / 2 * 3rem}; // hexagon_width = hexagon_height * sqrt(3) ÷ 2
+            margin-right: .5rem
+        }
+
+        &__nav {
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: calc(100% - #{$sqrt3 / 2 * 3rem} - .5rem); // 100% - (.menu__logo `width` + `margin-right`)
+            min-height: 1.5rem;
+            height: 1.5rem;
+            margin-left: 0;
+
+            &-item {
+                line-height: 1.5rem;
+
+                &:not(:first-child) {
+                    margin: 0 .5rem;
+                }
+
+                &[aria-active="true"],
+                &:hover {
+                    box-shadow: inset 0 -.125rem 0 color(comp);
+                }
+
+                &--link {
+                    line-height: inherit;
+
+                    &::before {
+                        content: unset;
+                    }
+
+                    &:hover {
+                        color: color(z);
+                    }
+                }
+            }
+        }
+
+        &__links {
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            min-height: 2rem;
+            width: 100%;
+            margin: 0;
+
+            &-item {
+                width: 2rem;
+
+                &:not(:last-child) {
+                    margin-right: .5rem;
+                }
+
+                &--link {
+                    line-height: 2rem;
+                }
+            }
+        }
+    }
+
+    .section {
+        &::before { // Anchor offset
+            height: #{$menu-offset};
+            margin: -#{$menu-offset + $site-frame} 0 0;
+        }
+
+        &:not(:last-child) {
+            padding-bottom: 6rem;
+            
+            &::after {
+                bottom: 3rem;
+            }
+        }
+    }
+
+    .width-constrain {
+        max-width: 100%;
+    }
+
+    .padded-section {
+        padding: 1rem;
+    }
+    
+    .portfolio {
+        &__presentation {
+            height: calc(100vh - 8.5rem);
+            
+            &-illustration {
+                &--sun {
+                    width: 50vmin;
+                    height: 50vmin;
+                }
+            }
+
+            &-who {
+                font-size: calc(1rem + 2.33vw);
+            }
+
+            &-what {
+                font-size: calc(1rem + 1.16vw);
+            }
+
+            &-where {
+                margin-top: calc(.125rem + .67vw);
+                font-size: calc(.5rem + 1.67vw);
+            }
+        }
+        
+        &__projects {
+            &-list {
+                grid-template-columns: repeat(auto-fit, #{$grid-cell-size});
+                grid-auto-columns: #{$grid-cell-size};
+                grid-template-rows: repeat(auto-fit, #{$grid-cell-size});
+                grid-auto-rows: #{$grid-cell-size};
+                grid-gap: $grid-gutter;
+            }
+        }
+    }
+} // end @if $critical
+
+@if $loadall or not $critical {
+    .project {
+        border-width: .125rem;
+        
+        &__type {
+            font-size: .625rem;
+            letter-spacing: .0625em;
+        }
+    }
+    
+    .resume {
+        &__area {
+            &-group {
+                width: 100%;
+
+                &:nth-of-type(odd) {
+                    padding-right: 0;
+                    text-align: left;
+                }
+
+                &:nth-of-type(even) {
+                    padding-left: 0;
+                }
+            }
+        }
+    } // .resume
+
+    .contact {
+        &__form {
+            &-group {
+                width: 100%;
+            }
+
+            &-group[class*="-name"] {
+                margin-right: 0;
+            }
+
+            &-label {
+                &--name,
+                &--email {
+                    order: 0;
+                }
+            }
+        }
+    } // .contact
+
+    .foot {
+        flex-wrap: wrap-reverse;
+        padding: 2rem;
+
+        &__legal,
+        &__love,
+        &__lang {
+            width: 100%;
+            text-align: center;
+        }
+
+        &__legal,
+        &__love {
+            margin-top: 1rem;
+        }
+    } // .foot
+
+    .project-modal {
+        &__content {
+            flex-direction: column;
+
+            &-media,
+            &-info {
+                width: 100%;
+                height: 50%;
+                flex: none;
+            }
+
+            &-info {
+                max-width: 100%;
+
+                &--name {
+                    font-size: calc(.5rem + 1.67vw);
+                }
+
+                &--details,
+                &--description {
+                    font-size: .75rem;
+                }
+
+                &--buttons {
+                    &_button {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+
+                    &_prev {
+                        &:hover {
+                            box-shadow: inset -1.5rem 0 0 color(main);
+                        }
+                    }
+
+                    &_next {
+                        &:hover {
+                            box-shadow: inset 1.5rem 0 0 color(main);
+                        }
+                    }
+
+                    &_prev,
+                    &_next {
+                        &::before,
+                        &::after {
+                            left: calc(.75rem - 1px);
+                            top: calc(.5rem - 1px);
+                        }
+                    }
+
+                    &_close {
+                        margin: 0 .75rem;
+                        &:hover {
+                            box-shadow: inset 0 0 0 .75rem color(main);
+                        }
+
+                        &::before,
+                        &::after {
+                            left: calc(.75rem - 1px);
+                            top: calc(.75rem - 1px);
+                            width: 1rem;
+                            height: .125rem;
+                            background-color: currentColor;
+                        }
+                    }
+                } // &--buttons
+            } // &-info
+        } // &__content
+    } // .project-modal
+
+    .slideshow {
+        &__label {
+            width: 6rem;
+        }
+
+        &__container {
+            width: calc(100% - 6rem);
+        }
+    }
+} // end @if not $critical

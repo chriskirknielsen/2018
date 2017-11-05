@@ -1,0 +1,193 @@
+$tip-bg: color(z);
+$tip-txt: color(a);
+$tip-move: 1rem;
+
+[data-tip] {
+    position: relative;
+    overflow: visible;
+    
+    &::before,
+    &::after {
+        position: absolute;
+        display: inline-block;
+        opacity: 0;
+        transition: .2s ease-in;
+        z-index: 999;
+        pointer-events: none;
+    }
+
+    &::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0;
+    }
+
+    &::after {
+        content: attr(data-tip);
+        width: auto;
+        padding: .25rem;
+        font-size: .75rem;
+        text-align: center;
+        letter-spacing: 0;
+        text-transform: none;
+        color: $tip-txt;
+        border-radius: .25rem;
+        background-color: $tip-bg;
+    }
+
+    &:hover,
+    &:focus {
+        &::before,
+        &::after {
+            opacity: 1;
+            transition-timing-function: ease-out;
+        }
+    }
+    
+    &:not([data-tip-position]),
+    &[data-tip-position="bottom"] {
+        &::before,
+        &::after {
+            left: 50%;
+            transform: translate(-50%, -#{$tip-move});
+        }
+
+        &::before {
+            bottom: -.5rem;
+            border-width: 0 .25rem .25rem .25rem;
+            border-color: transparent transparent $tip-bg transparent;
+        }
+
+        &::after {
+            top: calc(100% + .5rem);
+        }
+
+        &:hover,
+        &:focus {
+            &::before,
+            &::after {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+    
+    &[data-tip-position="top"] {
+        &::before,
+        &::after {
+            left: 50%;
+            transform: translate(-50%, #{$tip-move});
+        }
+
+        &::before {
+            top: -.5rem;
+            border-width: .25rem .25rem 0 .25rem;
+            border-color: $tip-bg transparent transparent transparent;
+        }
+
+        &::after {
+            bottom: calc(100% + .5rem);
+        }
+
+        &:hover,
+        &:focus {
+            &::before,
+            &::after {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+    
+    &[data-tip-position="left"] {
+        &::before,
+        &::after {
+            top: 50%;
+            transform: translate(#{$tip-move}, -50%);
+        }
+
+        &::before {
+            left: -.5rem;
+            border-width: .25rem 0 .25rem .25rem;
+            border-color: transparent transparent transparent $tip-bg;
+        }
+
+        &::after {
+            right: calc(100% + .5rem);
+        }
+
+        &:hover,
+        &:focus {
+            &::before,
+            &::after {
+                opacity: 1;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+    
+    &[data-tip-position="right"] {
+        &::before,
+        &::after {
+            top: 50%;
+            transform: translate(-#{$tip-move}, -50%);
+        }
+
+        &::before {
+            right: -.5rem;
+            border-width: .25rem .25rem .25rem 0;
+            border-color: transparent $tip-bg transparent transparent;
+        }
+
+        &::after {
+            left: calc(100% + .5rem);
+        }
+
+        &:hover,
+        &:focus {
+            &::before,
+            &::after {
+                opacity: 1;
+                transform: translate(0, -50%);
+            }
+        }
+    }
+    
+    &[data-tip-nowrap="true"] {
+        white-space: nowrap;
+    }
+    
+    &[data-tip-reverse="true"] {
+        &:not([data-tip-position]),
+        &[data-tip-position="bottom"] {
+            &::before {
+                border-color: transparent transparent $tip-txt transparent;
+            }
+        }
+        
+        &[data-tip-position="top"] {
+            &::before {
+                border-color: $tip-txt transparent transparent transparent;
+            }
+        }
+        
+        &[data-tip-position="left"] {
+            &::before {
+                border-color: transparent transparent transparent $tip-txt;
+            }
+        }
+        
+        &[data-tip-position="right"] {
+            &::before {
+                border-color: transparent $tip-txt transparent transparent;
+            }
+        }
+        
+        &::after {
+            color: $tip-bg;
+            background-color: $tip-txt;
+        }
+    }
+}

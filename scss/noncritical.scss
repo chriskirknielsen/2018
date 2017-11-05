@@ -1,0 +1,17 @@
+$critical: false;
+@charset 'utf-8';
+@import 'colors',
+        'vars',
+        'mixins',
+        'base';
+
+/**
+    Normally I'd make a media query for various screen sizes
+    but I decided that for a small website like this,
+    just tweaking rules for mobile would be quicker to handle
+**/
+@media screen and (max-width: #{$responsive-bp}) {
+    @import 'mobile';
+}
+
+@import 'tip';

@@ -1,0 +1,38 @@
+$colors: (
+    main: #00a39b,
+    main-light: lighten(#00a39b, 15%),
+    main-dark: darken(#00a39b, 15%),
+    comp: #cf0079,
+    comp-light: lighten(#cf0079, 15%),
+    comp-dark: darken(#cf0079, 15%),
+    glow: #ffd200,
+    glow-light: lighten(#ffd200, 15%),
+    glow-dark: darken(#ffd200, 15%),
+    z: #e6e6e6,
+    z-m: #9c9c9c,
+    m: #686868,
+    a-m: #343434,
+    a: #161616,
+    error: hue-adjust(#00a39b, 180deg)
+);
+
+@function color($name, $opacity: hex) {
+    @if $opacity != hex { // Returns RGBA value
+        $opacity-decimal: $opacity/100;
+
+        @if map-has-key($colors, $name) {
+            @return rgba(map-get($colors, $name), $opacity-decimal);
+        }
+        @else {
+            @return rgba($name, $opacity-decimal);
+        }
+    }
+    @else { // Returns hexidecimal value
+        @if map-has-key($colors, $name) {
+            @return map-get($colors, $name);
+        }
+        @else {
+            @return rgba($name, 1);
+        }  
+    }
+}

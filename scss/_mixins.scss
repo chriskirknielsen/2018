@@ -1,0 +1,50 @@
+@function z($layer, $position: 1) {
+    @return map-get($z-index, $layer) + $position;
+}
+
+@mixin pos($all: 0) { // Adds positionning to all 4 coordinates
+    @if ($all) {
+        left: #{$all};
+        right: #{$all};
+        top: #{$all};
+        bottom: #{$all};
+    }
+}
+
+// Intro reveal
+@keyframes introRevealUp {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+}
+
+@mixin intro-reveal($order, $anim: null) {
+    $offset: .3; // Initial delay
+    $delay: .05s;
+    
+    @if ($anim == null) {
+        $anim: introRevealUp;
+    }
+    
+    animation: #{$anim} 1s cubic-bezier(.25, 2, 0, 1) both ($offset + ($order - 1) * $delay);
+}
+
+@mixin text-shadow($color, $merge: false) {
+    @if ($merge) {
+        text-shadow:
+        0 0 0 #{$color},
+        0 0 0 #{$color},
+        0 0 0 #{$color},
+        0 0 0 #{$color},
+        0 0 0 #{$color};
+    }
+    @else {
+        text-shadow:
+            -1px 0   0 #{$color},
+            1px 0   0 #{$color},
+            -1px 1px 0 #{$color},
+            0px 1px 0 #{$color},
+            1px 1px 0 #{$color};
+    }
+}

@@ -1,0 +1,44 @@
+html,
+body {
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+html {
+    text-size-adjust: 100%;
+}
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    line-height: 120%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    transform-style: inherit;
+    transition: inherit;
+}
+
+img {
+    border: 0;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+}
+
+input,
+textarea,
+button {
+    border: 0;
+    background: none;
+}
