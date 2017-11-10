@@ -28,7 +28,7 @@ var projects = [
         }
     */
     
-    {
+    { // Super Mario Odyssey
         name: 'Super Mario Odyssey - European Marketing Campaign',
         type: ['Design','Motion','Integration'],
         tools: ['Photoshop','After Effects','Google Web Designer'],
@@ -37,7 +37,7 @@ var projects = [
         background: './img/work/bg_mario.jpg',
         image: './img/work/bg_mario.jpg'
     },
-    {
+    { // Ratchet Galaxy
         name: 'Ratchet-Galaxy v3',
         type: ['Web Design','Integration'],
         tools: ['Sketch','Illustrator','Brackets'],
@@ -62,7 +62,7 @@ var projects = [
             }
         ]
     },
-    {
+    { // PlayStation
         name: 'PlayStation: an illustration project',
         type: ['Illustration'],
         tools: ['Illustrator'],
@@ -88,23 +88,25 @@ var projects = [
             }
         ]
     },
-    {
+    { // Dexter
         name: 'Minimalist Dexter Intro',
         type: ['Motion Design'],
         tools: ['After Effects'],
         description:
-        'An intro video for the TV show Dexter on Showtime. The idea was to create a short video with After Effects, with simple shapes, while making a clean and smooth animation. I cut the music to make it shorter and tried to remind of key elements of the show with simple geometric shapes.'+
-        '<br><br>'+
+        'An intro video for the TV show Dexter on Showtime. The idea was to create a short video with After Effects, with simple shapes, while making a clean and smooth animation. I cut the music to make it shorter and tried to remind of key elements of the show with simple geometric shapes.<br><br>'+
         'Dexter is a TV show on Showtime that I really liked. Based on Jeff Lindsay\'s book "Dearly Disturbed Dexter", who has since written many more, Dexter is a personal favourite.',
         logo: './img/work/tb_dexter.png',
         background: './img/work/bg_dexter.jpg',
         youtube: 'LNAa26l4ugU'
     },
-    {
-        name: 'A Handful of Unrelated Posters',
+    { // Posters
+        name: 'Unrelated Posters',
         type: ['Design','Typography'],
         tools: ['Photoshop','Illustrator'],
-        description: 'Here are a few posters, made for various occasions (not commissioned).<br><br><span class="font__title">Houston:</span> This is a typography-oriented project with layers of text leading to a famous quote.<br><br><span class="font__title">1984:</span> Also typography-oriented, this was meant to be a book cover but also works in it own right as a poster, playing with the notion of censorship which is a main theme of the book.<br><br><span class="font__title">Björk:</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
+        description: 'Here is a handful of posters I\'ve made to practice (these were not commissioned).<br><br>'+
+        '<span class="font__title">Houston:</span> This is a typography-oriented project with layers of text leading to a famous quote.<br><br>'+
+        '<span class="font__title">1984:</span> Also typography-oriented, this was meant to be a book cover but also works in it own right as a poster, playing with the notion of censorship which is a main theme of the book.<br><br>'+
+        '<span class="font__title">Björk:</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
         logo: './img/work/tb_posters.png',
         background: './img/work/bg_posters.jpg',
         slideshow: [
@@ -122,11 +124,70 @@ var projects = [
             }
         ]
     },
-    {
+    { // Awesome
+        name: 'AWESOME',
+        type: ['Motion Design'],
+        tools: ['Illustrator','After Effects'],
+        description: 'This little GIF series was made in order to practice with tiny details in motion design. First imagined on paper then drawn in Illustrator, these letters were individually edited in After Effects to get an animation that you keep looking at to catch all the details.',
+        logo: './img/work/tb_awesome.png',
+        background: './img/work/bg_awesome.jpg',
+        slideshow: [
+            {
+                tb: './img/work/tb_awesome-1.jpg',
+                o: './img/work/fs_awesome-1.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-2.jpg',
+                o: './img/work/fs_awesome-2.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-3.jpg',
+                o: './img/work/fs_awesome-3.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-4.jpg',
+                o: './img/work/fs_awesome-4.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-5.jpg',
+                o: './img/work/fs_awesome-5.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-6.jpg',
+                o: './img/work/fs_awesome-6.gif'
+            },
+            {
+                tb: './img/work/tb_awesome-7.jpg',
+                o: './img/work/fs_awesome-7.gif'
+            },
+            
+        ]
+    },
+    { // Covers
+        name: 'Dissonant Covers',
+        type: ['Design','Typography'],
+        tools: ['Cinema 4D','Photoshop','Illustrator'],
+        description: 'Here are some covers I have made, commissioned or for practice.<br><br>'+
+        '<span class="font__title">Commerce.:</span> Commerce., an electronic music artist, commissioned me to make a cover for his EP called "Primary Colours". He wanted something abstract, so I made a crazy shape in 3D and worked on it in Illustrator and Photoshop, giving it a used look to contrast with the cleanliness of the 3D shape.<br><br>'+
+        '<span class="font__title">Ghosts n’ Stuff:</span> This is some typography practice, trying to make a music cover artwork using a Fraktur typeface. Since I thought the font looked like something you would find on a music sheet, I aimed at illustrating "Ghosts \'n\' Stuff" by deadmau5. The word "Ghosts" itself reminded me of Pac-Man, so I intertwinded my ideas, keeping the whole cohesive thanks to the font, which I reorganised to give it a more interesting structure.',
+        logo: './img/work/tb_covers.png',
+        background: './img/work/bg_covers.jpg',
+        slideshow: [
+            {
+                tb: './img/work/tb_covers-commerce.jpg',
+                o: './img/work/fs_covers-commerce.jpg'
+            },
+            {
+                tb: './img/work/tb_covers-deadmau5.jpg',
+                o: './img/work/fs_covers-deadmau5.jpg'
+            }
+        ]
+    },
+    { // Uncharted
         name: 'Uncharted: Drake\'s Fortune Wallpaper',
         type: ['Design'],
         tools: ['Photoshop'],
-        description: 'This wallpaper was done when I was 14 years old, for a competition held by Playstation Europe which I won. This led to my wallpaper being avaible on all European Playstation Stores for download. Being the youngest finalist, this project motivated me to pursue graphic design studies.',
+        description: 'This wallpaper was done back in 2007, for a competition held by Playstation Europe which I won. This led to my wallpaper being avaible on all European Playstation Stores for download. Being the youngest finalist, this project motivated me to pursue graphic design not as just a hobby, but also as a career.',
         logo: './img/work/tb_uncharted.png',
         background: './img/work/bg_uncharted.jpg',
         image: './img/work/fs_uncharted.jpg'
@@ -137,16 +198,9 @@ var projects = [
 tough cookie : doute
 awesome : vire sauf si tu présente come sur le behance chaque lettre (là ça aura le swagg)
 casualty : garde
-uncharted : doute
-houston : garde
 beauty : garde
-sims 4 : doute
-bjork : doute
-ghosts n stuff : garde si tu ajoute toutes les couvs que t'as faite réunies sous une partie "couv"
 chronoise : de la merde (garde)
-commerce : voir ghost n stuff
 istanbul : garde (hashtag la diversité)
 no man's sky : doute
-1984 : doute, fusionner avec houston et bjork peut être ?
 
 */

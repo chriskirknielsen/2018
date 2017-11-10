@@ -371,10 +371,10 @@
                 bottom: 8rem;
                 width: 20rem;
                 height: .0625rem;
-                background: color(m) linear-gradient(to right, color(a), color(comp), color(a));
+                background: linear-gradient(to right, color(comp, 0), color(comp, 100), color(comp, 0));
             }
         }
-
+        
         &::before { // Anchor offset
             content: '';
             display: block;
@@ -630,12 +630,12 @@
 
         &:hover::before,
         &:focus::before {
-            transform: translateX(100%);
+            transform: translateX(101%);
         }
         
         &:hover > &__frame::before,
         &:focus > &__frame::before {
-            transform: translateX(-100%);
+            transform: translateX(-101%);
         }
         
         &:hover::before,
@@ -669,12 +669,12 @@
 
         &:hover::after,
         &:focus::after {
-            transform: translateY(100%);
+            transform: translateY(101%);
         }
 
         &:hover > &__frame::after,
         &:focus > &__frame::after {
-            transform: translateY(-100%);
+            transform: translateY(-101%);
         }
 
         &:hover::after,
@@ -687,19 +687,17 @@
         
         &__image {
             position: absolute;
-            @include pos(0);
+            @include pos(.125rem);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             opacity: .25;
-            filter: grayscale(100%);
             z-index: -1;
         }
 
         &:hover &__image,
         &:focus &__image {
             opacity: 1;
-            filter: grayscale(0%);
         }
 
         &__logo {
@@ -716,7 +714,8 @@
         &:hover &__logo,
         &:focus &__logo {
             opacity: 0;
-            transform: scale(2);
+            filter: blur(20px);
+            transform: scale(1.25);
         }
     }
     
@@ -1356,7 +1355,7 @@
 
             &-thumbnail {
                 width: 100%;
-                background-position: center top;
+                background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
                 opacity: .5;
@@ -1388,7 +1387,7 @@
             }
         }
 
-        @for $s from 1 through 6 {
+        @for $s from 1 through 8 {
             &__radio:nth-of-type(#{$s}):checked ~ &__container > &__container-image:nth-of-type(#{$s}) {
                 display: block;
             }

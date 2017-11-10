@@ -275,12 +275,19 @@ document.addEventListener('DOMContentLoaded', function(e) {
         menuClick(e, menuLinks[0].getAttribute('href').split('#')[1]); // Same as above, retrieves target ID
     });
     
-    // Lazyloading for the "About" image
-    (function lazy() {
-        var img = $('img[data-lazy-src]');
-        img.setAttribute('src', img.getAttribute('data-lazy-src'));
-        img.removeAttribute('data-lazy-src');
-    })();
+    // Lazy-loading for the "About" image
+    function lazyLoadAboutImage() {
+        var img = $('.about__image'),
+        imageToLoad = new Image();
+        
+        imageToLoad.src = img.getAttribute('data-lazy-src');
+        
+        imageToLoad.onload = function () { // Avoid a flash
+            img.setAttribute('src', img.getAttribute('data-lazy-src'));
+            img.removeAttribute('data-lazy-src');
+        }
+    }
+    lazyLoadAboutImage();
     
     //******************//
     // PROJECTS-RELATED //
