@@ -179,7 +179,7 @@ var projects = [
             },
             {
                 tb: './img/work/tb_covers-deadmau5.jpg',
-                o: './img/work/fs_covers-deadmau5.jpg'
+                o: './img/work/fs_covers-deadmauddddddd5.jpg'
             }
         ]
     },
@@ -196,10 +196,9 @@ var projects = [
 
 /*
 tough cookie : doute
-awesome : vire sauf si tu présente come sur le behance chaque lettre (là ça aura le swagg)
 casualty : garde
 beauty : garde
-chronoise : de la merde (garde)
+chronoise : garde
 istanbul : garde (hashtag la diversité)
 no man's sky : doute
 

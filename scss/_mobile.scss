@@ -3,8 +3,6 @@ $menu-top-gutter: .5rem;
 $menu-content-gutter: 1rem;
 $menu-offset: $menu-height + $menu-top-gutter + $menu-content-gutter;
 $grid-gutter: .5rem;
-$grid-cell-min: 30vmin; // Project grid cell minimum size
-$grid-cell-size: minmax(#{$grid-cell-min}, 1fr);
 
 @if $loadall or $critical {
     h1 { font-size: calc(.67rem + 2.33vw); }
@@ -137,10 +135,9 @@ $grid-cell-size: minmax(#{$grid-cell-min}, 1fr);
         
         &__projects {
             &-list {
-                grid-template-columns: repeat(auto-fit, #{$grid-cell-size});
-                grid-auto-columns: #{$grid-cell-size};
-                grid-template-rows: repeat(auto-fit, #{$grid-cell-size});
-                grid-auto-rows: #{$grid-cell-size};
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(auto-fit, 33.333vwmin);
+                grid-auto-rows: 33.333vwmin;
                 grid-gap: $grid-gutter;
             }
         }
@@ -149,11 +146,20 @@ $grid-cell-size: minmax(#{$grid-cell-min}, 1fr);
 
 @if $loadall or not $critical {
     .project {
-        border-width: .125rem;
-        
-        &__type {
-            font-size: .625rem;
-            letter-spacing: .0625em;
+        /* CSS Grid Fallback */
+        width: calc((100% - #{$grid-gutter * 2}) / 3);
+        height: calc((100vmin - #{$grid-gutter * 2}) / 3);
+        margin: 0 #{$grid-gutter} #{$grid-gutter} 0;
+        // Removes margin-right for the last item of a row
+        &:nth-child(3n) { margin-right: 0; }
+        /* End fallback */
+    }
+    
+    @supports (display: grid) {
+        .project {
+            width: 100%;
+            height: 100%;
+            margin: 0;
         }
     }
     

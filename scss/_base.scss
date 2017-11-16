@@ -69,7 +69,7 @@
         color: inherit;
         text-decoration: none;
         
-        &:not([href^="#"]) {
+        &:not([href^="#"]) { // Not menu items (starting with a pound)
             transition: all .2s #{$transition-function} .02s;
         }
 
@@ -94,58 +94,12 @@
 @if $loadall or not $critical {
     ::-moz-selection {
         color: color(a);
-        background-color: color(m);
+        background-color: color(main);
     }
 
     ::selection {
         color: color(a);
-        background-color: color(m);
-    }
-    
-    input,
-    textarea {
-        display: inline-block;
-        margin-bottom: 1rem;
-        padding: .25rem;
-        color: color(a);
-        border-radius: $border-radius;
-        transition: background-color .2s ease-in-out;
-
-        &::placeholder {
-            color: color(z, 50);
-            opacity: 1;
-            transition: color .2s ease-in-out;
-        }
-
-        &:focus::placeholder {
-            color: color(a, 50);
-            opacity: 1;
-        }
-
-        &:placeholder-shown {
-            background-color: color(m);
-        }
-
-        &:not(:placeholder-shown) {
-            background-color: color(z);
-        }
-
-        &:not(:focus):valid {
-            box-shadow: inset 0 0 0 .125rem color(main);
-        }
-
-        &:not(:focus):invalid {
-            box-shadow: inset 0 0 0 .125rem color(comp);
-        }
-
-        &:placeholder-shown:invalid:not(:focus),
-        &:focus {
-            box-shadow: inset 0 0 0 .125rem color(m);
-        }
-
-        &:focus {
-            background-color: color(z);
-        }
+        background-color: color(main);
     }
 
     .button {
@@ -159,6 +113,7 @@
         color: color(z);
         border: .125rem solid color(main);
         border-radius: $border-radius;
+        box-shadow: 0 .125rem 0 color(main-dark);
         overflow: hidden;
         cursor: pointer;
         transition: all .25s #{$transition-function} .02s;
@@ -178,8 +133,6 @@
 
         &:hover,
         &:focus {
-            box-shadow: 0 .125rem 0 color(main-dark);
-
             &::after {
                 transform: scaleX(1.05) translateX(0);
             }
@@ -367,14 +320,27 @@
         &:not(:last-child) {
             padding-bottom: 16rem;
             
-            &::after {
+            &::after { // Horizontal rule
                 content: '';
                 position: absolute;
                 left: calc(50% - 10rem);
                 bottom: 8rem;
                 width: 20rem;
                 height: .0625rem;
-                background: linear-gradient(to right, color(comp, 0), color(comp, 100), color(comp, 0));
+                background-image: linear-gradient(to right, color(comp, 100), color(comp, 0), color(comp, 100));
+                background-position: 50% 50%;
+                background-size: 200% 100%;
+                animation: sectionSeparator 2s ease-in-out alternate infinite both;
+            }
+            
+            @keyframes sectionSeparator {
+                from {
+                    background-position: 0% 50%;
+                }
+                
+                to {
+                    background-position: 100% 50%;
+                }
             }
         }
         
@@ -531,36 +497,15 @@
         &__projects {
             margin: 0 auto;
 
-            &-text {
-                //@include intro-reveal(4);
-            }
-
             &-list {
-                &::after {
-                    content: '';
-                    clear: both;
-                    display: table;
-                }
-            }
-            
-            @supports (display: grid) {
-                &-list {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, #{$grid-cell-size});
-                    grid-auto-columns: #{$grid-cell-size};
-                    grid-template-rows: repeat(auto-fit, #{$grid-cell-size});
-                    grid-auto-rows: #{$grid-cell-size};
-                    grid-gap: $grid-gutter;
-                    justify-items: start;
-                    align-items: start;
-                    justify-content: space-between;
-
-                    &::after {
-                        content: none;
-                        clear: both;
-                        display: none;
-                    }
-                }
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+                grid-template-rows: repeat(auto-fit, minmax(16rem, 1fr));
+                grid-auto-rows: minmax(auto, 1fr);
+                grid-gap: $grid-gutter;
+                justify-items: start;
+                align-items: start;
+                justify-content: space-between;
             }
         }
     } // .portfolio
@@ -569,27 +514,33 @@
 @if $loadall or not $critical {
     .project {
         position: relative;
-        width: $grid-cell-min;
-        height: $grid-cell-min;
-        font-size: $grid-cell-min;
-        text-align: left;
         cursor: pointer;
         overflow: hidden;
-        transition: .35s #{$transition-function} .02s;
+        transition: all .35s #{$transition-function} .02s;
         z-index: z(projects, 1);
         
-        // Grid not supported:
-        float: left;
+        /* CSS Grid Fallback */
+        display: table-cell;
         margin: 0 #{$grid-gutter} #{$grid-gutter} 0;
+        width: calc((100% - #{$grid-gutter * 5}) / 6);
+        height: calc((100vw - #{$grid-gutter * 5}) / 6);
+
+        @media screen and (min-width: #{$responsive-bp}) and (max-width: 80rem) {
+            width: calc((100% - #{$grid-gutter * 3}) / 4);
+            height: calc((100vw - #{$grid-gutter * 3}) / 4);
+            // Removes margin-right for the last item of a row
+            &:nth-child(4n) { margin-right: 0; }
+        }
+
+        @media screen and (min-width: 80rem) {
+            // Removes margin-right for the last item of a row
+            &:nth-child(6n) { margin-right: 0; }
+        }
         
-        //        $reveal-offset: 4; // Number of previously animated element with @include intro-reveal(n);
-        //        
-        //        @for $p from 1 through 20 {
-        //            $element-number: $reveal-offset + ($p / 2);
-        //            &:nth-child(#{$p}) {
-        //                @include intro-reveal($element-number);
-        //            }
-        //        }
+        @media screen and (min-width: $site-max-width) {
+            height: calc(#{$site-max-width - $grid-gutter * 5} / 6);
+        }
+        /* End fallback */
         
         &__frame {
             position: absolute;
@@ -605,40 +556,41 @@
             content: '';
             position: absolute;
             font-size: inherit;
-            background-color: color(comp);
             transition-duration: $grid-cell-anim-time;
             z-index: z(projects, 2);
         }
-
+        
+        // Horizontal borders
         &::before,
         &__frame::before {
-            left: 0;
-            width: 100%;
+            width: 200%;
             height: .125rem;
             transition-delay: $grid-cell-anim-time * 0.67 + $transition-delay;
             transition-timing-function: ease-out;
         }
         
         &::before {
+            left: 0;
             top: 0;
-            transform: translateX(-100%);
-            box-shadow: .5em 0 0 color(z), 1em 0 0 color(z), 1.5em 0 0 color(z), 1.75em 0 0 color(z), 2.25em 0 0 color(z);
+            background-image: linear-gradient(to right, color(comp) 50%, color(z) 50%);
+            transform: translateX(-50%);
         }
         
         &__frame::before {
+            right: 0;
             bottom: 0;
-            transform: translateX(100%);
-            box-shadow: -.5em 0 0 color(z), -1em 0 0 color(z), -1.5em 0 0 color(z), -1.75em 0 0 color(z), -2.25em 0 0 color(z);
+            background-image: linear-gradient(to left, color(comp) 50%, color(z) 50%);
+            transform: translateX(50%);
         }
 
         &:hover::before,
         &:focus::before {
-            transform: translateX(101%);
+            transform: translateX(50%);
         }
         
         &:hover > &__frame::before,
         &:focus > &__frame::before {
-            transform: translateX(-101%);
+            transform: translateX(-50%);
         }
         
         &:hover::before,
@@ -649,35 +601,37 @@
             transition-timing-function: ease-in;
         }
         
+        // Vertical borders
         &::after,
         &__frame::after {
-            top: 0;
             width: .125rem;
-            height: 100%;
+            height: 200%;
             transition-delay: $transition-delay;
             transition-timing-function: ease-in;
         }
 
         &::after {
             right: 0;
-            transform: translateY(-100%);
-            box-shadow: 0 .5em 0 color(z), 0 1em 0 color(z), 0 1.5em 0 color(z), 0 1.75em 0 color(z), 0 2.25em 0 color(z);
+            top: 0;
+            background-image: linear-gradient(to bottom, color(comp) 50%, color(z) 50%);
+            transform: translateY(-50%);
         }
 
         &__frame::after {
             left: 0;
-            transform: translateY(100%);
-            box-shadow: 0 -.5em 0 color(z), 0 -1em 0 color(z), 0 -1.5em 0 color(z), 0 -1.75em 0 color(z), 0 -2.25em 0 color(z);
+            bottom: 0;
+            background-image: linear-gradient(to top, color(comp) 50%, color(z) 50%);
+            transform: translateY(50%);
         }
 
         &:hover::after,
         &:focus::after {
-            transform: translateY(101%);
+            transform: translateY(50%);
         }
 
         &:hover > &__frame::after,
         &:focus > &__frame::after {
-            transform: translateY(-101%);
+            transform: translateY(-50%);
         }
 
         &:hover::after,
@@ -712,12 +666,13 @@
             background-repeat: no-repeat;
             background-size: contain;
             z-index: z(projects, 2);
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(1, -0.25, 0, 1.25); // Subtle bouncy effect
         }
         
         &:hover &__logo,
         &:focus &__logo {
             opacity: 0;
-            filter: blur(20px);
             transform: scale(1.25);
         }
     }
@@ -726,9 +681,7 @@
         .project {
             width: 100%;
             height: 100%;
-            padding-top: 100%;
             margin: 0;
-            float: none;
         }
     }
     
@@ -742,7 +695,6 @@
             &-group {
                 flex: none;
                 width: 50%;
-                line-height: 125%;
 
                 &:nth-of-type(odd) {
                     padding-right: 1rem;
@@ -791,183 +743,6 @@
     .contact {
         text-align: center;
         
-        &__form {
-            $p: &;
-
-            display: flex;
-            flex-wrap: wrap;
-
-            &-label {
-                display: inline-block;
-                margin-bottom: .25rem;
-                color: color(z);
-                font-size: .875rem;
-
-                &--name {
-                    order: -2;
-                }
-
-                &--email {
-                    order: -1;
-                }
-            }
-
-            &-input {
-
-            }
-
-            &-group {
-                width: calc(50% - 1rem);
-            }
-
-            &-group[class*="-name"] {
-                margin-right: 2rem;
-            }
-
-            &-solo {
-                width: 100%;
-            }
-
-            &-message {
-                min-height: 12.5rem; // Ten lines (line-height * 10)
-                margin-bottom: 1.5rem;
-                font-size: 1rem;
-                line-height: 1.25rem;
-                resize: vertical;
-            }
-
-            &-end {
-                width: 100%;
-
-                > .button {
-                    opacity: .5;
-                    padding-left: 2rem;
-                    padding-right: 2rem;
-                }
-            }
-
-            &-end > .button {
-                border-color: color(z);
-            }
-
-            &-end > .button,
-            &-end > .button > &-submit {
-                cursor: not-allowed;
-                pointer-events: none;
-
-                &::after {
-                    content: none;
-                }
-            }
-
-            &-name:valid ~ &-email:valid ~ &-subject:valid ~ &-message:valid ~ &-end > .button {
-                border-color: color(main);
-            }
-
-            &-name:valid ~ &-email:valid ~ &-subject:valid ~ &-message:valid ~ &-end > .button,
-            &-name:valid ~ &-email:valid ~ &-subject:valid ~ &-message:valid ~ &-submit {
-                opacity: 1;
-                cursor: pointer;
-                pointer-events: all;
-
-                &::after {
-                    content: '';
-                }
-            }
-
-            &-success,
-            &-error {
-                position: relative;
-                z-index: z(contact, 0);
-
-                > *:not(#{$p}-modal) {
-                    opacity: .15;
-                    z-index: z(contact, 1);
-                    cursor: not-allowed !important;
-                    pointer-events: none !important;
-                }
-
-                * {
-                    cursor: inherit;
-                    pointer-events: inherit;
-                }
-            }
-
-            &-modal {
-                position: absolute;
-                left: 0;
-                top: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
-                animation: contactModalReveal .5s ease-out both;
-                z-index: z(contact, 5);
-
-                &--symbol {
-                    position: relative;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;  
-                    width: 8rem;
-                    height: 8rem;
-                    margin-bottom: 2rem;
-                    border-radius: 50%;
-
-                    &::before,
-                    &::after {
-                        content: '';
-                        position: absolute;
-                    }
-
-                    &::before {
-                        left: 2rem;
-                        top: 2.5rem;
-                        width: 1rem;
-                        height: 1rem;
-                        border-radius: 50%;
-                        background-color: color(z);
-                        box-shadow: 3rem 0 0 color(z);
-                    }
-
-                    &::after {
-                        left: 1rem;
-                        top: .5rem;
-                        width: 6rem;
-                        height: 6rem;
-                        border-radius: 50%;
-                        border-width: .5rem;
-                        border-style: solid;
-                        border-color: transparent transparent color(z) transparent;
-                    }
-
-                    &_success {
-                        background-color: color(main);
-                    }
-
-                    &_error {
-                        background-color: color(error);
-
-                        &::after {
-                            transform-origin: center 5rem;
-                            transform: rotate(180deg);
-                        }
-                    }
-                } // &--symbol
-
-                &--message {
-                    padding: .5rem;
-
-                    > .button {
-                        cursor: pointer !important;
-                        pointer-events: auto !important;
-                    }
-                }
-            } // &-form
-        } // &__form
-        
         &__list {
             display: inline-block;
             list-style: none;
@@ -1012,17 +787,6 @@
             }
         } // &__list
     } //.content
-
-    @keyframes contactModalReveal {
-        from {
-            transform: scale(.9);
-            opacity: 0;
-        }
-        to {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
 
     .foot {
         display: flex;
@@ -1312,6 +1076,7 @@
                 &--description {
                     > a { // Adjusted for modal background color
                         @include text-shadow(color(z, 100));
+                        
                         &:hover,
                         &:focus {
                             @include text-shadow(color(z, 0));
@@ -1415,29 +1180,35 @@
         &::after {
             position: absolute;
             content: '';
-            width: 2rem;
-            height: 2rem;
             left: 50%;
             top: 50%;
+            width: 6rem;
+            height: .5rem;
+            transform: translate(-50%, -50%);
             z-index: -1;
         }
         
         &::before {
-            background-color: color(glow);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
+            background-color: color(kitt, 10);
+            background-image: linear-gradient(
+                to right,
+                color(kitt, 0) 0%,
+                color(kitt, 25) 33%,
+                color(kitt, 100) 50%,
+                color(kitt, 25) 67%,
+                color(kitt, 0) 100%
+            );
+            background-size: 200% 100%;
+            background-position: 0% 50%;
+            animation: loader .5s ease-in-out infinite alternate both;
         }
         
         &::after {
-            border-width: 1rem;
-            border-style: solid;
-            border-color: transparent color(a) transparent transparent;
-            transform: translate(-50%, -50%) scaleY(1);
-            animation: loader .3s ease-in-out infinite alternate 0s;
+            background: repeating-linear-gradient(to right, transparent 0rem, transparent calc(1rem - 1px), color(a) calc(1rem - 1px), color(a) 1rem);
         }
     } // .loader
 
     @keyframes loader {
-        to { transform: translate(-50%, -50%) scaleY(0); }
+        to { background-position: 100% 50%; }
     }
 } // end @if not $critical
