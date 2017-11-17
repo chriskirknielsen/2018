@@ -276,9 +276,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
     
     // Lazy-loading for the "About" image
-    function lazyLoadAboutImage() {
+    (function lazyLoadAboutImage() {
         var img = $('.about__image'),
-        imageToLoad = new Image();
+            imageToLoad = new Image();
         
         imageToLoad.src = img.getAttribute('data-lazy-src');
         
@@ -286,8 +286,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             img.setAttribute('src', img.getAttribute('data-lazy-src'));
             img.removeAttribute('data-lazy-src');
         }
-    }
-    lazyLoadAboutImage();
+    })();
     
     //******************//
     // PROJECTS-RELATED //

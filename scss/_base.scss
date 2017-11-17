@@ -360,6 +360,19 @@
             &:not(:last-child) {
                 margin-bottom: 2rem;
             }
+            
+            &::before,
+            &::after {
+                color: color(comp);
+            }
+            
+            &::before {
+                content: '[';
+            }
+            
+            &::after {
+                content: ']';
+            }
         }
     } // .section
 
@@ -500,9 +513,8 @@
             &-list {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-                grid-template-rows: repeat(auto-fit, minmax(16rem, 1fr));
-                grid-auto-rows: minmax(auto, 1fr);
                 grid-gap: $grid-gutter;
+                place-items: start;
                 justify-items: start;
                 align-items: start;
                 justify-content: space-between;
@@ -523,11 +535,9 @@
         display: table-cell;
         margin: 0 #{$grid-gutter} #{$grid-gutter} 0;
         width: calc((100% - #{$grid-gutter * 5}) / 6);
-        height: calc((100vw - #{$grid-gutter * 5}) / 6);
 
         @media screen and (min-width: #{$responsive-bp}) and (max-width: 80rem) {
             width: calc((100% - #{$grid-gutter * 3}) / 4);
-            height: calc((100vw - #{$grid-gutter * 3}) / 4);
             // Removes margin-right for the last item of a row
             &:nth-child(4n) { margin-right: 0; }
         }
@@ -536,15 +546,10 @@
             // Removes margin-right for the last item of a row
             &:nth-child(6n) { margin-right: 0; }
         }
-        
-        @media screen and (min-width: $site-max-width) {
-            height: calc(#{$site-max-width - $grid-gutter * 5} / 6);
-        }
         /* End fallback */
         
         &__frame {
-            position: absolute;
-            @include pos(0);
+            padding-bottom: 100%; // 1:1 Aspect ratio trick
             font-size: inherit;
             z-index: z(projects, 1);
         }
@@ -585,12 +590,12 @@
 
         &:hover::before,
         &:focus::before {
-            transform: translateX(50%);
+            transform: translateX(51%);
         }
         
         &:hover > &__frame::before,
         &:focus > &__frame::before {
-            transform: translateX(-50%);
+            transform: translateX(-51%);
         }
         
         &:hover::before,
@@ -626,12 +631,12 @@
 
         &:hover::after,
         &:focus::after {
-            transform: translateY(50%);
+            transform: translateY(51%);
         }
 
         &:hover > &__frame::after,
         &:focus > &__frame::after {
-            transform: translateY(-50%);
+            transform: translateY(-51%);
         }
 
         &:hover::after,
@@ -666,8 +671,9 @@
             background-repeat: no-repeat;
             background-size: contain;
             z-index: z(projects, 2);
-            transition-duration: .5s;
-            transition-timing-function: cubic-bezier(1, -0.25, 0, 1.25); // Subtle bouncy effect
+            transition:
+                opacity .5s cubic-bezier(1, 0, 0, 1) .02s,
+                transform .5s cubic-bezier(1, -0.25, 0, 1.25) .02s; // Subtle bouncy effect
         }
         
         &:hover &__logo,
@@ -835,7 +841,7 @@
         &__wrapper {
             position: fixed;
             @include pos($site-frame);
-            background: color(m, 75);
+            background: color(a, 75);
             overflow: hidden;
             animation: projectModalBackgroundReveal .25s ease-out;
             z-index: z(modal, 5);
@@ -926,39 +932,39 @@
                 flex: 1 0 none;
                 width: 25vw;
                 max-width: 24rem;
-                padding: .5rem;
                 background: color(z);
                 overflow-y: auto;
 
-                &--buttons,
                 &--name,
                 &--logo,
-                &--details,
                 &--description {
-                    padding-bottom: .5rem;
+                    padding: 0 .5rem .5rem;
                 }
 
                 &--buttons {
                     flex: none;
+                    display: flex;
                     width: 100%;
+                    margin-bottom: .5rem;
                     text-align: center;
+                    background-color: color(a-m);
 
                     &_button {
                         position: relative;
-                        width: 2rem;
+                        flex: 1 1 auto;
                         height: 2rem;
-                        font-size: 0;
-                        border: 1px solid color(main);
-                        color: color(main);
-                        background-color: color(z);
+                        border: 0;
+                        color: color(z);
                         cursor: pointer;
                         transition: all .15s cubic-bezier(.5, 0, .5, 1) .02s;
+                        will-change: background-position;
 
                         > span {
                             display: inline-block;
                             visibility: hidden;
                             width: 0;
                             height: 0;
+                            font-size: 0;
                         }
 
                         &:hover {
@@ -972,10 +978,12 @@
                     }
 
                     &_prev {
-                        box-shadow: inset 0 0 0 color(main);
+                        background: linear-gradient(to right, transparent 50%, color(comp) 50%);
+                        background-size: 200% 100%;
+                        background-position: 0% 50%;
 
                         &:hover {
-                            box-shadow: inset -2rem 0 0 color(main);
+                            background-position: 100% 50%;
                         }
 
                         &::after {
@@ -985,10 +993,12 @@
                     }
 
                     &_next {
-                        box-shadow: inset 0 0 0 color(main);
+                        background: linear-gradient(to left, transparent 50%, color(comp) 50%);
+                        background-size: 200% 100%;
+                        background-position: 100% 50%;
 
                         &:hover {
-                            box-shadow: inset 2rem 0 0 color(main);
+                            background-position: 0% 50%;
                         }
 
                         &::after {
@@ -1011,11 +1021,15 @@
                     }
 
                     &_close {
-                        margin: 0 .5rem;
-                        box-shadow: inset 0 0 0 0 color(main);
+                        border-style: solid;
+                        border-width: 0 1px;
+                        border-color: color(z);
+                        background: linear-gradient(to top, transparent 50%, color(comp) 50%);
+                        background-size: 100% 200%;
+                        background-position: 50% 100%;
 
                         &:hover {
-                            box-shadow: inset 0 0 0 1rem color(main);
+                            background-position: 50% 0%;
                         }
 
                         &::before,
@@ -1056,7 +1070,7 @@
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: .5rem;
-                    padding-top: .5rem;
+                    padding: .5rem .5rem 0;
                     border-style: solid;
                     border-color: color(z-m);
                     border-width: 1px 0;
@@ -1127,10 +1141,10 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 opacity: .5;
-                box-shadow: inset 0 0 0 .25rem color(m);
+                box-shadow: inset 0 0 0 .125rem color(m);
 
                 &:hover {
-                    box-shadow: inset 0 0 0 .25rem color(z);
+                    box-shadow: inset 0 0 0 .125rem color(z);
                     opacity: .75;
                 }
             }
@@ -1138,7 +1152,7 @@
 
         &__radio:checked + &__label > &__label-thumbnail {
             opacity: 1;
-            box-shadow: inset 0 0 0 .25rem color(main);
+            box-shadow: inset 0 0 0 .125rem color(main);
         }
 
         &__container {
@@ -1167,7 +1181,7 @@
         
         @keyframes slideshowFlashingThumbnail {
             to {
-                box-shadow: inset 0 0 0 .25rem color(comp);
+                box-shadow: inset 0 0 0 .125rem color(comp);
                 opacity: .75;
             }
         }

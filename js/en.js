@@ -179,7 +179,7 @@ var projects = [
             },
             {
                 tb: './img/work/tb_covers-deadmau5.jpg',
-                o: './img/work/fs_covers-deadmauddddddd5.jpg'
+                o: './img/work/fs_covers-deadmau5.jpg'
             }
         ]
     },
@@ -195,11 +195,12 @@ var projects = [
 ];
 
 /*
-tough cookie : doute
-casualty : garde
+dreadnought
+nike
 beauty : garde
 chronoise : garde
 istanbul : garde (hashtag la diversité)
+casualty : garde
 no man's sky : doute
-
+tough cookie : doute
 */
