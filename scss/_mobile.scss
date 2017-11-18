@@ -98,6 +98,22 @@ $grid-gutter: .5rem;
                 bottom: 3rem;
             }
         }
+        
+        &__text {
+            &::before,
+            &::after {
+                display: block;
+                text-align: center;
+            }
+
+            &::before {
+                content: '⎴';
+            }
+
+            &::after {
+                content: '⎵';
+            }
+        }
     }
 
     .width-constrain {

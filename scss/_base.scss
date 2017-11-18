@@ -323,13 +323,15 @@
             &::after { // Horizontal rule
                 content: '';
                 position: absolute;
-                left: calc(50% - 10rem);
+                left: 50%;
                 bottom: 8rem;
                 width: 20rem;
+                max-width: calc(100% - #{$site-frame * 2});
                 height: .0625rem;
                 background-image: linear-gradient(to right, color(comp, 100), color(comp, 0), color(comp, 100));
                 background-position: 50% 50%;
                 background-size: 200% 100%;
+                transform: translateX(-50%);
                 animation: sectionSeparator 2s ease-in-out alternate infinite both;
             }
             

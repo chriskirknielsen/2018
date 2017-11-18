@@ -195,8 +195,8 @@ var projects = [
 ];
 
 /*
-dreadnought
-nike
+dreadnought : good to have
+nike : good to have
 beauty : garde
 chronoise : garde
 istanbul : garde (hashtag la diversité)
