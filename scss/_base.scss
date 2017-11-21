@@ -328,7 +328,7 @@
                 width: 20rem;
                 max-width: calc(100% - #{$site-frame * 2});
                 height: .0625rem;
-                background-image: linear-gradient(to right, color(comp, 100), color(comp, 0), color(comp, 100));
+                background-image: linear-gradient(to right, color(comp, 0) 0%, color(comp, 100) 47.5%, color(comp-light, 100) 50%, color(comp, 100) 52.5%, color(comp, 0) 100%);
                 background-position: 50% 50%;
                 background-size: 200% 100%;
                 transform: translateX(-50%);
@@ -579,14 +579,14 @@
         &::before {
             left: 0;
             top: 0;
-            background-image: linear-gradient(to right, color(comp) 50%, color(z) 50%);
+            background-image: linear-gradient(to right, color(comp) 0%, color(glow) 50%, color(z) 50%);
             transform: translateX(-50%);
         }
         
         &__frame::before {
             right: 0;
             bottom: 0;
-            background-image: linear-gradient(to left, color(comp) 50%, color(z) 50%);
+            background-image: linear-gradient(to left, color(comp) 0%, color(glow) 50%, color(z) 50%);
             transform: translateX(50%);
         }
 
@@ -620,14 +620,14 @@
         &::after {
             right: 0;
             top: 0;
-            background-image: linear-gradient(to bottom, color(comp) 50%, color(z) 50%);
+            background-image: linear-gradient(to bottom, color(comp) 0%, color(glow) 50%, color(z) 50%);
             transform: translateY(-50%);
         }
 
         &__frame::after {
             left: 0;
             bottom: 0;
-            background-image: linear-gradient(to top, color(comp) 50%, color(z) 50%);
+            background-image: linear-gradient(to top, color(comp) 0%, color(glow) 50%, color(z) 50%);
             transform: translateY(50%);
         }
 
@@ -1026,12 +1026,12 @@
                         border-style: solid;
                         border-width: 0 1px;
                         border-color: color(z);
-                        background: linear-gradient(to top, transparent 50%, color(comp) 50%);
+                        background: linear-gradient(to bottom, transparent 50%, color(comp) 50%);
                         background-size: 100% 200%;
-                        background-position: 50% 100%;
+                        background-position: 50% 0%;
 
                         &:hover {
-                            background-position: 50% 0%;
+                            background-position: 50% 100%;
                         }
 
                         &::before,

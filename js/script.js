@@ -49,122 +49,6 @@ function ease(t) { // Easing equation
 // I am just a bit lazy to type the whole thing everytime…
 function $(el, p) { return (p || document).querySelector(el); }
 
-// AJAX
-function xhrPost(url, params, isResponseJson, successFn, errorFn) {
-    var request = new XMLHttpRequest(),
-        resp = '';
-    
-    request.open('POST', url, true);
-    request.withCredentials = true;
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    
-    request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            resp = (isResponseJson) ? JSON.parse(this.responseText) : this.responseText;
-
-            if ((isResponseJson && resp.success === true) || (!isResponseJson && resp === 'email_okay')) { // reCAPTCHA JSON
-                successFn(); // If all verifications are successful, we can execute the function
-            }
-            else {
-                errorFn(resp);
-            }
-        }
-    }
-    
-    request.send(params);
-    
-    return resp;
-}
-
-// Contact form submit
-function contactSubmit() { // Contact form submit function
-    var contactSubmitActions = { // Functions invoked at different stages of the emailing process
-        captcha: {
-            success: function () { // Captcha Success function: If the captcha reponse is valid, we process the e-mail
-                var contactName = $('#contact_name').value,
-                    contactEmail = $('#contact_email').value,
-                    contactSubject = $('#contact_subject').value,
-                    contactMessage = $('#contact_message').value,
-                    contactParams = 'contact_name='+contactName+'&contact_email='+contactEmail+'&contact_subject='+contactSubject+'&contact_message='+contactMessage,
-                    contactUrl = contactForm.getAttribute('action');
-
-                var email = xhrPost(contactUrl, contactParams, false, contactSubmitActions.email.success, contactSubmitActions.email.failure);
-            },
-            failure: function () { // Captcha Error function: inform the user
-                emailModal('error', lang.emailError);
-            }
-        },
-        email: {
-            success: function () { // All clear, we can inform the user the e-mail has been sent
-                emailModal('success', lang.emailSuccess);
-                console.log('E-mail sent!');
-            },
-            failure: function (errorCode) { // When an error occurs, retrieve the response and inform the user accordingly
-                var errorMessage;
-
-                switch (errorCode) {
-                    case 'email_error::sendoff-fail':
-                        errorMessage = lang.emailSendoffFail;
-                        break;
-                    case 'email_error::max-attempts':
-                        errorMessage = lang.emailMaxAttempts;
-                        break;
-                    case 'email_error::email-invalid':
-                        errorMessage = lang.emailAddressInvalid;
-                        break;
-                    case 'email_error::name-empty':
-                        errorMessage = lang.emailNameEmpty;
-                        break;
-                    case 'email_error::subject-empty':
-                        errorMessage = lang.emailSubjectEmpty;
-                        break;
-                    case 'email_error::not-post':
-                        errorMessage = lang.emailNotPost;
-                        break;
-                    default:
-                        errorMessage = lang.emailError;
-                    }
-
-                emailModal('error', errorMessage);
-            }
-        }
-    };
-    
-    var contactForm = $('#contact__form'),
-        gCaptchaResponse = $('.g-recaptcha-response').value,
-        reCaptcha = xhrPost('./js/recaptcha.php',
-                            'response=' + gCaptchaResponse,
-                            true,
-                            contactSubmitActions.captcha.success,
-                            contactSubmitActions.captcha.failure
-                            );
-}
-
-function emailModal(type, message) {
-    var contactForm = $('#contact__form'),
-        modal = document.createElement('div'),
-        additionalButton = '';
-    
-    contactForm.classList.add('contact__form-' + type);
-    
-    if (type === 'error') { // If there's an error, let's allow the user to resubmit
-        additionalButton = '<br><br><button class="button" onclick="removeEmailModal()"><span>OK</span></button>';
-    }
-    
-    modal.setAttribute('class', 'contact__form-modal');
-    modal.innerHTML = '<div class="contact__form-modal--symbol contact__form-modal--symbol_'+ type +'"></div><p class="text__center contact__form-modal--message">' + message + additionalButton + '</p>';
-    
-    contactForm.insertBefore(modal, contactForm.firstChild);
-}
-
-function removeEmailModal() {
-    var contactForm = $('#contact__form'),
-        modal = $('.contact__form-modal');
-    
-    contactForm.removeChild(modal);
-    contactForm.classList.remove('contact__form-error');
-}
-
 document.addEventListener('DOMContentLoaded', function(e) {
     var menuLinkClass = '.menu__nav-item--link',
         menuLinks = document.querySelectorAll(menuLinkClass), // Retrieve all the menu links
@@ -174,10 +58,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
         projectCount = projects.length,
         projectModal = false,
         projectTransitionDuration = 350; // ms (CSS transition time + 50ms compensation for any delay)
-    
-    if ($('#contact__form')) {
-        $('#contact-form-submit').setAttribute('type', 'button'); // Switch from a submit to a button
-    }
     
     function menuSetActiveSection(targetElementId, doScroll, setHash) {
         var targetHash = '#' + targetElementId,
@@ -436,6 +316,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         this.load = function (projectId) {
             var modalTransition = 0;
             
+            document.activeElement.blur(); // Remove :focus on the previous/next button
+            
             if (projectId === '-' || projectId === '+') { // Modal is already open
                 modalTransition = projectTransitionDuration;
                 
@@ -585,14 +467,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
             }
             // Else, leave the displayed project in place
 
-            this.content.style.transform = '';
-            this.content.style.transition = '';
+            this.content.style.removeProperty('transform');
+            this.content.style.removeProperty('transition');
 
-            this.media.style.opacity = '';
-            this.media.style.transition = '';
+            this.media.style.removeProperty('opacity');
+            this.media.style.removeProperty('transition');
 
-            this.info.style.opacity = '';
-            this.info.style.transition = '';
+            this.info.style.removeProperty('opacity');
+            this.info.style.removeProperty('transition');
 
             this.wrapper.classList.remove('project-modal__dragging');
 
