@@ -4,42 +4,63 @@ var scrollDuration = 300, // ms; total scroll duration
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, repaintTick); };
 
-function Ticker() { // This function runs on requestAnimationFrame for continuously repeating functions
-    this.callbackQueue = {};
-    this.removeQueue = [];
+function defaultVal(val, placeholder) { // Returns a default if the value is undefined
+    return typeof val !== 'undefined' ? val : placeholder;
+}
 
-    this.start = function () { this.ticker(); } // Initialise ticker
+/** Binds and handles functions to requestAnimationFrame */
+function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson.com
+    var callbackQueue = {},
+        ticks = 0;
+    this.maxInterval = 120; // Default
 
-    this.ticker = function () {
-        // First we remove elements from the callback queue
-        while (this.removeQueue.length > 0) {
-            var key = this.removeQueue.pop();
-            if (key in this.callbackQueue) {
-                delete this.callbackQueue[key];
+    /** Main ticker function (private) */
+    function ticker() {
+        // Execute the callbacks
+        for (var key in callbackQueue) {
+            if(ticks % callbackQueue[key]['interval'] === 0) {
+                callbackQueue[key]['callback']();
             }
         }
 
-        // Then we execute remaining callbacks
-        for (var key in this.callbackQueue) {
-            this.callbackQueue[key]();
+        ticks = (ticks + 1) % this.maxInterval; // Increase iteration count
+        requestAnimationFrame(ticker); // Restart function
+    }
+
+    /** Start the ticker */
+    this.start = function() { ticker(); }
+
+    /**
+	 * Add a callback so that it can be executed at each iteration of the ticker
+	 * @param id Key to identify the callback (allow removal afterwards)
+	 * @param callback function that should be called every X ticks
+	 * @param ticksInterval Number of ticks between two calls (default: 1)
+	 */    
+    this.addCallback = function(id, callback, ticksInterval) {
+        var interval = parseInt(defaultVal(ticksInterval, 1), 10);
+        if(interval < 1 || interval > this.maxInterval) {
+            throw 'Can\'t add a ticker callback with the given interval: ' + interval;
         }
 
-        requestAnimationFrame(this.ticker.bind(this)); // Restart function
+        callbackQueue[id] = {
+            'callback': callback, 
+            'interval': interval
+        };
     }
 
-    this.addCallback = function(id, callback) {
-        this.callbackQueue[id] = callback;
-    }
-
-    // Add callback ID to a queue for removal that will be emptied in ticker
+    /** 
+	 * Remove a callback from the ticker
+	 * @param id Key that was associated to the callback when it was given to Ticker
+	 */
     this.removeCallback = function(id) {
-        if (id in this.callbackQueue) {
-            this.removeQueue.push(id);
+        if (id in callbackQueue) {
+            delete callbackQueue[id];
         } else {
-            console.log('Error: the given id "' + id + '" does not refer to any callback function');
+            console.log('Error: the given id "' + id + '" do not refer to any callback');
         }
     }
 }
+
 var ticker = new Ticker();
 
 function ease(t) { // Easing equation
@@ -84,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
     }
     
     function scrollToTarget(scrollTarget, scrollTiming, initialScrollPos, initialTargetY) {
-        var scrollTopWindow = (typeof initialScrollPos !== 'undefined') ? initialScrollPos : (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0),
-            targetYcalc = (typeof initialTargetY !== 'undefined') ? initialTargetY : (scrollTopWindow + parseInt(scrollTarget.getBoundingClientRect().top, 10)),
+        var scrollTopWindow = defaultVal(initialScrollPos, (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)),
+            targetYcalc = defaultVal(initialTargetY, (scrollTopWindow + parseInt(scrollTarget.getBoundingClientRect().top, 10))),
             targetY = (targetYcalc < 0) ? 0 : targetYcalc,
             targetOffset = targetY - scrollTopWindow,
             scrollDirection = (targetOffset < 0) ? 1 : -1,
-            scrollTiming = (typeof scrollTiming !== 'undefined') ? scrollTiming : 0;
+            scrollTiming = defaultVal(scrollTiming, 0);
         
         if (scrollTiming < scrollDuration) { // We aren't done yet
             var currentTimePercent = scrollTiming / scrollDuration,

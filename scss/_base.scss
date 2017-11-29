@@ -328,7 +328,7 @@
                 width: 20rem;
                 max-width: calc(100% - #{$site-frame * 2});
                 height: .0625rem;
-                background-image: linear-gradient(to right, color(comp, 0) 0%, color(comp, 100) 47.5%, color(comp-light, 100) 50%, color(comp, 100) 52.5%, color(comp, 0) 100%);
+                background-image: linear-gradient(to right, color(comp, 0) 0%, color(comp, 75) 47.5%, color(comp, 100) 50%, color(comp, 75) 52.5%, color(comp, 0) 100%);
                 background-position: 50% 50%;
                 background-size: 200% 100%;
                 transform: translateX(-50%);
@@ -395,7 +395,7 @@
                     position: absolute;
                     left: $site-frame;
                     right: $site-frame;
-                    top: 0;
+                    bottom: 0;
                     height: 100%;
                     overflow: hidden;
                     
@@ -414,7 +414,12 @@
                     }
                     
                     &_video {
-                        width: 100%;
+                        position: absolute;
+                        left: 50%;
+                        bottom: 0;
+                        min-width: 100vmax;
+                        height: auto;
+                        transform: translateX(-50%);
                     }
                 }
                 

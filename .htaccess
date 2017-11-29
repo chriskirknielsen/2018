@@ -48,9 +48,13 @@ AddType image/svg+xml .svg
 </IfModule>
 
 <IfModule mod_rewrite.c>
-	RewriteEngine On
-	
+    RewriteEngine On
+    
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://chriskirknielsen.com/$1 [R=301,L]
+
 	RewriteRule ^en(\.html)?$ /index.html [L]
+    
 	RewriteRule ^fr(\.)?$ /fr.html [L]
 </IfModule>
 
