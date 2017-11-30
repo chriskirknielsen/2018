@@ -50,7 +50,7 @@ $grid-gutter: .5rem;
                     box-shadow: inset 0 -.125rem 0 color(comp);
                 }
 
-                &--link {
+                &_link {
                     line-height: inherit;
 
                     &::before {
@@ -78,7 +78,7 @@ $grid-gutter: .5rem;
                     margin-right: .5rem;
                 }
 
-                &--link {
+                &_link {
                     line-height: 2rem;
                 }
             }
@@ -127,26 +127,6 @@ $grid-gutter: .5rem;
     .portfolio {
         &__presentation {
             height: calc(100vh - 8.5rem);
-            
-            &-illustration {
-                &--sun {
-                    width: 50vmin;
-                    height: 50vmin;
-                }
-            }
-
-            &-who {
-                font-size: calc(1rem + 2.33vw);
-            }
-
-            &-what {
-                font-size: calc(1rem + 1.16vw);
-            }
-
-            &-where {
-                margin-top: calc(.125rem + .67vw);
-                font-size: calc(.5rem + 1.67vw);
-            }
         }
         
         &__projects {
@@ -193,25 +173,6 @@ $grid-gutter: .5rem;
         }
     } // .resume
 
-    .contact {
-        &__form {
-            &-group {
-                width: 100%;
-            }
-
-            &-group[class*="-name"] {
-                margin-right: 0;
-            }
-
-            &-label {
-                &--name,
-                &--email {
-                    order: 0;
-                }
-            }
-        }
-    } // .contact
-
     .foot {
         flex-wrap: wrap-reverse;
         padding: 2rem;
@@ -243,16 +204,16 @@ $grid-gutter: .5rem;
             &-info {
                 max-width: 100%;
 
-                &--name {
+                &_name {
                     font-size: calc(.5rem + 1.67vw);
                 }
 
-                &--details,
-                &--description {
+                &_details,
+                &_description {
                     font-size: .75rem;
                 }
 
-                &--logo {
+                &_logo {
                     &_image {
                         width: 50%;
                         max-width: 10rem;

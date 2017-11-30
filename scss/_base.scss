@@ -199,7 +199,7 @@
             display: flex;
 
             &-item {
-                &, &--link {
+                &, &_link {
                     display: inline-block;
                     height: inherit;
                     line-height: 4rem; // Identical to .menu `height`
@@ -218,7 +218,7 @@
                     margin-left: 2rem;
                 }
 
-                &[aria-active="true"] > &--link {
+                &[aria-active="true"] > &_link {
                     &::before {
                         background: color(comp);
                         clip: rect(3.75rem auto 4rem auto);
@@ -229,7 +229,7 @@
                     }
                 }
 
-                &--link {
+                &_link {
                     position: relative;
 
                     &::before {
@@ -248,8 +248,8 @@
                     }
                 }
 
-                &:not([aria-active="true"]) > &--link:hover::before,
-                &:not([aria-active="true"]) > &--link:focus::before {
+                &:not([aria-active="true"]) > &_link:hover::before,
+                &:not([aria-active="true"]) > &_link:focus::before {
                     animation: menuNavItem .35s cubic-bezier(0, 0, 0, 1) both .02s;
                 }
             }
@@ -263,17 +263,17 @@
                 width: 4rem;
                 text-align: center;
 
-                &--link {
+                &_link {
                     width: inherit;
 
-                    &_icon {
+                    &-icon {
                         vertical-align: middle;
                         filter: grayscale(100%);
                         transition: .2s ease-in-out .02s;
                     }
 
-                    &:hover > &_icon,
-                    &:focus > &_icon {
+                    &:hover > &-icon,
+                    &:focus > &-icon {
                         filter: grayscale(0%);
                     }
                 }
@@ -391,7 +391,7 @@
             height: calc(100vh - 8rem);
             
             &-illustration {
-                &--car {
+                &_car {
                     position: absolute;
                     left: $site-frame;
                     right: $site-frame;
@@ -413,29 +413,37 @@
                             linear-gradient(to right, color(a, 100), color(a, 0) 12.5%);
                     }
                     
-                    &_video {
+                    &--video {
                         position: absolute;
                         left: 50%;
                         bottom: 0;
-                        min-width: 100vmax;
+                        width: 100%;
+                        min-width: 100vmin;
                         height: auto;
                         transform: translateX(-50%);
                     }
                 }
+            } // &-illustration
+            
+            &-text {
+                position: relative;
+                width: 50vmin;
+                min-width: 19rem;
+                max-width: 100%;
+                margin: 11.5vmin auto 0;
+                z-index: z(section, 5);
                 
-                &--sun {
+                &_sun {
                     position: absolute;
                     left: 50%;
-                    top: 25%;
-                    width: 25vmin;
-                    max-width: 16rem;
-                    height: 25vmin;
-                    max-height: 16rem;
+                    top: -7.5%;
+                    width: 56.25%;
+                    padding-top: 56.25%;
                     border-radius: 50%;
                     box-shadow:
-                        0 0 0 .25rem color(a),
-                        0 1.5rem 1.5rem color(comp, 25);
-                    transform: translate(-50%, -50%);
+                        0 0      0      .25rem color(a),
+                        0 1.5rem 1.5rem        color(comp, 25);
+                    transform: translateX(-50%);
                     z-index: z(section, 1);
                     overflow: hidden;
 
@@ -481,37 +489,53 @@
                         100% { background-position: 0 1.5rem; }
                     }
                 } // &--sun
-            } // &-illustration
+                
+                &_image {
+                    width: 100%;
+                    transform: skewY(-3deg);
+                }
+                
+                &_intro,
+                &_name,
+                &_skills,
+                &_geo {
+                    position: relative;
+                    display: block;
+                    margin: 0 auto;
+                    text-align: center;
+                    text-shadow:
+                        .0625rem .0625rem 0 color(a),
+                        .1250rem .1250rem 0 color(a);
+                }
 
-            &-who,
-            &-what,
-            &-where {
-                position: relative;
-                display: block;
-                text-align: center;
-                text-shadow:
-                    .0625rem .0625rem 0 color(a),
-                    .1250rem .1250rem 0 color(a),
-                    .1875rem .1875rem 0 color(a),
-                    .2500rem .2500rem 0 color(a);
-                z-index: z(section, 5);
-            }
+                &_intro {
+                    color: color(comp);
+                    @include intro-reveal(1);
+                    z-index: z(section, 6);
+                }
 
-            &-who {
-                font-size: 3rem;
-                @include intro-reveal(1);
-            }
+                &_name {
+                    margin-top: -7.5%;
+                    font-size: 4rem;
+                    @include intro-reveal(2);
+                    z-index: z(section, 5);
+                }
 
-            &-what {
-                font-size: 2rem;
-                @include intro-reveal(2);
-            }
+                &_skills {
+                    margin-top: -7.5%;
+                    font-size: 1.75rem;
+                    color: color(glow);
+                    @include intro-reveal(3);
+                    z-index: z(section, 6);
+                }
 
-            &-where {
-                margin-top: .75rem;
-                font-size: 1.25rem;
-                @include intro-reveal(3);
-            }
+                &_geo {
+                    margin-top: 1%;
+                    text-transform: uppercase;
+                    @include intro-reveal(4);
+                    z-index: z(section, 7);
+                }
+            } // &-text
         }
 
         &__projects {
@@ -722,11 +746,11 @@
                     margin-bottom: 2rem;
                 }
 
-                &--list {
+                &_list {
                     list-style: none;
                 }
 
-                &--item {
+                &_item {
                     display: block;
                 }
             }
@@ -770,7 +794,7 @@
                     margin-bottom: 1rem;
                 }
                 
-                &--icon {
+                &_icon {
                     position: relative;
                     display: inline-block;
                     margin-right: 1rem;
@@ -922,7 +946,7 @@
                 display: flex;
                 background: color(a);
 
-                &--image {
+                &_image {
                     width: 100%;
                     height: 100%;
                     background-position: center;
@@ -930,7 +954,7 @@
                     background-size: contain;
                 }
 
-                &--slideshow {
+                &_slideshow {
                     // see .slideshow
                 }
             }
@@ -942,13 +966,13 @@
                 background: color(z);
                 overflow-y: auto;
 
-                &--name,
-                &--logo,
-                &--description {
+                &_name,
+                &_logo,
+                &_description {
                     padding: 0 .5rem .5rem;
                 }
 
-                &--buttons {
+                &_buttons {
                     flex: none;
                     display: flex;
                     width: 100%;
@@ -956,7 +980,7 @@
                     text-align: center;
                     background-color: color(a-m);
 
-                    &_button {
+                    &--button {
                         position: relative;
                         flex: 1 1 auto;
                         height: 2rem;
@@ -984,7 +1008,7 @@
                         }
                     }
 
-                    &_prev {
+                    &--prev {
                         background: linear-gradient(to right, transparent 50%, color(comp) 50%);
                         background-size: 200% 100%;
                         background-position: 0% 50%;
@@ -999,7 +1023,7 @@
                         }
                     }
 
-                    &_next {
+                    &--next {
                         background: linear-gradient(to left, transparent 50%, color(comp) 50%);
                         background-size: 200% 100%;
                         background-position: 100% 50%;
@@ -1014,8 +1038,8 @@
                         }
                     }
 
-                    &_prev,
-                    &_next {
+                    &--prev,
+                    &--next {
                         &::after {
                             left: 50%;
                             top: calc(.75rem - 1px);
@@ -1027,7 +1051,7 @@
                         }
                     }
 
-                    &_close {
+                    &--close {
                         border-style: solid;
                         border-width: 0 1px;
                         border-color: color(z);
@@ -1060,7 +1084,7 @@
                     }
                 } // &--buttons
 
-                &--logo {
+                &_logo {
                     text-align: center;
                     flex: none;
 
@@ -1069,11 +1093,11 @@
                     }
                 }
 
-                &--name {
+                &_name {
                     font-size: 1.25rem;
                 }
 
-                &--details {
+                &_details {
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: .5rem;
@@ -1082,19 +1106,19 @@
                     border-color: color(z-m);
                     border-width: 1px 0;
 
-                    &_type {
+                    &--type {
                         font-size: .75rem;
                         line-height: 1rem;
                         vertical-align: middle;
                         text-transform: uppercase;
                     }
 
-                    &_tools {
+                    &--tools {
                         text-align: right;
                     }
                 }
 
-                &--description {
+                &_description {
                     > a { // Adjusted for modal background color
                         @include text-shadow(color(z, 100));
                         

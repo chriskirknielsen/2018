@@ -23,39 +23,39 @@
     <div class="site" id="top">
         <div class="menu__wrapper">
             <nav class="menu">
-                <a href="#portfolio" class="menu__logo">CKN</a>
+                <a href="#portfolio" class="menu__logo" id="menu-logo">CKN</a>
 
                 <ul class="menu__nav">
-                    <li class="menu__nav-item" aria-active="true"><a href="#portfolio" class="menu__nav-item--link" data-content="Portfolio">Portfolio</a></li>
-                    <li class="menu__nav-item"><a href="#resume" class="menu__nav-item--link" data-content="Résumé">Résumé</a></li>
-                    <li class="menu__nav-item"><a href="#about" class="menu__nav-item--link" data-content="About">About</a></li>
-                    <li class="menu__nav-item"><a href="#contact" class="menu__nav-item--link" data-content="Contact">Contact</a></li>
+                    <li class="menu__nav-item" aria-active="true"><a href="#portfolio" class="menu__nav-item_link" data-content="Portfolio">Portfolio</a></li>
+                    <li class="menu__nav-item"><a href="#resume" class="menu__nav-item_link" data-content="Résumé">Résumé</a></li>
+                    <li class="menu__nav-item"><a href="#about" class="menu__nav-item_link" data-content="About">About</a></li>
+                    <li class="menu__nav-item"><a href="#contact" class="menu__nav-item_link" data-content="Contact">Contact</a></li>
                 </ul>
 
                 <ul class="menu__links">
                     <li class="menu__links-item">
-                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-item--link" data-tip="Behance" target="_blank">
-                            <span class="menu__links-item--link_icon icon icon__behance">Behance</span>
+                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-item_link" data-tip="Behance" target="_blank">
+                            <span class="menu__links-item_link-icon icon icon__behance">Behance</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-item--link" data-tip="LinkedIn" target="_blank">
-                            <span class="menu__links-item--link_icon icon icon__linkedin">LinkedIn</span>
+                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-item_link" data-tip="LinkedIn" target="_blank">
+                            <span class="menu__links-item_link-icon icon icon__linkedin">LinkedIn</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-item--link" data-tip="CodePen" target="_blank">
-                            <span class="menu__links-item--link_icon icon icon__codepen">CodePen</span>
+                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-item_link" data-tip="CodePen" target="_blank">
+                            <span class="menu__links-item_link-icon icon icon__codepen">CodePen</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-item--link" data-tip="Dribbble" target="_blank">
-                            <span class="menu__links-item--link_icon icon icon__dribbble">Dribbble</span>
+                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-item_link" data-tip="Dribbble" target="_blank">
+                            <span class="menu__links-item_link-icon icon icon__dribbble">Dribbble</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://github.com/chriskirknielsen" class="menu__links-item--link" data-tip="GitHub" target="_blank">
-                            <span class="menu__links-item--link_icon icon icon__github">GitHub</span>
+                        <a href="https://github.com/chriskirknielsen" class="menu__links-item_link" data-tip="GitHub" target="_blank">
+                            <span class="menu__links-item_link-icon icon icon__github">GitHub</span>
                         </a>
                     </li>
                 </ul>
@@ -66,23 +66,22 @@
             <section class="section portfolio" id="portfolio">
                 <div class="portfolio__presentation">                    
                     <div class="portfolio__presentation-illustration">
-                        <div class="portfolio__presentation-illustration--car">
-<!--                            <video src="./img/header.mp4" mute autoplay loop class="portfolio__presentation-illustration--car_video"></video>-->
-                            <img src="./img/delo_move0045.png" class="portfolio__presentation-illustration--car_video" alt="I'ts not a cah!">
+                        <div class="portfolio__presentation-illustration_car">
+<!--                            <video src="./img/header.mp4" mute autoplay loop class="portfolio__presentation-illustration_car--video"></video>-->
+                            <img src="./img/delo_move0045.png" class="portfolio__presentation-illustration_car--video" alt="I'ts not a cah!">
                         </div>
-                        <div class="portfolio__presentation-illustration--sun"></div>
                     </div>
-                    <h1 class="portfolio__presentation-who font__title">
-                        Hey! My name's Chris.
-                    </h1>
-                    <h2 class="portfolio__presentation-what font__title color__main">
-                        I'm a front-end developer
-                        <br>
-                        &amp; graphic / motion designer
-                    </h2>
-                    <h3 class="portfolio__presentation-where font__title">
-                        based in New York.
-                    </h3>
+                    <div class="portfolio__presentation-text">
+                        <div class="portfolio__presentation-text_sun"></div>
+                        
+                        <div class="portfolio__presentation-text_intro"><img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-text_image"></div>
+                        
+                        <div class="portfolio__presentation-text_name font__title"><img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-text_image"></div>
+                        
+                        <div class="portfolio__presentation-text_skills font__title"><img src="./img/presentation-skills.svg" alt="Front-end Developer &amp; Motion / Graphic Designer" class="portfolio__presentation-text_image"></div>
+                        
+                        <div class="portfolio__presentation-text_geo"><img src="./img/presentation-geo.svg" alt="based in NYC" class="portfolio__presentation-text_image"></div>
+                    </div>
                 </div>
                 
                 <div class="portfolio__projects padded-section">
@@ -137,63 +136,63 @@
                 <div class="resume__area">
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Experience</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><span class="font__title">2015–present:</span> freelance activity in digital marketing</li>
-                            <li class="resume__area-group--item"><span class="font__title">2014–2015:</span> Wonderbanners internship (digital communication)</li>
-                            <li class="resume__area-group--item"><span class="font__title">2014:</span> Green Garden Digital internship (digital marketing)</li>
-                            <li class="resume__area-group--item"><span class="font__title">2013:</span> EG Digital internship (webdesign &amp; digital creation)</li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><span class="font__title">2015–present:</span> freelance activity in digital marketing</li>
+                            <li class="resume__area-group_item"><span class="font__title">2014–2015:</span> Wonderbanners internship (digital communication)</li>
+                            <li class="resume__area-group_item"><span class="font__title">2014:</span> Green Garden Digital internship (digital marketing)</li>
+                            <li class="resume__area-group_item"><span class="font__title">2013:</span> EG Digital internship (webdesign &amp; digital creation)</li>
                         </ul>
                     </div>
 
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Skills</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><span class="font__title">Design:</span> Photoshop, Illustrator, InDesign</li>
-                            <li class="resume__area-group--item"><span class="font__title">Motion:</span> After Effects, Premiere Pro, Cinema 4D</li>
-                            <li class="resume__area-group--item"><span class="font__title">Dev:</span> HTML5, CSS3, JavaScript, PHP, MySQL, Git</li>
-                            <li class="resume__area-group--item"><span class="font__title">UI / UX:</span> Sketch, Google Web Designer</li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><span class="font__title">Design:</span> Photoshop, Illustrator, InDesign</li>
+                            <li class="resume__area-group_item"><span class="font__title">Motion:</span> After Effects, Premiere Pro, Cinema 4D</li>
+                            <li class="resume__area-group_item"><span class="font__title">Dev:</span> HTML5, CSS3, JavaScript, PHP, MySQL, Git</li>
+                            <li class="resume__area-group_item"><span class="font__title">UI / UX:</span> Sketch, Google Web Designer</li>
                         </ul>
                     </div>
 
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Education</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><span class="font__title">2015:</span> Digital Transformation Certificate from HEC Paris</li>
-                            <li class="resume__area-group--item"><span class="font__title">2014–2015:</span> motion design studies at e-artsup Paris</li>
-                            <li class="resume__area-group--item"><span class="font__title">2011–2014:</span> graphic design studies at e-artsup Lyon</li>
-                            <li class="resume__area-group--item"><span class="font__title">2011:</span> graduated high-school in Social and Economics studies</li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><span class="font__title">2015:</span> Digital Transformation Certificate from HEC Paris</li>
+                            <li class="resume__area-group_item"><span class="font__title">2014–2015:</span> motion design studies at e-artsup Paris</li>
+                            <li class="resume__area-group_item"><span class="font__title">2011–2014:</span> graphic design studies at e-artsup Lyon</li>
+                            <li class="resume__area-group_item"><span class="font__title">2011:</span> graduated high-school in Social and Economics studies</li>
                         </ul>
                     </div>
 
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Languages</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><span class="font__title">English:</span> fluent</li>
-                            <li class="resume__area-group--item"><span class="font__title">French:</span> fluent</li>
-                            <li class="resume__area-group--item"><span class="font__title">Danish:</span> fluent</li>
-                            <li class="resume__area-group--item"><span class="font__title">Italian:</span> intermediate</li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><span class="font__title">English:</span> fluent</li>
+                            <li class="resume__area-group_item"><span class="font__title">French:</span> fluent</li>
+                            <li class="resume__area-group_item"><span class="font__title">Danish:</span> fluent</li>
+                            <li class="resume__area-group_item"><span class="font__title">Italian:</span> intermediate</li>
                         </ul>
                     </div>
 
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Interests</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><span class="font__title">Daily intake:</span> Tea, music, movies and T.V. shows</li>
-                            <li class="resume__area-group--item"><span class="font__title">Chronoise:</span> Making electronica music since 2011</li>
-                            <li class="resume__area-group--item"><span class="font__title">Geekometric:</span> Video game / movie blogging since 2013</li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><span class="font__title">Daily intake:</span> Tea, music, movies and T.V. shows</li>
+                            <li class="resume__area-group_item"><span class="font__title">Chronoise:</span> Making electronica music since 2011</li>
+                            <li class="resume__area-group_item"><span class="font__title">Geekometric:</span> Video game / movie blogging since 2013</li>
                         </ul>
                     </div>
 
                     <div class="resume__area-group">
                         <h1 class="color__main font__title">Online</h1>
-                        <ul class="resume__area-group--list">
-                            <li class="resume__area-group--item"><a href="http://www.behance.net/chriskirknielsen" target="_blank">behance.net/chriskirknielsen</a></li>
-                            <li class="resume__area-group--item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank">linkedin.com/in/chriskirknielsen</a></li>
-                            <li class="resume__area-group--item"><a href="https://codepen.io/chriskirknielsen" target="_blank">codepen.io/chriskirknielsen</a></li>
-                            <li class="resume__area-group--item"><a href="https://dribbble.com/chriskirknielsen" target="_blank">dribbble.com/chriskirknielsen</a></li>
-                            <li class="resume__area-group--item"><a href="https://github.com/chriskirknielsen" target="_blank">github.com/chriskirknielsen</a></li>
-                            <li class="resume__area-group--item"><a href="http://chronoise.com" target="_blank">chronoise.com</a></li>
-                            <li class="resume__area-group--item"><a href="https://geekometric.com" target="_blank">geekometric.com</a></li>
+                        <ul class="resume__area-group_list">
+                            <li class="resume__area-group_item"><a href="http://www.behance.net/chriskirknielsen" target="_blank">behance.net/chriskirknielsen</a></li>
+                            <li class="resume__area-group_item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank">linkedin.com/in/chriskirknielsen</a></li>
+                            <li class="resume__area-group_item"><a href="https://codepen.io/chriskirknielsen" target="_blank">codepen.io/chriskirknielsen</a></li>
+                            <li class="resume__area-group_item"><a href="https://dribbble.com/chriskirknielsen" target="_blank">dribbble.com/chriskirknielsen</a></li>
+                            <li class="resume__area-group_item"><a href="https://github.com/chriskirknielsen" target="_blank">github.com/chriskirknielsen</a></li>
+                            <li class="resume__area-group_item"><a href="http://chronoise.com" target="_blank">chronoise.com</a></li>
+                            <li class="resume__area-group_item"><a href="https://geekometric.com" target="_blank">geekometric.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -234,22 +233,22 @@
                 
                 <ul class="contact__list">
                     <li class="contact__list-item">
-                        <span class="contact__list-item--icon contact__list-item--icon_email"></span>
+                        <span class="contact__list-item_icon contact__list-item_icon--email"></span>
                         <a href="mailto:chriskirknielsen@gmail.com">chriskirknielsen@gmail.com</a>
                     </li>
                     
                     <li class="contact__list-item">
-                        <span class="contact__list-item--icon contact__list-item--icon_phone"></span>
+                        <span class="contact__list-item_icon contact__list-item_icon--phone"></span>
                         +1 (347) 998-5774
                     </li>
                     
                     <li class="contact__list-item">
-                        <span class="contact__list-item--icon contact__list-item--icon_skype"></span>
+                        <span class="contact__list-item_icon contact__list-item_icon--skype"></span>
                         <a href="skype:jakhris?chat">jakhris</a>
                     </li>
 
                     <li class="contact__list-item">
-                        <span class="contact__list-item--icon contact__list-item--icon_geo"></span>
+                        <span class="contact__list-item_icon contact__list-item_icon--geo"></span>
                         In the streets of NYC
                     </li>
                 </ul>

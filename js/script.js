@@ -4,26 +4,22 @@ var scrollDuration = 300, // ms; total scroll duration
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, repaintTick); };
 
-function defaultVal(val, placeholder) { // Returns a default if the value is undefined
+/** Returns a default if the value is undefined **/
+function defaultVal(val, placeholder) {
     return typeof val !== 'undefined' ? val : placeholder;
 }
 
-/** Binds and handles functions to requestAnimationFrame */
+/** Handles functions and binds them to requestAnimationFrame */
 function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson.com
-    var callbackQueue = {},
-        ticks = 0;
-    this.maxInterval = 120; // Default
+    var callbackQueue = {};
 
     /** Main ticker function (private) */
     function ticker() {
         // Execute the callbacks
         for (var key in callbackQueue) {
-            if(ticks % callbackQueue[key]['interval'] === 0) {
-                callbackQueue[key]['callback']();
-            }
+            callbackQueue[key]['callback']();
         }
 
-        ticks = (ticks + 1) % this.maxInterval; // Increase iteration count
         requestAnimationFrame(ticker); // Restart function
     }
 
@@ -36,15 +32,9 @@ function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson
 	 * @param callback function that should be called every X ticks
 	 * @param ticksInterval Number of ticks between two calls (default: 1)
 	 */    
-    this.addCallback = function(id, callback, ticksInterval) {
-        var interval = parseInt(defaultVal(ticksInterval, 1), 10);
-        if(interval < 1 || interval > this.maxInterval) {
-            throw 'Can\'t add a ticker callback with the given interval: ' + interval;
-        }
-
+    this.addCallback = function(id, callback) {
         callbackQueue[id] = {
-            'callback': callback, 
-            'interval': interval
+            'callback': callback
         };
     }
 
@@ -63,17 +53,28 @@ function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson
 
 var ticker = new Ticker();
 
-function ease(t) { // Easing equation
+/** Easing equation for transitions **/
+function ease(t) {
     return (t * (2 - t)) / 1; // Ease-Out Quad
 }
 
-// I am just a bit lazy to type the whole thing everytime…
-function $(el, p) { return (p || document).querySelector(el); }
+/**
+ * Quick way to select an element based on CSS selector syntax **
+ * @param el: CSS selector for the target element
+ * @param p (optional): parent element in which to search for el
+ */
+function $(el, p) {
+    if (el.charAt(0) === '#') {
+        return document.getElementById(el.slice(1));
+    }
+    
+    return (p || document).querySelector(el);
+}
 
-document.addEventListener('DOMContentLoaded', function(e) {
+document.addEventListener('DOMContentLoaded', function (e) {
     var menuLinkClass = '.menu__nav-item--link',
         menuLinks = document.querySelectorAll(menuLinkClass), // Retrieve all the menu links
-        logoLink = $('.menu__logo'),
+        logoLink = $('#menu-logo'),
         hashSelection = (location.hash.slice(1)) ? location.hash.split('#')[1] : false,
         projectList = $('#projects-list'),
         projectCount = projects.length,
@@ -105,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
     }
     
     function scrollToTarget(scrollTarget, scrollTiming, initialScrollPos, initialTargetY) {
+        console.log('Going to ', scrollTarget);
+        
         var scrollTopWindow = defaultVal(initialScrollPos, (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)),
             targetYcalc = defaultVal(initialTargetY, (scrollTopWindow + parseInt(scrollTarget.getBoundingClientRect().top, 10))),
             targetY = (targetYcalc < 0) ? 0 : targetYcalc,
@@ -160,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     
     function menuClick(event, targetHref) {
         menuSetActiveSection(targetHref, true, true);
+        document.activeElement.blur(); // Remove :focus on the menu button
         
         // Avoid <a> anchor to jump
         event.preventDefault();
@@ -264,31 +268,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
             
             this.info.setAttribute('class', 'project-modal__content-info');
             
-            this.buttons.container.setAttribute('class', 'project-modal__content-info--buttons');
+            this.buttons.container.setAttribute('class', 'project-modal__content-info_buttons');
             
-            this.buttons.previous.setAttribute('class', 'project-modal__content-info--buttons_button project-modal__content-info--buttons_prev');
+            this.buttons.previous.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--prev');
             this.buttons.previous.setAttribute('title', lang.txtPrev);
             this.buttons.previous.innerHTML = '<span>&larr;</span>';
 
-            this.buttons.close.setAttribute('class', 'project-modal__content-info--buttons_button project-modal__content-info--buttons_close');
+            this.buttons.close.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--close');
             this.buttons.close.setAttribute('title', lang.txtClose);
             this.buttons.close.innerHTML = '<span>&times;</span>';
 
-            this.buttons.next.setAttribute('class', 'project-modal__content-info--buttons_button project-modal__content-info--buttons_next');
+            this.buttons.next.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--next');
             this.buttons.next.setAttribute('title', lang.txtNext);
             this.buttons.next.innerHTML = '<span>&rarr;</span>';
             
-            this.logo.setAttribute('class', 'project-modal__content-info--logo');
+            this.logo.setAttribute('class', 'project-modal__content-info_logo');
             
-            this.name.setAttribute('class', 'project-modal__content-info--name font__title text__center');
+            this.name.setAttribute('class', 'project-modal__content-info_name font__title text__center');
             
-            this.details.container.setAttribute('class', 'project-modal__content-info--details');
+            this.details.container.setAttribute('class', 'project-modal__content-info_details');
             
-            this.details.type.setAttribute('class', 'project-modal__content-info--details_type color__a-m');
+            this.details.type.setAttribute('class', 'project-modal__content-info_details--type color__a-m');
             
-            this.details.tools.setAttribute('class', 'project-modal__content-info--details_tools');
+            this.details.tools.setAttribute('class', 'project-modal__content-info_details--tools');
             
-            this.description.setAttribute('class', 'project-modal__content-info--description');
+            this.description.setAttribute('class', 'project-modal__content-info_description');
             
             document.body.style.overflow = 'hidden'; // Disable scrolling for the content under the modal
             
@@ -320,8 +324,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
             }.bind(this)); // If the user clicks the background, ensure it closes
 
             this.buttons.previous.addEventListener('click', this.previous.bind(this));
+            this.buttons.previous.addEventListener('click', document.activeElement.blur);
             this.buttons.close.addEventListener('click', this.close.bind(this));
             this.buttons.next.addEventListener('click', this.next.bind(this));
+            this.buttons.next.addEventListener('click', document.activeElement.blur);
             
             // Swipping/dragging to previous/next project
             this.wrapper.addEventListener('mousedown', function (e) { this.onDown(e, 'mouse'); }.bind(this));
@@ -336,8 +342,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
         this.load = function (projectId) {
             var modalTransition = 0;
-            
-            document.activeElement.blur(); // Remove :focus on the previous/next button
             
             if (projectId === '-' || projectId === '+') { // Modal is already open
                 modalTransition = projectTransitionDuration;
@@ -400,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 '</div>';
             }
             else { // Show single image
-                projectMediaContent = '<div class="project-modal__content-media--image loader" style="background-image: url(' + projectData.image + ');"></div>';
+                projectMediaContent = '<div class="project-modal__content-media_image loader" style="background-image: url(' + projectData.image + ');"></div>';
             }
             
             setTimeout(function () { // Handle if a transition warrants a delay in the change of content or not
@@ -408,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 
                 this.media.innerHTML = projectMediaContent;
                 
-                this.logo.innerHTML = '<img src="' + projectData.logo + '" alt="Project logo" class="project-modal__content-info--logo_image">';
+                this.logo.innerHTML = '<img src="' + projectData.logo + '" alt="Project logo" class="project-modal__content-info_logo_image">';
                 
                 this.name.innerText = projectData.name;
                 

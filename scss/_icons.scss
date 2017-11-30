@@ -44,7 +44,7 @@ $tool-list: (photoshop, illustrator, indesign, premierepro, aftereffects, sketch
 
 $contact-list: (email, phone, skype, geo);
 
-.contact__list-item--icon {
+.contact__list-item_icon {
     width: 3rem;
 //    height: 3rem;
     height: #{3rem / $sqrt3}; // Horizontal rectangle Height = Width / sqrt(3)
@@ -56,7 +56,7 @@ $contact-list: (email, phone, skype, geo);
     $current-contact: nth($contact-list, $contact);
     $current-contact-pos: ($contact - 1) * -1;
 
-    .contact__list-item--icon_#{$current-contact} {
+    .contact__list-item_icon--#{$current-contact} {
         background-position: #{$contact-icon-size*$current-contact-pos} center;
     }
 }
