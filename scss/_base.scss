@@ -522,14 +522,20 @@
                 &_name {
                     margin-top: -7.5%;
                     font-size: 4rem;
+                    filter: drop-shadow(0 0 20px color(comp)); // Pink glow
                     @include intro-reveal(2);
                     z-index: z(section, 5);
+                    
+                    > img {
+                        filter: drop-shadow(3px 3px 0 color(a)); // Black drop-shadow
+                    }
                 }
 
                 &_skills {
                     margin-top: -7.5%;
                     font-size: 1.75rem;
                     color: color(glow);
+                    filter: drop-shadow(2px 2px 0 color(a)); // Black drop-shadow
                     @include intro-reveal(3);
                     z-index: z(section, 6);
                 }
@@ -537,6 +543,7 @@
                 &_geo {
                     margin-top: 1%;
                     text-transform: uppercase;
+                    filter: drop-shadow(0 0 1px color(a)); // Black drop-shadow
                     @include intro-reveal(4);
                     z-index: z(section, 7);
                 }

@@ -1,18 +1,14 @@
 <svg id="ckn-skills" data-name="ckn-skills" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 42">
     <defs>
         <style>
-            .fill-yellow {
+          .fill-yellow {
             fill: #ffd200;
-            }
-
-            .shadow-black {
-            filter: drop-shadow(3px 3px 0 #161616);
-            }
+          }
         </style>
     </defs>
     <title>Front-end Developer &amp; Motion / Graphic Designer</title>
     <g>
-      <g class="shadow-black">
+      <g>
         <path class="fill-yellow" d="M120.435,6.74l-1.93,3.413H108.382v6.068H104.8V3.972q.418-2.824,3.58-3.412H120.49V3.972H110.228q-1.846,0-1.846,2.014V8.894l1.23-2.154Z"/>
         <path class="fill-yellow" d="M136.151.56q3.161.588,3.579,3.412V8.447a3.546,3.546,0,0,1-1.928,2.88l1.9,4.894h-4.027L133.83,11.8h-5.4l1.929-3.413h4.028q1.761,0,1.761-1.873V5.986q0-2.014-1.845-2.014h-8.027V16.221h-3.607V.56Z"/>
         <path class="fill-yellow" d="M145.478.56h9.9q3.159.588,3.579,3.412v8.893a3.736,3.736,0,0,1-3.579,3.356h-9.9a3.737,3.737,0,0,1-3.581-3.356V3.972Q142.317,1.148,145.478.56Zm0,5.426v4.949q0,1.875,1.761,1.874h6.376q1.762,0,1.762-1.874V5.986q0-2.014-1.846-2.014h-6.208Q145.478,3.972,145.478,5.986Z"/>

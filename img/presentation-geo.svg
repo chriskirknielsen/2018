@@ -1,17 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 10">
+<svg id="ckn-geo" data-name="ckn-geo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 10">
   <defs>
     <style>
       .fill-white {
         fill: #e6e6e6;
       }
-
-      .shadow-black {
-        filter: drop-shadow(1px 1px 0 #161616);
-      }
     </style>
   </defs>
   <title>based in NYC</title>
-  <g id="ckn-geo" data-name="ckn-geo" class="fill-white shadow-black">
+  <g class="fill-white">
     <g>
       <path class="fill-white" d="M212.943.683h7.412c1.8,0,2.3.935,2.3,1.93v.743c0,.624-.347,1.26-1.4,1.368v.048c.924.048,1.738.4,1.738,1.715V7.519c0,1.21-1.08,1.846-2.517,1.846h-7.534Zm8.539,1.87c0-.791-.875-.911-1.234-.911h-6.129v2.77h6.069c.636,0,1.294-.2,1.294-1.067Zm.336,4.066c0-1.079-.6-1.247-1.666-1.247h-6.033V8.406h6.213c1.092,0,1.486-.4,1.486-1.164Z"/>
       <path class="fill-white" d="M229.3.683h1.463l5.158,8.682h-1.332L233.508,7.53h-6.957l-1.08,1.835h-1.33Zm.732.959-2.914,4.929h5.828Z"/>

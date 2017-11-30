@@ -15,19 +15,19 @@
 @keyframes introRevealUp {
     from {
         opacity: 0;
-        transform: translateY(3rem);
+        transform: translateY(4rem);
     }
 }
 
 @mixin intro-reveal($order, $anim: null) {
     $offset: .3; // Initial delay
-    $delay: .05s;
+    $delay: .1s;
     
     @if ($anim == null) {
         $anim: introRevealUp;
     }
     
-    animation: #{$anim} 1s cubic-bezier(.25, 2, 0, 1) both ($offset + ($order - 1) * $delay);
+    animation: #{$anim} 1s cubic-bezier(0, 0, 0, 1) both ($offset + ($order - 1) * $delay);
 }
 
 @mixin text-shadow($color, $merge: false) {
