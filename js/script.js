@@ -1,15 +1,15 @@
-var scrollDuration = 300, // ms; total scroll duration
-    repaintTick = Math.round(1000 / 60), // ms; number of repaints per second (target 60fps)
-    updateActiveMenuOn = true; // See if the ticker has to check for the current section in the viewport
+var scrollDuration = 500, // In ms; total scroll duration
+    repaintTick = Math.round(1000 / 60), // In ms; number of repaints per second (target 60fps)
+    updateActiveMenuOn = true; // Set if the ticker has to check for the current section in the viewport
 
-window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, repaintTick); };
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, repaintTick); }; // Set requestAnimationFrame with fallback
 
-/** Returns a default if the value is undefined **/
-function defaultVal(val, placeholder) {
-    return typeof val !== 'undefined' ? val : placeholder;
+/** Returns val, or def if val is undefined **/
+function defaultVal(val, def) {
+    return typeof val !== 'undefined' ? val : def;
 }
 
-/** Handles functions and binds them to requestAnimationFrame */
+/** Handles functions and binds them to requestAnimationFrame **/
 function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson.com
     var callbackQueue = {};
 
@@ -59,12 +59,12 @@ function ease(t) {
 }
 
 /**
- * Quick way to select an element based on CSS selector syntax **
+ * Quick way to select an element based on CSS selector syntax
  * @param el: CSS selector for the target element
  * @param p (optional): parent element in which to search for el
  */
 function $(el, p) {
-    if (el.charAt(0) === '#') {
+    if (el.charAt(0) === '#' && !el.match(/\.|\[|\(/)) { // Matches an #id without a CSS class, attribute or pseudo-selector
         return document.getElementById(el.slice(1));
     }
     
@@ -72,7 +72,7 @@ function $(el, p) {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
-    var menuLinkClass = '.menu__nav-item--link',
+    var menuLinkClass = '.menu__nav-item_link', // Class used for menu links
         menuLinks = document.querySelectorAll(menuLinkClass), // Retrieve all the menu links
         logoLink = $('#menu-logo'),
         hashSelection = (location.hash.slice(1)) ? location.hash.split('#')[1] : false,
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     function menuSetActiveSection(targetElementId, doScroll, setHash) {
         var targetHash = '#' + targetElementId,
             sectionTarget = $(targetHash);
-
+        
         if (setHash) {
             if (history.replaceState) {
                 history.replaceState(targetHash, null, targetHash);
@@ -106,8 +106,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     }
     
     function scrollToTarget(scrollTarget, scrollTiming, initialScrollPos, initialTargetY) {
-        console.log('Going to ', scrollTarget);
-        
         var scrollTopWindow = defaultVal(initialScrollPos, (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)),
             targetYcalc = defaultVal(initialTargetY, (scrollTopWindow + parseInt(scrollTarget.getBoundingClientRect().top, 10))),
             targetY = (targetYcalc < 0) ? 0 : targetYcalc,
@@ -147,12 +145,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     menuScrollYTop = parseInt(menuScrollY.top, 10),
                     menuScrollYBottom = parseInt(menuScrollY.bottom, 10),
                     menuActive;
-
+                
                 if (menuScrollYTop <= windowHeightThreshold && menuScrollYBottom >= windowHeightThreshold) {
                     menuActive = menuTargetHash;
                 }
             }
-
+            
             menuSetActiveSection(menuActive, false, false);
         }
     });
@@ -388,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 var original_i = 0,
                     thumbnail_i = 0;
                 
-                projectMediaContent = '<div class="project-modal__content-media--slideshow slideshow">' +
+                projectMediaContent = '<div class="slideshow">' +
                     projectData.slideshow.map(function (i) { // Pure CSS slideshow
                         ++thumbnail_i;
                         // Create a radio input and an associated label to select an image

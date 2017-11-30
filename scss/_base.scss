@@ -389,6 +389,7 @@
         &__presentation {
             position: relative;
             height: calc(100vh - 8rem);
+            padding-top: 11.5vmin;
             
             &-illustration {
                 &_car {
@@ -430,7 +431,7 @@
                 width: 50vmin;
                 min-width: 19rem;
                 max-width: 100%;
-                margin: 11.5vmin auto 0;
+                margin: 0 auto;
                 z-index: z(section, 5);
                 
                 &_sun {
@@ -492,6 +493,10 @@
                 
                 &_image {
                     width: 100%;
+                }
+                
+                &_intro &_image,
+                &_name &_image {
                     transform: skewY(-3deg);
                 }
                 
