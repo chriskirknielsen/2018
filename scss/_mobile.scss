@@ -106,12 +106,9 @@ $grid-gutter: .5rem;
                 text-align: center;
             }
 
-            &::before {
-                content: '⎴';
-            }
-
+            &::before,
             &::after {
-                content: '⎵';
+                content: '\00B7';
             }
         }
     }

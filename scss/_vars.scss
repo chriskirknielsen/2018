@@ -26,11 +26,13 @@ $grid-cell-anim-time: .3s; // Transition animation time for project cell
 
 $z-index: (
     body: 10,
+    presentation: 20,
     section: 30,
     about: 40,
     resume: 50,
     projects: 60,
     contact: 70,
     menu: 90,
-    modal: 100
+    modal: 100,
+    frame: 110
 );

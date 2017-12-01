@@ -20,7 +20,7 @@
             width: 100%;
             height: #{$site-frame};
             background-color: color(main);
-            z-index: z(body, 100);
+            z-index: z(frame, 1);
             pointer-events: none;
         }
 
@@ -155,8 +155,27 @@
     .site {
         position: relative;
         padding: #{$menu-offset} 0 0;
-        box-shadow: inset -#{$site-frame} 0 color(main),
-                    inset  #{$site-frame} 0 color(main);
+        background-color: inherit;
+        
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: #{$site-frame};
+            background-color: color(main);
+            z-index: z(frame, 1);
+            pointer-events: none;
+        }
+        
+        &::before {
+            left: 0;
+        }
+        
+        &::after {
+            right: 0;
+        }
     } // .site
 
     .menu {
@@ -384,7 +403,7 @@
     }
 
     .portfolio {
-        z-index: z(projects, 0);
+        z-index: z(presentation, 0);
         
         &__presentation {
             position: relative;
@@ -428,11 +447,10 @@
             
             &-text {
                 position: relative;
-                width: 50vmin;
+                width: 56.25vmin;
                 min-width: 19rem;
                 max-width: 100%;
                 margin: 0 auto;
-                z-index: z(section, 5);
                 
                 &_sun {
                     position: absolute;
@@ -445,7 +463,7 @@
                         0 0      0      .25rem color(a),
                         0 1.5rem 1.5rem        color(comp, 25);
                     transform: translateX(-50%);
-                    z-index: z(section, 1);
+                    z-index: z(presentation, 1);
                     overflow: hidden;
 
                     &::before,
@@ -466,7 +484,7 @@
                             #{$intro-sun-color-b} 80%,
                             #{$intro-sun-color-c} 100%
                         );
-                        z-index: z(section, 2);
+                        z-index: z(presentation, 2);
                     }
 
                     &::after {
@@ -482,7 +500,7 @@
                             );
                         transform: perspective(16rem) rotateX(-42deg);
                         animation: presentationSun 2s linear infinite;
-                        z-index: z(section, 3);
+                        z-index: z(presentation, 3);
                     }
 
                     @keyframes presentationSun {
@@ -514,17 +532,18 @@
                 }
 
                 &_intro {
+                    margin-bottom: 2.5%;
                     color: color(comp);
                     @include intro-reveal(1);
-                    z-index: z(section, 6);
+                    z-index: z(presentation, 6);
                 }
 
                 &_name {
-                    margin-top: -7.5%;
+                    margin-bottom: 5%;
                     font-size: 4rem;
                     filter: drop-shadow(0 0 20px color(comp)); // Pink glow
                     @include intro-reveal(2);
-                    z-index: z(section, 5);
+                    z-index: z(presentation, 5);
                     
                     > img {
                         filter: drop-shadow(3px 3px 0 color(a)); // Black drop-shadow
@@ -532,20 +551,18 @@
                 }
 
                 &_skills {
-                    margin-top: -7.5%;
                     font-size: 1.75rem;
                     color: color(glow);
                     filter: drop-shadow(2px 2px 0 color(a)); // Black drop-shadow
                     @include intro-reveal(3);
-                    z-index: z(section, 6);
+                    z-index: z(presentation, 6);
                 }
 
                 &_geo {
                     margin-top: 1%;
                     text-transform: uppercase;
-                    filter: drop-shadow(0 0 1px color(a)); // Black drop-shadow
                     @include intro-reveal(4);
-                    z-index: z(section, 7);
+                    z-index: z(presentation, 7);
                 }
             } // &-text
         }
@@ -797,10 +814,12 @@
             list-style: none;
             
             &-item {
+                position: relative;
                 display: flex;
                 align-items: center;
                 padding: 1rem;
                 text-align: left;
+                z-index: z(contact, 1);
                 
                 &:not(:last-child) {
                     margin-bottom: 1rem;
@@ -810,7 +829,6 @@
                     position: relative;
                     display: inline-block;
                     margin-right: 1rem;
-//                    border-radius: 50%;
                     background-color: color(z);
                     
                     &::before,
