@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     // Lazy-loading for the "About" image
     (function lazyLoadAboutImage() {
-        var img = $('.about__image'),
+        var img = $('#about-image'),
             imageToLoad = new Image();
         
         imageToLoad.src = img.getAttribute('data-lazy-src');
