@@ -447,7 +447,6 @@
                         position: absolute;
                         left: 50%;
                         bottom: 0;
-                        width: 100%;
                         min-width: 100vmin;
                         height: auto;
                         transform: translateX(-50%);
@@ -465,7 +464,7 @@
                 &_sun {
                     position: absolute;
                     left: 50%;
-                    top: -2.5vmin;
+                    top: -2vmin;
                     width: 56.25%;
                     padding-top: 56.25%;
                     border-radius: 50%;
@@ -573,6 +572,7 @@
 
                 &_geo {
                     text-transform: uppercase;
+                    filter: drop-shadow(2px 2px 0 color(a)); // Black drop-shadow
                     @include intro-reveal(4);
                     z-index: z(presentation, 7);
                 }

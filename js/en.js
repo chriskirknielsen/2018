@@ -59,6 +59,27 @@ var projects = [
             {
                 tb: './img/work/tb_rgv3-3.jpg',
                 o: './img/work/fs_rgv3-3.jpg'
+            },
+            {
+                tb: './img/work/tb_rgv3-4.jpg',
+                o: './img/work/fs_rgv3-4.jpg'
+            }
+        ]
+    },
+    { // Dreadnought
+        name: 'Dreadnought Marketing Assets',
+        type: ['Motion','Design','Integration'],
+        tools: ['Photoshop','After Effects','Brackets'],
+        description:
+        'In collaboration with Green Garden, I worked on several assets used for the promotion of the video game Dreadnought, focused on a cinematic sequence. This includes a set of banners, a dynamic takeover, as well as Facebook disruptive posts, for both European and North American markets.'+
+        '<br><br>'+
+        'The main asset was the dynamic takeover, which dictacted how the other elements would look.',
+        logo: './img/work/tb_dreadnought.png',
+        background: './img/work/bg_dreadnought.jpg',
+        slideshow: [
+            {
+                tb: './img/work/bg_dreadnought.jpg',
+                o: './img/work/bg_dreadnought.jpg'
             }
         ]
     },
@@ -195,12 +216,9 @@ var projects = [
 ];
 
 /*
-dreadnought : good to have
 nike : good to have
 beauty : garde
 chronoise : garde
 istanbul : garde (hashtag la diversité)
 casualty : garde
-no man's sky : doute
-tough cookie : doute
 */
