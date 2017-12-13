@@ -10,18 +10,17 @@
     <meta property="og:site_name" content="chriskirknielsen.com">
     <meta property="og:description" content="Christopher Kirk-Nielsen | Front-end developer | Graphic / Motion designer | New York">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="./img/opengraph.jpg">
+    <meta property="og:image" content="https://chriskirknielsen.com/img/card.jpg">
     <meta property="og:url" content="https://chriskirknielsen.com">
     
     <meta name="twitter:title" content="Christopher Kirk-Nielsen">
-    <meta name="og:site_name" content="chriskirknielsen.com">
     <meta name="twitter:description" content="Christopher Kirk-Nielsen | Front-end developer | Graphic / Motion designer | New York">
     <meta name="twitter:card" content="website">
-    <meta name="twitter:image" content="./img/opengraph.jpg">
-    <meta name="og:url" content="https://chriskirknielsen.com">
+    <meta name="twitter:image" content="https://chriskirknielsen.com/img/card.jpg">
     
     <link rel="preload" href="./fonts/gidole-regular-webfont.woff2" as="font" type="font/woff2">
     <link rel="preload" href="./fonts/suezone-regular-webfont.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="./fonts/fonts.min.css" as="style">
     <link rel="preload" href="./css/noncritical.css" as="style">
     <link rel="preload" href="./img/about_en.png" as="image" type="image/png">
     
@@ -41,36 +40,36 @@
                 <a href="#portfolio" class="menu__logo" id="menu-logo">CKN</a>
 
                 <ul class="menu__nav">
-                    <li class="menu__nav-item" aria-active="true"><a href="#portfolio" class="menu__nav-item_link" data-content="Portfolio">Portfolio</a></li>
-                    <li class="menu__nav-item"><a href="#resume" class="menu__nav-item_link" data-content="Résumé">Résumé</a></li>
-                    <li class="menu__nav-item"><a href="#about" class="menu__nav-item_link" data-content="About">About</a></li>
-                    <li class="menu__nav-item"><a href="#contact" class="menu__nav-item_link" data-content="Contact">Contact</a></li>
+                    <li class="menu__nav-item" aria-active="true"><a href="#portfolio" class="menu__nav-link" data-content="Portfolio">Portfolio</a></li>
+                    <li class="menu__nav-item"><a href="#resume" class="menu__nav-link" data-content="Résumé">Résumé</a></li>
+                    <li class="menu__nav-item"><a href="#about" class="menu__nav-link" data-content="About">About</a></li>
+                    <li class="menu__nav-item"><a href="#contact" class="menu__nav-link" data-content="Contact">Contact</a></li>
                 </ul>
 
                 <ul class="menu__links">
                     <li class="menu__links-item">
-                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-item_link" data-tip="Behance" target="_blank">
-                            <span class="menu__links-item_link-icon icon icon__behance">Behance</span>
+                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-link" data-tip="Behance" target="_blank">
+                            <span class="menu__links-icon icon icon__behance">Behance</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-item_link" data-tip="LinkedIn" target="_blank">
-                            <span class="menu__links-item_link-icon icon icon__linkedin">LinkedIn</span>
+                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-link" data-tip="LinkedIn" target="_blank">
+                            <span class="menu__links-icon icon icon__linkedin">LinkedIn</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-item_link" data-tip="CodePen" target="_blank">
-                            <span class="menu__links-item_link-icon icon icon__codepen">CodePen</span>
+                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-link" data-tip="CodePen" target="_blank">
+                            <span class="menu__links-icon icon icon__codepen">CodePen</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-item_link" data-tip="Dribbble" target="_blank">
-                            <span class="menu__links-item_link-icon icon icon__dribbble">Dribbble</span>
+                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-link" data-tip="Dribbble" target="_blank">
+                            <span class="menu__links-icon icon icon__dribbble">Dribbble</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://github.com/chriskirknielsen" class="menu__links-item_link" data-tip="GitHub" target="_blank">
-                            <span class="menu__links-item_link-icon icon icon__github">GitHub</span>
+                        <a href="https://github.com/chriskirknielsen" class="menu__links-link" data-tip="GitHub" target="_blank">
+                            <span class="menu__links-icon icon icon__github">GitHub</span>
                         </a>
                     </li>
                 </ul>
@@ -82,20 +81,20 @@
                 <div class="portfolio__presentation">                    
                     <div class="portfolio__presentation-illustration">
                         <div class="portfolio__presentation-illustration_car">
-                            <!--<video src="./img/intro.mp4" poster="./img/intro.png" mute autoplay loop class="portfolio__presentation-illustration_car--video"></video>-->
-                            <img src="./img/intro.png" alt="" class="portfolio__presentation-illustration_car--video" style="width: 100%;">
+                            <video src="./img/intro.mp4" poster="./img/intro.png" mute autoplay loop class="portfolio__presentation-illustration_car--video"></video>
+                            <!--<img src="./img/intro.png" alt="" class="portfolio__presentation-illustration_car--video" style="width: 100%;">-->
                         </div>
                     </div>
                     <div class="portfolio__presentation-text">
-                        <div class="portfolio__presentation-text_sun"></div>
+                        <div class="portfolio__presentation-sun"></div>
                         
-                        <div class="portfolio__presentation-text_intro"><img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-text_image"></div>
+                        <div class="portfolio__presentation-intro"><img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-image"></div>
                         
-                        <div class="portfolio__presentation-text_name font__title"><img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-text_image"></div>
+                        <div class="portfolio__presentation-name font__title"><img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-image"></div>
                         
-                        <div class="portfolio__presentation-text_skills font__title"><img src="./img/presentation-skills.svg" alt="Front-end Developer &amp; Motion / Graphic Designer" class="portfolio__presentation-text_image"></div>
+                        <div class="portfolio__presentation-skills font__title"><img src="./img/presentation-skills.svg" alt="Front-end Developer &amp; Motion / Graphic Designer" class="portfolio__presentation-image"></div>
                         
-                        <div class="portfolio__presentation-text_geo"><img src="./img/presentation-geo.svg" alt="based in NYC" class="portfolio__presentation-text_image"></div>
+                        <div class="portfolio__presentation-geo"><img src="./img/presentation-geo.svg" alt="based in NYC" class="portfolio__presentation-image"></div>
                     </div>
                 </div>
                 
@@ -149,65 +148,65 @@
                 </p>
                 
                 <div class="resume__area">
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Experience</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><span class="font__title">2015–present:</span> freelance activity in digital marketing</li>
-                            <li class="resume__area-group_item"><span class="font__title">2014–2015:</span> Wonderbanners internship (digital communication)</li>
-                            <li class="resume__area-group_item"><span class="font__title">2014:</span> Green Garden Digital internship (digital marketing)</li>
-                            <li class="resume__area-group_item"><span class="font__title">2013:</span> EG Digital internship (webdesign &amp; digital creation)</li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><span class="font__title">2015–present:</span> freelance activity in digital marketing</li>
+                            <li class="resume__group-item"><span class="font__title">2014–2015:</span> Wonderbanners internship (digital communication)</li>
+                            <li class="resume__group-item"><span class="font__title">2014:</span> Green Garden Digital internship (digital marketing)</li>
+                            <li class="resume__group-item"><span class="font__title">2013:</span> EG Digital internship (webdesign &amp; digital creation)</li>
                         </ul>
                     </div>
 
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Skills</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><span class="font__title">Design:</span> Photoshop, Illustrator, InDesign</li>
-                            <li class="resume__area-group_item"><span class="font__title">Motion:</span> After Effects, Premiere Pro, Cinema 4D</li>
-                            <li class="resume__area-group_item"><span class="font__title">Dev:</span> HTML5, CSS3, JavaScript, PHP, MySQL, Git</li>
-                            <li class="resume__area-group_item"><span class="font__title">UI / UX:</span> Sketch, Google Web Designer</li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><span class="font__title">Design:</span> Photoshop, Illustrator, InDesign</li>
+                            <li class="resume__group-item"><span class="font__title">Motion:</span> After Effects, Premiere Pro, Cinema 4D</li>
+                            <li class="resume__group-item"><span class="font__title">Dev:</span> HTML5, CSS3, JavaScript, PHP, MySQL, Git</li>
+                            <li class="resume__group-item"><span class="font__title">UI / UX:</span> Sketch, Google Web Designer</li>
                         </ul>
                     </div>
 
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Education</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><span class="font__title">2015:</span> Digital Transformation Certificate from HEC Paris</li>
-                            <li class="resume__area-group_item"><span class="font__title">2014–2015:</span> motion design studies at e-artsup Paris</li>
-                            <li class="resume__area-group_item"><span class="font__title">2011–2014:</span> graphic design studies at e-artsup Lyon</li>
-                            <li class="resume__area-group_item"><span class="font__title">2011:</span> graduated high-school in Social and Economics studies</li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><span class="font__title">2015:</span> Digital Transformation Certificate from HEC Paris</li>
+                            <li class="resume__group-item"><span class="font__title">2014–2015:</span> motion design studies at e-artsup Paris</li>
+                            <li class="resume__group-item"><span class="font__title">2011–2014:</span> graphic design studies at e-artsup Lyon</li>
+                            <li class="resume__group-item"><span class="font__title">2011:</span> graduated high-school in Social and Economics studies</li>
                         </ul>
                     </div>
 
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Languages</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><span class="font__title">English:</span> fluent</li>
-                            <li class="resume__area-group_item"><span class="font__title">French:</span> fluent</li>
-                            <li class="resume__area-group_item"><span class="font__title">Danish:</span> fluent</li>
-                            <li class="resume__area-group_item"><span class="font__title">Italian:</span> intermediate</li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><span class="font__title">English:</span> fluent</li>
+                            <li class="resume__group-item"><span class="font__title">French:</span> fluent</li>
+                            <li class="resume__group-item"><span class="font__title">Danish:</span> fluent</li>
+                            <li class="resume__group-item"><span class="font__title">Italian:</span> intermediate</li>
                         </ul>
                     </div>
 
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Interests</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><span class="font__title">Daily intake:</span> Tea, music, movies and T.V. shows</li>
-                            <li class="resume__area-group_item"><span class="font__title">Chronoise:</span> Making electronica music since 2011</li>
-                            <li class="resume__area-group_item"><span class="font__title">Geekometric:</span> Video game / movie blogging since 2013</li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><span class="font__title">Daily intake:</span> Tea, music, movies and T.V. shows</li>
+                            <li class="resume__group-item"><span class="font__title">Chronoise:</span> Making electronica music since 2011</li>
+                            <li class="resume__group-item"><span class="font__title">Geekometric:</span> Video game / movie blogging since 2013</li>
                         </ul>
                     </div>
 
-                    <div class="resume__area-group">
+                    <div class="resume__group">
                         <h1 class="color__main font__title">Online</h1>
-                        <ul class="resume__area-group_list">
-                            <li class="resume__area-group_item"><a href="http://www.behance.net/chriskirknielsen" target="_blank">behance.net/chriskirknielsen</a></li>
-                            <li class="resume__area-group_item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank">linkedin.com/in/chriskirknielsen</a></li>
-                            <li class="resume__area-group_item"><a href="https://codepen.io/chriskirknielsen" target="_blank">codepen.io/chriskirknielsen</a></li>
-                            <li class="resume__area-group_item"><a href="https://dribbble.com/chriskirknielsen" target="_blank">dribbble.com/chriskirknielsen</a></li>
-                            <li class="resume__area-group_item"><a href="https://github.com/chriskirknielsen" target="_blank">github.com/chriskirknielsen</a></li>
-                            <li class="resume__area-group_item"><a href="http://chronoise.com" target="_blank">chronoise.com</a></li>
-                            <li class="resume__area-group_item"><a href="https://geekometric.com" target="_blank">geekometric.com</a></li>
+                        <ul class="resume__group-list">
+                            <li class="resume__group-item"><a href="http://www.behance.net/chriskirknielsen" target="_blank">behance.net/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank">linkedin.com/in/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://codepen.io/chriskirknielsen" target="_blank">codepen.io/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://dribbble.com/chriskirknielsen" target="_blank">dribbble.com/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://github.com/chriskirknielsen" target="_blank">github.com/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="http://chronoise.com" target="_blank">chronoise.com</a></li>
+                            <li class="resume__group-item"><a href="https://geekometric.com" target="_blank">geekometric.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -269,22 +268,22 @@
                 
                 <ul class="contact__list">
                     <li class="contact__list-item">
-                        <span class="contact__list-item_icon contact__list-item_icon--email"></span>
+                        <span class="contact__list-icon contact__list-icon_email"></span>
                         <a href="mailto:chriskirknielsen@gmail.com">chriskirknielsen@gmail.com</a>
                     </li>
                     
                     <li class="contact__list-item">
-                        <span class="contact__list-item_icon contact__list-item_icon--phone"></span>
+                        <span class="contact__list-icon contact__list-icon_phone"></span>
                         +1 (347) 998-5774
                     </li>
                     
                     <li class="contact__list-item">
-                        <span class="contact__list-item_icon contact__list-item_icon--skype"></span>
+                        <span class="contact__list-icon contact__list-icon_skype"></span>
                         <a href="skype:jakhris?chat">jakhris</a>
                     </li>
 
                     <li class="contact__list-item">
-                        <span class="contact__list-item_icon contact__list-item_icon--geo"></span>
+                        <span class="contact__list-icon contact__list-icon_geo"></span>
                         In the streets of NYC
                     </li>
                 </ul>

@@ -49,17 +49,17 @@ $grid-gutter: .5rem;
                 &:hover {
                     box-shadow: inset 0 -.125rem 0 color(comp);
                 }
+            }
+        
+            &-link {
+                line-height: inherit;
 
-                &_link {
-                    line-height: inherit;
+                &::before {
+                    content: unset;
+                }
 
-                    &::before {
-                        content: unset;
-                    }
-
-                    &:hover {
-                        color: color(z);
-                    }
+                &:hover {
+                    color: color(z);
                 }
             }
         }
@@ -77,10 +77,10 @@ $grid-gutter: .5rem;
                 &:not(:last-child) {
                     margin-right: .5rem;
                 }
+            }
 
-                &_link {
-                    line-height: 2rem;
-                }
+            &-link {
+                line-height: 2rem;
             }
         }
     }
@@ -135,6 +135,10 @@ $grid-gutter: .5rem;
     }
 } // end @if $critical
 
+
+
+
+
 @if $loadall or not $critical {
     .project {
         /* CSS Grid Fallback */
@@ -154,18 +158,16 @@ $grid-gutter: .5rem;
     }
     
     .resume {
-        &__area {
-            &-group {
-                width: 100%;
+        &__group {
+            width: 100%;
 
-                &:nth-of-type(odd) {
-                    padding-right: 0;
-                    text-align: left;
-                }
+            &:nth-of-type(odd) {
+                padding-right: 0;
+                text-align: left;
+            }
 
-                &:nth-of-type(even) {
-                    padding-left: 0;
-                }
+            &:nth-of-type(even) {
+                padding-left: 0;
             }
         }
     } // .resume

@@ -19,6 +19,10 @@ $icon-list: (behance, dribbble, github, codepen, linkedin);
     }
 }
 
+
+
+
+
 $tool-list: (photoshop, illustrator, indesign, premierepro, aftereffects, sketch, brackets, googlewebdesigner, cinema4d);
 
 .tool-icon {
@@ -42,9 +46,13 @@ $tool-list: (photoshop, illustrator, indesign, premierepro, aftereffects, sketch
     }
 }
 
+
+
+
+
 $contact-list: (email, phone, skype, geo);
 
-.contact__list-item_icon {
+.contact__list-icon {
     width: 3rem;
 //    height: 3rem;
     height: #{3rem / $sqrt3}; // Horizontal rectangle Height = Width / sqrt(3)
@@ -56,7 +64,7 @@ $contact-list: (email, phone, skype, geo);
     $current-contact: nth($contact-list, $contact);
     $current-contact-pos: ($contact - 1) * -1;
 
-    .contact__list-item_icon--#{$current-contact} {
+    .contact__list-icon_#{$current-contact} {
         background-position: #{$contact-icon-size*$current-contact-pos} center;
     }
 }

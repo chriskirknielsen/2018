@@ -64,7 +64,7 @@ function ease(t) {
  * @param p (optional): parent element in which to search for el
  */
 function $(el, p) {
-    if (el.charAt(0) === '#' && !el.match(/\.|\[|\(/)) { // Matches an #id without a CSS class, attribute or pseudo-selector
+    if (el.charAt(0) === '#' && !el.match(/\.|\[|\(|\:/)) { // Matches an #id without a CSS class, attribute or pseudo-selector
         return document.getElementById(el.slice(1));
     }
     
@@ -72,7 +72,7 @@ function $(el, p) {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
-    var menuLinkClass = '.menu__nav-item_link', // Class used for menu links
+    var menuLinkClass = '.menu__nav-link', // Class used for menu links
         menuLinks = document.querySelectorAll(menuLinkClass), // Retrieve all the menu links
         logoLink = $('#menu-logo'),
         hashSelection = (location.hash.slice(1)) ? location.hash.split('#')[1] : false,
