@@ -104,11 +104,15 @@ $grid-gutter: .5rem;
             &::after {
                 display: block;
                 text-align: center;
+                line-height: .5em;
             }
 
-            &::before,
+            &::before {
+                content: '\23B4';
+            }
+            
             &::after {
-                content: '\00B7';
+                content: '\23B5';
             }
         }
     }
@@ -142,10 +146,9 @@ $grid-gutter: .5rem;
 @if $loadall or not $critical {
     .project {
         /* CSS Grid Fallback */
+        width: 30%;
         width: calc((100% - #{$grid-gutter * 2}) / 3);
-        margin: 0 #{$grid-gutter} #{$grid-gutter} 0;
-        // Removes margin-right for the last item of a row
-        &:nth-child(3n) { margin-right: 0; }
+        margin: #{$grid-gutter/2};
         /* End fallback */
     }
     

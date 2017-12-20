@@ -48,28 +48,28 @@
 
                 <ul class="menu__links">
                     <li class="menu__links-item">
-                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-link" data-tip="Behance" target="_blank">
-                            <span class="menu__links-icon icon icon__behance">Behance</span>
+                        <a href="https://www.behance.net/chriskirknielsen" class="menu__links-link" data-tip="Behance" target="_blank" rel="noopener">
+                            <span class="menu__links-icon icon icon__behance" role="icon">Behance</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-link" data-tip="LinkedIn" target="_blank">
-                            <span class="menu__links-icon icon icon__linkedin">LinkedIn</span>
+                        <a href="http://www.linkedin.com/in/chriskirknielsen" class="menu__links-link" data-tip="LinkedIn" target="_blank" rel="noopener">
+                            <span class="menu__links-icon icon icon__linkedin" role="icon">LinkedIn</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-link" data-tip="CodePen" target="_blank">
-                            <span class="menu__links-icon icon icon__codepen">CodePen</span>
+                        <a href="https://codepen.io/chriskirknielsen" class="menu__links-link" data-tip="CodePen" target="_blank" rel="noopener">
+                            <span class="menu__links-icon icon icon__codepen" role="icon">CodePen</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-link" data-tip="Dribbble" target="_blank">
-                            <span class="menu__links-icon icon icon__dribbble">Dribbble</span>
+                        <a href="https://dribbble.com/chriskirknielsen" class="menu__links-link" data-tip="Dribbble" target="_blank" rel="noopener">
+                            <span class="menu__links-icon icon icon__dribbble" role="icon">Dribbble</span>
                         </a>
                     </li>
                     <li class="menu__links-item">
-                        <a href="https://github.com/chriskirknielsen" class="menu__links-link" data-tip="GitHub" target="_blank">
-                            <span class="menu__links-icon icon icon__github">GitHub</span>
+                        <a href="https://github.com/chriskirknielsen" class="menu__links-link" data-tip="GitHub" target="_blank" rel="noopener">
+                            <span class="menu__links-icon icon icon__github" role="icon">GitHub</span>
                         </a>
                     </li>
                 </ul>
@@ -80,11 +80,12 @@
             <section class="section portfolio" id="portfolio">
                 <div class="portfolio__presentation">                    
                     <div class="portfolio__presentation-illustration">
-                        <div class="portfolio__presentation-illustration_car">
-                            <video src="./img/intro.mp4" poster="./img/intro.png" mute autoplay loop class="portfolio__presentation-illustration_car--video"></video>
-                            <!--<img src="./img/intro.png" alt="" class="portfolio__presentation-illustration_car--video" style="width: 100%;">-->
-                        </div>
+                        <video poster="./img/intro.png" mute autoplay loop class="portfolio__presentation-video">
+                            <source src="./img/intro.webm" type="video/webm">
+                            <source src="./img/intro.mp4" type="video/mp4">
+                        </video>
                     </div>
+                    
                     <div class="portfolio__presentation-text">
                         <div class="portfolio__presentation-sun"></div>
                         
@@ -104,35 +105,35 @@
                     </p>
                     
                     <div class="portfolio__projects-list" id="projects-list">
-                        <a href="" target="_blank" class="project">
+                        <a href="" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_minines.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_minines.png);"></div>
                             </div>
                         </a>
 
-                        <a href="" target="_blank" class="project">
+                        <a href="" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_rgv3.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_rgv3.png);"></div>
                             </div>
                         </a>
 
-                        <a href="https://www.behance.net/gallery/50293285/PlayStation-an-illustration-project" target="_blank" class="project">
+                        <a href="https://www.behance.net/gallery/50293285/PlayStation-an-illustration-project" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_playstation.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_playstation.png);"></div>
                             </div>
                         </a>
 
-                        <a href="https://www.behance.net/gallery/7349195/Dexter-Opening-Animation" target="_blank" class="project">
+                        <a href="https://www.behance.net/gallery/7349195/Dexter-Opening-Animation" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_dexter.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_dexter.png);"></div>
                             </div>
                         </a>
 
-                        <a href="https://www.behance.net/gallery/7302177/Uncharted-Wallpaper-Contest" target="_blank" class="project">
+                        <a href="https://www.behance.net/gallery/7302177/Uncharted-Wallpaper-Contest" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_uncharted.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_uncharted.png);"></div>
@@ -200,13 +201,13 @@
                     <div class="resume__group">
                         <h1 class="color__main font__title">Online</h1>
                         <ul class="resume__group-list">
-                            <li class="resume__group-item"><a href="http://www.behance.net/chriskirknielsen" target="_blank">behance.net/chriskirknielsen</a></li>
-                            <li class="resume__group-item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank">linkedin.com/in/chriskirknielsen</a></li>
-                            <li class="resume__group-item"><a href="https://codepen.io/chriskirknielsen" target="_blank">codepen.io/chriskirknielsen</a></li>
-                            <li class="resume__group-item"><a href="https://dribbble.com/chriskirknielsen" target="_blank">dribbble.com/chriskirknielsen</a></li>
-                            <li class="resume__group-item"><a href="https://github.com/chriskirknielsen" target="_blank">github.com/chriskirknielsen</a></li>
-                            <li class="resume__group-item"><a href="http://chronoise.com" target="_blank">chronoise.com</a></li>
-                            <li class="resume__group-item"><a href="https://geekometric.com" target="_blank">geekometric.com</a></li>
+                            <li class="resume__group-item"><a href="http://www.behance.net/chriskirknielsen" target="_blank" rel="noopener">behance.net/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="http://www.linkedin.com/in/chriskirknielsen" target="_blank" rel="noopener">linkedin.com/in/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://codepen.io/chriskirknielsen" target="_blank" rel="noopener">codepen.io/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://dribbble.com/chriskirknielsen" target="_blank" rel="noopener">dribbble.com/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="https://github.com/chriskirknielsen" target="_blank" rel="noopener">github.com/chriskirknielsen</a></li>
+                            <li class="resume__group-item"><a href="http://chronoise.com" target="_blank" rel="noopener">chronoise.com</a></li>
+                            <li class="resume__group-item"><a href="https://geekometric.com" target="_blank" rel="noopener">geekometric.com</a></li>
                         </ul>
                     </div>
                 </div>

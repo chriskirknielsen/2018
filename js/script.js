@@ -46,7 +46,7 @@ function Ticker() { // Ticker() FUNCTION DEVELOPPED BY ALAN TRANSON: alantranson
         if (id in callbackQueue) {
             delete callbackQueue[id];
         } else {
-            console.log('Error: the given id "' + id + '" do not refer to any callback');
+            console.log('Error: the given id "' + id + '" does not refer to any callback');
         }
     }
 }
