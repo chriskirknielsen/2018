@@ -257,40 +257,40 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.description = document.createElement('div');
             
             // Add the attributes such as classes to the elements
-            this.wrapper.setAttribute('class', 'project-modal__wrapper');
+            this.wrapper.setAttribute('class', 'modal__wrapper');
             this.wrapper.setAttribute('data-projects', projectCount);
             
-            this.content.setAttribute('class', 'project-modal__content');
+            this.content.setAttribute('class', 'modal__content');
             
-            this.media.setAttribute('class', 'project-modal__content-media');
+            this.media.setAttribute('class', 'modal__media');
             
-            this.info.setAttribute('class', 'project-modal__content-info');
+            this.info.setAttribute('class', 'modal__info');
             
-            this.buttons.container.setAttribute('class', 'project-modal__content-info_buttons');
+            this.buttons.container.setAttribute('class', 'modal__buttons');
             
-            this.buttons.previous.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--prev');
+            this.buttons.previous.setAttribute('class', 'modal__button modal__button-prev');
             this.buttons.previous.setAttribute('title', lang.txtPrev);
             this.buttons.previous.innerHTML = '<span>&larr;</span>';
 
-            this.buttons.close.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--close');
+            this.buttons.close.setAttribute('class', 'modal__button modal__button-close');
             this.buttons.close.setAttribute('title', lang.txtClose);
             this.buttons.close.innerHTML = '<span>&times;</span>';
 
-            this.buttons.next.setAttribute('class', 'project-modal__content-info_buttons--button project-modal__content-info_buttons--next');
+            this.buttons.next.setAttribute('class', 'modal__button modal__button-next');
             this.buttons.next.setAttribute('title', lang.txtNext);
             this.buttons.next.innerHTML = '<span>&rarr;</span>';
             
-            this.logo.setAttribute('class', 'project-modal__content-info_logo');
+            this.logo.setAttribute('class', 'modal__logo');
             
-            this.name.setAttribute('class', 'project-modal__content-info_name font__title text__center');
+            this.name.setAttribute('class', 'modal__name font__title text__center');
             
-            this.details.container.setAttribute('class', 'project-modal__content-info_details');
+            this.details.container.setAttribute('class', 'modal__details');
             
-            this.details.type.setAttribute('class', 'project-modal__content-info_details--type color__a-m');
+            this.details.type.setAttribute('class', 'modal__details--type color__a-m');
             
-            this.details.tools.setAttribute('class', 'project-modal__content-info_details--tools');
+            this.details.tools.setAttribute('class', 'modal__details-tools');
             
-            this.description.setAttribute('class', 'project-modal__content-info_description');
+            this.description.setAttribute('class', 'modal__description');
             
             document.body.style.overflow = 'hidden'; // Disable scrolling for the content under the modal
             
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.info.appendChild(this.description);
 
             setTimeout(function () { // Avoid seeing the box-shadows while opening
-                this.content.classList.add('project-modal__content-loaded');
+                this.content.classList.add('modal__content--loaded');
             }.bind(this), projectTransitionDuration);
             
             // Event handlers
@@ -345,25 +345,25 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 modalTransition = projectTransitionDuration;
                 
                 if (projectId === '-') {
-                    this.content.classList.add('project-modal__content-previous');
-                    this.content.classList.add('project-modal__content-switch');
+                    this.content.classList.add('modal__content--previous');
+                    this.content.classList.add('modal__content--switch');
                     
                     if (this.current === 0) { projectId = projectCount - 1; } // If the current project is the first, load the last one
                     else { projectId = this.current - 1; } // Else, get the previous project
                 }
                 else if (projectId === '+') {
-                    this.content.classList.add('project-modal__content-next');
-                    this.content.classList.add('project-modal__content-switch');
+                    this.content.classList.add('modal__content--next');
+                    this.content.classList.add('modal__content--switch');
                     
                     if (this.current === (projectCount - 1)) { projectId = 0; } // If the current project is the last, load the first one
                     else { projectId = this.current + 1; } // Else, get the next project
                 }
 
                 setTimeout(function () {
-                    this.content.classList.remove('project-modal__content-previous');
-                    this.content.classList.remove('project-modal__content-next');
+                    this.content.classList.remove('modal__content--previous');
+                    this.content.classList.remove('modal__content--next');
 
-                    this.content.classList.remove('project-modal__content-switch');
+                    this.content.classList.remove('modal__content--switch');
                 }.bind(this), modalTransition);
             }
             
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 '</div>';
             }
             else { // Show single image
-                projectMediaContent = '<div class="project-modal__content-media_image loader" style="background-image: url(' + projectData.image + ');"></div>';
+                projectMediaContent = '<div class="modal__image loader" style="background-image: url(' + projectData.image + ');"></div>';
             }
             
             setTimeout(function () { // Handle if a transition warrants a delay in the change of content or not
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 
                 this.media.innerHTML = projectMediaContent;
                 
-                this.logo.innerHTML = '<img src="' + projectData.logo + '" alt="Project logo" class="project-modal__content-info_logo_image">';
+                this.logo.innerHTML = '<img src="' + projectData.logo + '" alt="Project logo" class="modal__logo-image">';
                 
                 this.name.innerText = projectData.name;
                 
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     this.dragging = false;
                 }
                 else {
-                    this.wrapper.classList.add('project-modal__dragging');
+                    this.wrapper.classList.add('modal__dragging');
                 }
             }
         }
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.info.style.removeProperty('opacity');
             this.info.style.removeProperty('transition');
 
-            this.wrapper.classList.remove('project-modal__dragging');
+            this.wrapper.classList.remove('modal__dragging');
 
             // Reset variables
             this.dragging = false;

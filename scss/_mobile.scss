@@ -1,4 +1,5 @@
-$menu-height: 7rem;
+//$menu-height: 7rem;
+$menu-height: 4rem;
 $menu-top-gutter: .5rem;
 $menu-content-gutter: 1rem;
 $menu-offset: $menu-height + $menu-top-gutter + $menu-content-gutter;
@@ -12,28 +13,29 @@ $grid-gutter: .5rem;
     .site {
         padding: #{$menu-offset} 0 0;
     }
-
+    
     .menu {
         &__wrapper {
-            left: calc(.5rem + 0.25rem);
-            right: calc(.5rem + 0.25rem);
+            left: #{$site-frame};
+            right: #{$site-frame};
             padding: .5rem;
         }
 
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         font-size: .75rem;
 
         &__logo {
             width: #{$sqrt3 / 2 * 3rem}; // hexagon_width = hexagon_height * sqrt(3) ÷ 2
-            margin-right: .5rem
+            margin-left: .5rem;
         }
 
         &__nav {
+            display: none;
             flex-wrap: wrap;
             justify-content: space-around;
-            width: calc(100% - #{$sqrt3 / 2 * 3rem} - .5rem); // 100% - (.menu__logo `width` + `margin-right`)
+            width: calc(100% - #{$sqrt3 / 2 * 3rem} - 1rem); // 100% - (.menu__logo `width` + `margin-right`)
             min-height: 1.5rem;
             height: 1.5rem;
             margin-left: 0;
@@ -65,10 +67,8 @@ $grid-gutter: .5rem;
         }
 
         &__links {
-            flex-wrap: wrap;
-            justify-content: flex-end;
             min-height: 2rem;
-            width: 100%;
+            //width: 100%;
             margin: 0;
 
             &-item {
@@ -84,7 +84,7 @@ $grid-gutter: .5rem;
             }
         }
     }
-
+    
     .section {
         &::before { // Anchor offset
             height: #{$menu-offset};
@@ -92,10 +92,10 @@ $grid-gutter: .5rem;
         }
 
         &:not(:last-child) {
-            padding-bottom: 6rem;
+            padding-bottom: #{$menu-offset};
             
             &::after {
-                bottom: 3rem;
+                bottom: #{$menu-offset / 2};
             }
         }
         
@@ -132,7 +132,7 @@ $grid-gutter: .5rem;
         
         &__projects {
             &-list {
-                grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
                 grid-gap: $grid-gutter;
             }
         }
@@ -192,38 +192,38 @@ $grid-gutter: .5rem;
         }
     } // .foot
 
-    .project-modal {
+    .modal {
         &__content {
             flex-direction: column;
-
-            &-media,
-            &-info {
-                width: 100%;
-                height: 50%;
-                flex: none;
-            }
-
-            &-info {
-                max-width: 100%;
-
-                &_name {
-                    font-size: calc(.5rem + 1.67vw);
-                }
-
-                &_details,
-                &_description {
-                    font-size: .75rem;
-                }
-
-                &_logo {
-                    &_image {
-                        width: 50%;
-                        max-width: 10rem;
-                    }
-                }
-            } // &-info
         } // &__content
-    } // .project-modal
+        
+        &__media,
+        &__info {
+            width: 100%;
+            height: 50%;
+            flex: none;
+        }
+
+        &__info {
+            max-width: 100%;
+        } // &-info
+        
+        &__name {
+            font-size: calc(.5rem + 1.67vw);
+        }
+
+        &__details,
+        &__description {
+            font-size: .75rem;
+        }
+
+        &__logo {
+            &-image {
+                width: 50%;
+                max-width: 10rem;
+            }
+        }
+    } // .modal
 
     .slideshow {
         &__label {

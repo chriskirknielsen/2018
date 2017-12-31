@@ -1,3 +1,5 @@
+// CSS class naming: section__block-element--modifier
+
 @if $loadall or $critical {
     html,
     body {
@@ -99,11 +101,13 @@
     ::-moz-selection {
         color: color(a);
         background-color: color(main);
+        text-shadow: none;
     }
 
     ::selection {
         color: color(a);
         background-color: color(main);
+        text-shadow: none;
     }
 
     .button {
@@ -198,7 +202,6 @@
         }
 
         display: flex;
-        flex-wrap: wrap;
         max-width: $site-max-width;
         min-height: $menu-height;
         margin: 0 auto;
@@ -344,13 +347,13 @@
         min-height: 80vh;
         
         &:not(:last-child) {
-            padding-bottom: 16rem;
+            padding-bottom: #{$menu-offset * 2};
             
             &::after { // Horizontal rule
                 content: '';
                 position: absolute;
                 left: 50%;
-                bottom: 8rem;
+                bottom: #{$menu-offset};
                 width: 20rem;
                 max-width: calc(100% - #{$site-frame * 2});
                 height: .0625rem;
@@ -378,6 +381,7 @@
             width: inherit;
             height: #{$menu-offset};
             margin: -#{$menu-offset + $site-frame} 0 0;
+            visibility: hidden; 
             z-index: -1;
             pointer-events: none;
         }
@@ -403,7 +407,7 @@
             }
         }
     } // .section
-
+    
     .width-constrain {
         max-width: $responsive-bp;
         margin: 0 auto;
@@ -417,7 +421,7 @@
             height: calc(100vh - 8rem);
             padding-top: 5vmin;
             
-            &-sun {
+            &-illustration {
                 position: absolute;
                 left: $site-frame;
                 right: $site-frame;
@@ -438,14 +442,14 @@
                         linear-gradient(to left, color(a, 100), color(a, 0) 12.5%),
                         linear-gradient(to right, color(a, 100), color(a, 0) 12.5%);
                 }
-            } // &-sun
+            } // &-illustration
             
             &-video {
                 position: absolute;
                 left: 50%;
                 bottom: 0;
                 min-width: 100vmin;
-                height: auto;
+                max-height: 100vmax;
                 transform: translateX(-50%);
             }
 
@@ -581,6 +585,7 @@
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
                 grid-gap: $grid-gutter;
+                grid-auto-flow: row;
                 place-items: start;
                 justify-items: start;
                 align-items: start;
@@ -866,7 +871,7 @@
                 }
             }
         } // &__list
-    } //.content
+    } //.contact
 
     .foot {
         display: flex;
@@ -911,7 +916,7 @@
         }
     } // .foot
 
-    .project-modal {
+    .modal {
         &__wrapper {
             position: fixed;
             @include pos($site-frame);
@@ -941,8 +946,6 @@
         }
 
         &__content {
-            $p: &;
-
             position: absolute;
             @include pos(2rem);
             display: flex;
@@ -953,227 +956,223 @@
             will-change: transform;
             z-index: z(modal, 10);
 
-            &-loaded { // Add fake containers to each side for slide transitions
+            &--loaded { // Add fake containers to each side for slide transitions
                 box-shadow: -100vw 0 0 color(m), 100vw 0 0 color(m);
             }
 
-            &-previous {
+            &--previous {
                 transform: translateX(100vw);
             }
 
-            &-next {
+            &--next {
                 transform: translateX(-100vw);
             }
 
-            &-switch {
+            &--switch {
                 transition: transform .3s cubic-bezier(.5, 0, .5, 1);
-
-                & #{$p}-media,
-                & #{$p}-info {
-                    opacity: 0;
-                    transition: opacity .3s cubic-bezier(.5, 0, .5, 1);
-                }
             }
-
-            &-media,
-            &-info {
-                height: 100%;
-                opacity: 1;
-                transition: opacity .3s cubic-bezier(.5, 0, .5, 1);
-                will-change: opacity;
-            }
-
-            &-media {
-                position: relative;
-                flex: 1 0 auto;
-                display: flex;
-                background: color(a);
-
-                &_image {
-                    width: 100%;
-                    height: 100%;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
-
-                &_slideshow {
-                    // see .slideshow
-                }
-            }
-
-            &-info {
-                flex: 1 0 none;
-                width: 25vw;
-                max-width: 24rem;
-                background: color(z);
-                overflow-y: auto;
-
-                &_name,
-                &_logo,
-                &_description {
-                    padding: 0 .5rem .5rem;
-                }
-
-                &_buttons {
-                    flex: none;
-                    display: flex;
-                    width: 100%;
-                    margin-bottom: .5rem;
-                    text-align: center;
-                    background-color: color(a-m);
-
-                    &--button {
-                        position: relative;
-                        flex: 1 1 auto;
-                        height: 2rem;
-                        border: 0;
-                        color: color(z);
-                        cursor: pointer;
-                        transition: all .15s cubic-bezier(.5, 0, .5, 1) .02s;
-                        will-change: background-position;
-
-                        > span {
-                            display: inline-block;
-                            visibility: hidden;
-                            width: 0;
-                            height: 0;
-                            font-size: 0;
-                        }
-
-                        &:hover {
-                            color: color(z);
-                        }
-
-                        &::after {
-                            content: '';
-                            position: absolute;
-                        }
-                    }
-
-                    &--prev {
-                        background: linear-gradient(to right, transparent 50%, color(comp) 50%);
-                        background-size: 200% 100%;
-                        background-position: 0% 50%;
-
-                        &:hover {
-                            background-position: 100% 50%;
-                        }
-
-                        &::after {
-                            border-color: transparent transparent currentColor currentColor;
-                            transform: translateX(calc(-50% + .125rem)) rotate(45deg);
-                        }
-                    }
-
-                    &--next {
-                        background: linear-gradient(to left, transparent 50%, color(comp) 50%);
-                        background-size: 200% 100%;
-                        background-position: 100% 50%;
-
-                        &:hover {
-                            background-position: 0% 50%;
-                        }
-
-                        &::after {
-                            border-color: transparent currentColor currentColor transparent;
-                            transform: translateX(calc(-50% - .125rem)) rotate(-45deg);
-                        }
-                    }
-
-                    &--prev,
-                    &--next {
-                        &::after {
-                            left: 50%;
-                            top: calc(.75rem - 1px);
-                            width: .5rem;
-                            height: .5rem;
-                            border-width: .125rem;
-                            border-style: solid;
-                            background-color: transparent;
-                        }
-                    }
-
-                    &--close {
-                        border-style: solid;
-                        border-width: 0 1px;
-                        border-color: color(z);
-                        background: linear-gradient(to bottom, transparent 50%, color(comp) 50%);
-                        background-size: 100% 200%;
-                        background-position: 50% 0%;
-
-                        &:hover {
-                            background-position: 50% 100%;
-                        }
-
-                        &::before,
-                        &::after {
-                            left: 50%;
-                            top: 50%;
-                            width: 1rem;
-                            height: .125rem;
-                            background-color: currentColor;
-                        }
-
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-                        }
-
-                        &::after {
-                            transform: translateX(-50%) translateY(-50%) rotate(45deg);
-                        }
-                    }
-                } // &--buttons
-
-                &_logo {
-                    text-align: center;
-                    flex: none;
-
-                    &_image {
-                        width: 50%;
-                    }
-                }
-
-                &_name {
-                    font-size: 1.25rem;
-                }
-
-                &_details {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: .5rem;
-                    padding: .5rem .5rem 0;
-                    border-style: solid;
-                    border-color: color(z-m);
-                    border-width: 1px 0;
-
-                    &--type {
-                        font-size: .75rem;
-                        line-height: 1rem;
-                        vertical-align: middle;
-                        text-transform: uppercase;
-                    }
-
-                    &--tools {
-                        text-align: right;
-                    }
-                }
-
-                &_description {
-                    > a { // Adjusted for modal background color
-                        @include text-shadow(color(z, 100));
-                        
-                        &:hover,
-                        &:focus {
-                            @include text-shadow(color(z, 0));
-                        }
-                    }
-                }
-            } // &-info
         } // &__content
-    } // .project-modal
+
+        &__media,
+        &__info {
+            height: 100%;
+            opacity: 1;
+            transition: opacity .3s cubic-bezier(.5, 0, .5, 1);
+            will-change: opacity;
+        }
+        
+        &__content--switch &__media,
+        &__content--switch &__info {
+            opacity: 0;
+            transition: opacity .3s cubic-bezier(.5, 0, .5, 1);
+        }
+
+        &__media {
+            position: relative;
+            flex: 1 0 auto;
+            display: flex;
+            background: color(a);
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        
+        &__info {
+            flex: 1 0 none;
+            width: 25vw;
+            max-width: 24rem;
+            background: color(z);
+            overflow-y: auto;
+        } // &__info
+        
+        &__buttons {
+            flex: none;
+            display: flex;
+            width: 100%;
+            margin-bottom: .5rem;
+            text-align: center;
+            background-color: color(a-m);
+        } // &__buttons
+        
+        &__button {
+            position: relative;
+            flex: 1 1 auto;
+            height: 2rem;
+            border: 0;
+            color: color(z);
+            cursor: pointer;
+            transition: all .15s cubic-bezier(.5, 0, .5, 1) .02s;
+            will-change: background-position;
+
+            > span {
+                display: inline-block;
+                visibility: hidden;
+                width: 0;
+                height: 0;
+                font-size: 0;
+            }
+
+            &:hover {
+                color: color(z);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+            }
+            
+            &-prev {
+                background: linear-gradient(to right, transparent 50%, color(comp) 50%);
+                background-size: 200% 100%;
+                background-position: 0% 50%;
+
+                &:hover {
+                    background-position: 100% 50%;
+                }
+
+                &::after {
+                    border-color: transparent transparent currentColor currentColor;
+                    transform: translateX(calc(-50% + .125rem)) rotate(45deg);
+                }
+            }
+
+            &-next {
+                background: linear-gradient(to left, transparent 50%, color(comp) 50%);
+                background-size: 200% 100%;
+                background-position: 100% 50%;
+
+                &:hover {
+                    background-position: 0% 50%;
+                }
+
+                &::after {
+                    border-color: transparent currentColor currentColor transparent;
+                    transform: translateX(calc(-50% - .125rem)) rotate(-45deg);
+                }
+            }
+
+            &-prev,
+            &-next {
+                &::after {
+                    left: 50%;
+                    top: calc(.75rem - 1px);
+                    width: .5rem;
+                    height: .5rem;
+                    border-width: .125rem;
+                    border-style: solid;
+                    background-color: transparent;
+                }
+            }
+
+            &-close {
+                border-style: solid;
+                border-width: 0 1px;
+                border-color: color(z);
+                background: linear-gradient(to bottom, transparent 50%, color(comp) 50%);
+                background-size: 100% 200%;
+                background-position: 50% 0%;
+
+                &:hover {
+                    background-position: 50% 100%;
+                }
+
+                &::before,
+                &::after {
+                    left: 50%;
+                    top: 50%;
+                    width: 1rem;
+                    height: .125rem;
+                    background-color: currentColor;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+                }
+
+                &::after {
+                    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+                }
+            }
+        } // &__button
+        
+        &__name,
+        &__logo,
+        &__description {
+            padding: 0 .5rem .5rem;
+        }
+
+        &__logo {
+            text-align: center;
+            flex: none;
+
+            &-image {
+                width: 50%;
+            }
+        }
+
+        &__name {
+            font-size: 1.25rem;
+        }
+
+        &__details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .5rem;
+            padding: .5rem .5rem 0;
+            border-style: solid;
+            border-color: color(z-m);
+            border-width: 1px 0;
+
+            &-type {
+                font-size: .75rem;
+                line-height: 1rem;
+                vertical-align: middle;
+                text-transform: uppercase;
+            }
+
+            &-tools {
+                text-align: right;
+            }
+        }
+
+        &__description {
+            > a { // Adjusted for modal background color
+                @include text-shadow(color(z, 100));
+
+                &:hover,
+                &:focus {
+                    @include text-shadow(color(z, 0));
+                }
+            }
+        }
+    } // .modal
 
     @keyframes projectModalBackgroundReveal {
         from { opacity: 0; }
