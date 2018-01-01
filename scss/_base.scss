@@ -203,7 +203,7 @@
 
         display: flex;
         max-width: $site-max-width;
-        min-height: $menu-height;
+        height: $menu-height;
         margin: 0 auto;
         color: color(main);
         z-index: z(menu, 1);
@@ -738,6 +738,7 @@
         &:hover &__image,
         &:focus &__image {
             opacity: 1;
+            transform: scale(1.025);
         }
 
         &__logo {
@@ -941,7 +942,7 @@
             }
         }
 
-        &__dragging * {
+        &--dragging * {
             cursor: grabbing;
         }
 

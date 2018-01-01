@@ -42,7 +42,7 @@ var projects = [
         type: ['Web Design','Integration'],
         tools: ['Sketch','Illustrator','Brackets'],
         description:
-            'A redesign for the website <a href="https://www.ratchet-galaxy.com" target="_blank">Ratchet-Galaxy.com</a> was longtime overdue. I have been close to this web project since its genesis, first creating its now-popular logo. I was able to take it further by renewing the entire visual identity of the website, drawing inspiration from the recent Ratchet &amp; Clank games.'+
+            'A redesign for the website <a href="https://www.ratchet-galaxy.com" target="_blank">Ratchet-Galaxy.com</a> was longtime overdue. I have been close to this project since its genesis in 2005, creating its now-standard logo. I was able to take it further in 2017 by renewing the entire visual identity of the website, drawing inspiration from the recent Ratchet &amp; Clank games. The design was redone for a more modern aspect and more modulable layout, with responsiveness in mind.'+
             '<br><br>'+
             'All the pages were mocked up in Sketch, while the icons were drawn in Illustrator, and the integration was done in Brackets.',
         logo: './img/work/tb_rgv3.png',
@@ -109,6 +109,16 @@ var projects = [
             }
         ]
     },
+    { // Hardcore Henry
+        name: 'Hardcore Henry',
+        type: ['Design','Integration'],
+        tools: ['Photoshop','Premiere Pro','Brackets'],
+        description:
+        'For the French marketing campaign of Hardcore Henry\'s theatrical release, I was tasked with Green Garden to make a banner that would engage users. I cut up several clips taken from the movie trailers to create an interactive "Quick Time Event" game, where the user\'s choices would show different aspects of this <acronym title="First Person Shooter">FPS</acronym>-inspired film. A timer was integrated so the quickest users could enroll to win a GoPro.',
+        logo: './img/work/tb_hardcorehenry.png',
+        background: './img/work/bg_hardcorehenry.jpg',
+        youtube: ''
+    },
     { // Dexter
         name: 'Minimalist Dexter Intro',
         type: ['Motion Design'],
@@ -146,7 +156,7 @@ var projects = [
         ]
     },
     { // Awesome
-        name: 'AWESOME',
+        name: 'AWESOME Letter Animations',
         type: ['Motion Design'],
         tools: ['Illustrator','After Effects'],
         description: 'This little GIF series was made in order to practice with tiny details in motion design. First imagined on paper then drawn in Illustrator, these letters were individually edited in After Effects to get an animation that you keep looking at to catch all the details.',
@@ -204,11 +214,30 @@ var projects = [
             }
         ]
     },
+    { // Chronoise
+        name: 'Chronoise Identity',
+        type: ['Logotype'],
+        tools: ['Illustrator'],
+        description: 'Chronoise is my moniker for a personal project started in 2010, prior to which I developped a growing interest for electronic music. I taught myself how to create electronica on my computer and have since then written many melodies and released a few tracks. This spawned a need for a visual identity, that has been adjusted and perfected over time. The geometry is simple, and the colour palette evoques an underwater atmosphere, as making this music transports me somewhere else, bringing a relaxing state of mind.<br><br>'+
+        'Listen to music on <a href="https://chronoise.com" target="_blank" rel="noopener">Chronoise.com</a>, <a href="https://chronoise.bandcamp.com" target="_blank" rel="noopener" title="Chronoise on Bandcamp">Bandcamp</a>, and <a href="https://soundcloud.com/chronoise" target="_blank" rel="noopener" title="Chronoise on SoundCloud">SoundCloud</a>.',
+        logo: './img/work/tb_chronoise.png',
+        background: './img/work/bg_chronoise.jpg',
+        image: './img/work/fs_chronoise.jpg'
+    },
+    { // Istanbul Logo
+        name: 'Istanbul Logo',
+        type: ['Logotype'],
+        tools: ['Illustrator'],
+        description: '',
+        logo: './img/work/tb_istanbul.png',
+        background: './img/work/bg_istanbul.jpg',
+        image: './img/work/fs_istanbul.jpg'
+    },
     { // Uncharted
         name: 'Uncharted: Drake\'s Fortune Wallpaper',
         type: ['Design'],
         tools: ['Photoshop'],
-        description: 'This wallpaper was done back in 2007, for a competition held by Playstation Europe which I won. This led to my wallpaper being avaible on all European Playstation Stores for download. Being the youngest finalist, this project motivated me to pursue graphic design not as just a hobby, but also as a career.',
+        description: 'This wallpaper was created for a competition held by Playstation Europe which I won. This led to my entry being avaible on all European Playstation Stores for download. Being the youngest finalist, this project motivated me to pursue graphic design not as just a hobby, but also as a career.',
         logo: './img/work/tb_uncharted.png',
         background: './img/work/bg_uncharted.jpg',
         image: './img/work/fs_uncharted.jpg'
@@ -218,7 +247,6 @@ var projects = [
 /*
 nike : good to have
 beauty : garde
-chronoise : garde
 istanbul : garde (hashtag la diversité)
 casualty : garde
 */

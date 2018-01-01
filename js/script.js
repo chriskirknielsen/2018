@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             
             this.details.container.setAttribute('class', 'modal__details');
             
-            this.details.type.setAttribute('class', 'modal__details--type color__a-m');
+            this.details.type.setAttribute('class', 'modal__details-type color__a-m');
             
             this.details.tools.setAttribute('class', 'modal__details-tools');
             
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     this.dragging = false;
                 }
                 else {
-                    this.wrapper.classList.add('modal__dragging');
+                    this.wrapper.classList.add('modal--dragging');
                 }
             }
         }
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.info.style.removeProperty('opacity');
             this.info.style.removeProperty('transition');
 
-            this.wrapper.classList.remove('modal__dragging');
+            this.wrapper.classList.remove('modal--dragging');
 
             // Reset variables
             this.dragging = false;
