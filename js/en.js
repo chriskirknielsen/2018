@@ -66,6 +66,15 @@ var projects = [
             }
         ]
     },
+    { // Nike CR7
+        name: 'CR7 Mercurial Superfly',
+        type: ['Web Design'],
+        tools: ['Photoshop','After Effects','Brackets'],
+        description: '',
+        logo: './img/work/tb_nike.png',
+        background: './img/work/bg_nike.jpg',
+        youtube: 'Farr2gs1bMc'
+    },
     { // Dreadnought
         name: 'Dreadnought Marketing Assets',
         type: ['Motion','Design','Integration'],
@@ -156,7 +165,7 @@ var projects = [
         ]
     },
     { // Awesome
-        name: 'AWESOME Letter Animations',
+        name: 'Letter Animations',
         type: ['Motion Design'],
         tools: ['Illustrator','After Effects'],
         description: 'This little GIF series was made in order to practice with tiny details in motion design. First imagined on paper then drawn in Illustrator, these letters were individually edited in After Effects to get an animation that you keep looking at to catch all the details.',
@@ -218,20 +227,11 @@ var projects = [
         name: 'Chronoise Identity',
         type: ['Logotype'],
         tools: ['Illustrator'],
-        description: 'Chronoise is my moniker for a personal project started in 2010, prior to which I developped a growing interest for electronic music. I taught myself how to create electronica on my computer and have since then written many melodies and released a few tracks. This spawned a need for a visual identity, that has been adjusted and perfected over time. The geometry is simple, and the colour palette evoques an underwater atmosphere, as making this music transports me somewhere else, bringing a relaxing state of mind.<br><br>'+
+        description: 'Chronoise is my moniker for a personal project started in 2010, prior to which I developped a growing interest for electronic music. I taught myself how to create electronica on my computer and have since then written many melodies and released tracks. This spawned a need for a visual identity, that has been adjusted and perfected over time. The geometry is simple, and the colour palette evoques an underwater atmosphere, as making this music transports me somewhere else, bringing a relaxing state of mind.<br><br>'+
         'Listen to music on <a href="https://chronoise.com" target="_blank" rel="noopener">Chronoise.com</a>, <a href="https://chronoise.bandcamp.com" target="_blank" rel="noopener" title="Chronoise on Bandcamp">Bandcamp</a>, and <a href="https://soundcloud.com/chronoise" target="_blank" rel="noopener" title="Chronoise on SoundCloud">SoundCloud</a>.',
         logo: './img/work/tb_chronoise.png',
         background: './img/work/bg_chronoise.jpg',
         image: './img/work/fs_chronoise.jpg'
-    },
-    { // Istanbul Logo
-        name: 'Istanbul Logo',
-        type: ['Logotype'],
-        tools: ['Illustrator'],
-        description: '',
-        logo: './img/work/tb_istanbul.png',
-        background: './img/work/bg_istanbul.jpg',
-        image: './img/work/fs_istanbul.jpg'
     },
     { // Uncharted
         name: 'Uncharted: Drake\'s Fortune Wallpaper',

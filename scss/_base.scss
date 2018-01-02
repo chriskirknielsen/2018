@@ -211,17 +211,22 @@
         &__logo,
         &__nav,
         &__links {
-            min-height: inherit;
+            height: inherit;
         }
 
         &__logo {
             flex: none;
+            display: flex;
+            align-items: center;
             width: #{$sqrt3 / 2 * 4rem}; // hexagon_width = sqrt(3) / 2 * hexagon_height
-            font-size: 0;
-            color: transparent;
-            background: transparent url(../img/ckn.png) center no-repeat;
-            background-image: none, url(../img/ckn.svg);
-            background-size: contain;
+            
+            &-svg {
+                display: block;
+            }
+            
+            &-fill {
+                fill: color(z);
+            }
         }
 
         &__nav,
@@ -519,6 +524,7 @@
             } // &-sun
             
             &-image {
+                display: block;
                 width: 100%;
             }
 
@@ -599,6 +605,27 @@
             }
         }
     } // .portfolio
+    
+    // Inline SVG classes
+    .fill--pink {
+        fill: color(comp);
+    }
+    
+    .stroke--yellow {
+        fill: none;
+        stroke: color(glow);
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+    }
+    
+    .fill--white {
+        fill: color(z);
+    }
+    
+    .fill--yellow {
+        fill: color(glow);
+    }
 } // end @if $critical
 
 
@@ -732,13 +759,15 @@
             background-repeat: no-repeat;
             background-size: cover;
             opacity: .25;
+            transform: scale(1.125);
+            transition-duration: .5s;
             z-index: -1;
         }
 
         &:hover &__image,
         &:focus &__image {
             opacity: 1;
-            transform: scale(1.025);
+            transform: scale(1);
         }
 
         &__logo {
@@ -1009,6 +1038,7 @@
             max-width: 24rem;
             background: color(z);
             overflow-y: auto;
+            overscroll-behavior-y: none;
         } // &__info
         
         &__buttons {

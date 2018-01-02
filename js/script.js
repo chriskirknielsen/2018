@@ -292,8 +292,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
             
             this.description.setAttribute('class', 'modal__description');
             
-            document.body.style.overflow = 'hidden'; // Disable scrolling for the content under the modal
-            
             // Add all previously created elements into the document
             document.body.appendChild(this.wrapper);
             this.wrapper.appendChild(this.content);
@@ -434,7 +432,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         
         this.close = function () {
             document.body.removeChild(projectModal.wrapper); // Remove the modal from the DOM
-            document.body.style.overflow = ''; // Allow scrolling again
 
             projectModal = false;
         }
