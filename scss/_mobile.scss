@@ -127,7 +127,7 @@ $grid-gutter: .5rem;
     
     .portfolio {
         &__presentation {
-            height: calc(100vh - 8.5rem);
+            height: calc(100vh - #{$menu-offset});
         }
         
         &__projects {

@@ -78,10 +78,10 @@
         &:not([class]) {
             display: inline-block;
             @include text-shadow(color(a, 100));
-            background-image: linear-gradient(to top, color(main), color(main));
+            background-image: linear-gradient(color(main), color(main));
             background-repeat: no-repeat;
-            background-size: 100% .1em;
-            background-position: 0 100%;
+            background-size: 100% .0625em;
+            background-position: 0 87.5%;
 
             &:hover,
             &:focus {
@@ -196,7 +196,7 @@
             left: $site-frame;
             right: $site-frame;
             top: $site-frame;
-            padding: #{$menu-top-gutter} 2rem 0;
+            padding: #{$menu-top-gutter};
             background-color: color(a, 90);
             z-index: z(menu, 0);
         }
@@ -222,6 +222,7 @@
             
             &-svg {
                 display: block;
+                width: 100%;
             }
             
             &-fill {
@@ -423,7 +424,7 @@
         
         &__presentation {
             position: relative;
-            height: calc(100vh - 8rem);
+            height: calc(100vh - #{$menu-offset});
             padding-top: 5vmin;
             
             &-illustration {
@@ -605,27 +606,6 @@
             }
         }
     } // .portfolio
-    
-    // Inline SVG classes
-    .fill--pink {
-        fill: color(comp);
-    }
-    
-    .stroke--yellow {
-        fill: none;
-        stroke: color(glow);
-        stroke-linecap: round;
-        stroke-miterlimit: 10;
-        stroke-width: 2px;
-    }
-    
-    .fill--white {
-        fill: color(z);
-    }
-    
-    .fill--yellow {
-        fill: color(glow);
-    }
 } // end @if $critical
 
 
@@ -941,6 +921,11 @@
                 html[lang="fr"] &[data-lang-link="fr"] {
                     color: color(z);
                     box-shadow: 0 .0625rem 0 color(z);
+                    
+                    &:hover,
+                    &:focus {
+                        color: color(main);
+                    }
                 }
             }
         }
@@ -954,6 +939,7 @@
             overflow: hidden;
             animation: projectModalBackgroundReveal .25s ease-out;
             z-index: z(modal, 5);
+            overscroll-behavior-y: none;
 
             &::after {
                 content: attr(data-current-project) ' / ' attr(data-projects);
@@ -1038,7 +1024,6 @@
             max-width: 24rem;
             background: color(z);
             overflow-y: auto;
-            overscroll-behavior-y: none;
         } // &__info
         
         &__buttons {
