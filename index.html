@@ -18,6 +18,10 @@
     <meta name="twitter:card" content="website">
     <meta name="twitter:image" content="https://chriskirknielsen.com/img/card.jpg">
     
+    <link rel="preload" href="./img/presentation-intro.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="./img/presentation-name.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="./img/presentation-skills.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="./img/presentation-geo.svg" as="image" type="image/svg+xml">
     <link rel="preload" href="./fonts/gidole-regular-webfont.woff2" as="font" type="font/woff2">
     <link rel="preload" href="./fonts/suezone-regular-webfont.woff2" as="font" type="font/woff2">
     <link rel="preload" href="./fonts/fonts.min.css" as="style">
@@ -88,23 +92,32 @@
             <section class="section portfolio" id="portfolio">
                 <div class="portfolio__presentation">                    
                     <div class="portfolio__presentation-illustration">
-                        <video poster="./img/intro.jpg" mute autoplay loop class="portfolio__presentation-video">
+                        <video poster="./img/intro.jpg" mute autoplay loop class="portfolio__presentation-video" id="portfolio-video">
                             <source src="./img/intro.webm" type="video/webm">
                             <source src="./img/intro.mp4" type="video/mp4">
                         </video>
                     </div>
                     
-                    <div class="portfolio__presentation-text">
+                    <h1 class="portfolio__presentation-text">
                         <div class="portfolio__presentation-sun"></div>
                         
-                        <div class="portfolio__presentation-intro"><img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-image"></div>
+                        <div class="portfolio__presentation-intro">
+                            <img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-image">
+                        </div>
                         
-                        <div class="portfolio__presentation-name font__title"><img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-image"></div>
+                        <div class="portfolio__presentation-name font__title">
+                            <img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-image">
+                        </div>
                         
-                        <div class="portfolio__presentation-skills font__title"><img src="./img/presentation-skills.svg" alt="Front-end Developer &amp; Motion / Graphic Designer" class="portfolio__presentation-image"></div>
+                        <div class="portfolio__presentation-skills font__title">
+                            <img src="./img/presentation-skills.svg" alt="Front-end Developer &amp;
+                            Motion / Graphic Designer" class="portfolio__presentation-image">
+                        </div>
                         
-                        <div class="portfolio__presentation-geo"><img src="./img/presentation-geo.svg" alt="based in NYC" class="portfolio__presentation-image"></div>
-                    </div>
+                        <div class="portfolio__presentation-geo">
+                            <img src="./img/presentation-geo.svg" alt="based in NYC" class="portfolio__presentation-image">
+                        </div>
+                    </h1>
                 </div>
                 
                 <div class="portfolio__projects padded-section">

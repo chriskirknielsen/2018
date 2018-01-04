@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
         projectList = $('#projects-list'),
         projectCount = projects.length,
         projectModal = false,
-        projectTransitionDuration = 350; // ms (CSS transition time + 50ms compensation for any delay)
+        projectTransitionDuration = 350, // ms (CSS transition time + 50ms compensation for any delay)
+        portfolioVideo = $('#portfolio-video');
     
     function menuSetActiveSection(targetElementId, doScroll, setHash) {
         var targetHash = '#' + targetElementId,
@@ -102,6 +103,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             $('[aria-active="true"]').removeAttribute('aria-active');
             $(menuLinkClass + '[href="' + targetHash + '"]').parentElement.setAttribute('aria-active', 'true');
+        }
+        
+        if (targetElementId !== 'portfolio' && !portfolioVideo.paused) { // If the top part isn't active, we can pause the video
+            portfolioVideo.pause();
+        }
+        else if (targetElementId === 'portfolio' && portfolioVideo.paused) { // The portfolio section is active so the video can play
+            portfolioVideo.play();
         }
     }
     

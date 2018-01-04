@@ -20,7 +20,7 @@
 }
 
 @mixin intro-reveal($order, $anim: null) {
-    $offset: .3; // Initial delay
+    $offset: .4; // Initial delay
     $delay: .1s;
     
     @if ($anim == null) {

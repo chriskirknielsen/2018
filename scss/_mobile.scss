@@ -6,9 +6,9 @@ $menu-offset: $menu-height + $menu-top-gutter + $menu-content-gutter;
 $grid-gutter: .5rem;
 
 @if $loadall or $critical {
-    h1 { font-size: calc(.67rem + 2.33vw); }
-    h2 { font-size: calc(.67rem + 1.16vw); }
-    h3 { font-size: calc(.25rem + 1.67vw); }
+    h1 {
+        font-size: calc(.67rem + 2.33vw);
+    }
 
     .site {
         padding: #{$menu-offset} 0 0;
@@ -102,17 +102,10 @@ $grid-gutter: .5rem;
         &__text {
             &::before,
             &::after {
+                content: '▪';
                 display: block;
                 text-align: center;
                 line-height: .5em;
-            }
-
-            &::before {
-                content: '\23B4';
-            }
-            
-            &::after {
-                content: '\23B5';
             }
         }
     }

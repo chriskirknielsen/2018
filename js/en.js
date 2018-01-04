@@ -29,7 +29,7 @@ var projects = [
     */
     
     { // Super Mario Odyssey
-        name: 'Super Mario Odyssey - European Marketing Campaign',
+        name: 'Super Mario Odyssey European Marketing',
         type: ['Design','Motion','Integration'],
         tools: ['Photoshop','After Effects','Google Web Designer'],
         description: 'For Nintendo of Europe, I worked with Green Garden Digital to deliver multiple assets for the European marketing campaign of Super Mario Odyssey on the Nintendo Switch. I produced master files for a set of banners and a dynamic takeover, starting from Photoshop mockups made by co-workers.<br><br>The banners were built in Google Web Designer, and the dynamic takeover was prepared in After Effects and integrated in HTML/CSS.',
@@ -68,7 +68,7 @@ var projects = [
         name: 'CR7 Mercurial Superfly',
         type: ['Web Design'],
         tools: ['Photoshop','After Effects','Brackets'],
-        description: 'For Nike\'s new shoe, the Mercurial Superfly, Green Garden and I created an e-corner for the product centered around Cristiano Ronaldo. Based on static assets, I created light animations in After Effects and implemented them in a responsive layout for FootCenter.<br><br><a href="https://www.footcenter.fr/cr7-chapter3-discovery" target="_blank" rel="noopener">View e-corner page on FootCenter.fr</a>.',
+        description: 'For the launch of a Nike shoe, the Mercurial Superfly, Green Garden and I created an e-corner for the product centered around Cristiano Ronaldo. Based on static assets, I created light animations in After Effects and implemented them in a responsive layout for FootCenter.<br><br><a href="https://www.footcenter.fr/cr7-chapter3-discovery" target="_blank" rel="noopener">View e-corner page on FootCenter.fr</a>.',
         logo: './img/work/tb_nike.png',
         background: './img/work/bg_nike.jpg',
         youtube: 'Farr2gs1bMc'
