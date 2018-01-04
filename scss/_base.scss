@@ -48,6 +48,7 @@
 
     h1 {
         font-size: 2rem;
+        font-weight: normal;
     }
 
     img {
@@ -63,11 +64,6 @@
     a {
         color: inherit;
         text-decoration: none;
-        
-        &:not([href^="#"]) { // Not menu items (starting with a pound)
-            transition: all .2s #{$transition-function} .02s;
-        }
-
         &:not([class]) {
             display: inline-block;
             @include text-shadow(color(a, 100));
@@ -75,13 +71,6 @@
             background-repeat: no-repeat;
             background-size: 100% .0625em;
             background-position: 0 87.5%;
-
-            &:hover,
-            &:focus {
-                color: color(z);
-                @include text-shadow(color(a, 0), true);
-                background-size: 100% 1.25em;
-            }
         }
     }
 } // end @if $critical
@@ -91,6 +80,21 @@
 
 
 @if $loadall or not $critical {
+    a {
+        &:not([href^="#"]) { // Not menu items (starting with a hash)
+            transition: all .2s #{$transition-function} .02s;
+        }
+
+        &:not([class]) {
+            &:hover,
+            &:focus {
+                color: color(z);
+                @include text-shadow(color(a, 0), true);
+                background-size: 100% 1.25em;
+            }
+        }
+    }
+    
     ::-moz-selection {
         color: color(a);
         background-color: color(main);
@@ -449,6 +453,7 @@
                 bottom: 0;
                 min-width: 100vmin;
                 max-height: 100vmax;
+                background-image: linear-gradient(to bottom, color(a) 0%, #40112c 65.5%, #330723 65.5%, #303a4b 82.75%, color(a) 100%);
                 transform: translateX(-50%);
             }
 
@@ -458,7 +463,6 @@
                 min-width: 19rem;
                 max-width: 100%;
                 margin: 0 auto;
-                font-weight: normal;
             } // &-text
             
             &-sun {
