@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
             $(menuLinkClass + '[href="' + targetHash + '"]').parentElement.setAttribute('aria-active', 'true');
         }
         
-        if (targetElementId !== 'portfolio' && !portfolioVideo.paused) { // If the top part isn't active, we can pause the video
+        if (portfolioVideo && targetElementId !== 'portfolio' && !portfolioVideo.paused) { // If the top part isn't active, we can pause the video
             portfolioVideo.pause();
         }
-        else if (targetElementId === 'portfolio' && portfolioVideo.paused) { // The portfolio section is active so the video can play
+        else if (portfolioVideo && targetElementId === 'portfolio' && portfolioVideo.paused) { // The portfolio section is active so the video can play
             portfolioVideo.play();
         }
     }

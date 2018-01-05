@@ -1,11 +1,6 @@
 // CSS class naming: section__block-element--modifier
 
 @if $loadall or $critical {
-    html,
-    body {
-        height: 100%;
-    }
-
     body {
         position: relative;
         color: color(z);
@@ -64,6 +59,7 @@
     a {
         color: inherit;
         text-decoration: none;
+        
         &:not([class]) {
             display: inline-block;
             @include text-shadow(color(a, 100));
@@ -313,27 +309,6 @@
         }
     } // .menu
 
-    @keyframes menuNavItem {
-        0% {
-            background: color(z);
-            opacity: 0;
-            clip: rect(0rem auto 0rem auto);
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-            animation-timing-function: linear;
-        }
-        50% {
-            opacity: 1;
-            clip: rect(1.5rem auto 3.5rem auto);
-            clip-path: polygon(0% 1.5rem, 100% 1.5rem, 100% 3.5rem, 0 3.5rem);
-        }
-        100% {
-            background: color(main);
-            opacity: 1;
-            clip: rect(3.75rem auto 4rem auto);
-            clip-path: polygon(0% 3.75rem, 100% 3.75rem, 100% 4rem, 0 4rem);
-        }
-    }
-
     .content {
         z-index: z(body, 5);
         max-width: $site-max-width;
@@ -515,11 +490,6 @@
                     animation: presentationSun 2s linear infinite;
                     z-index: z(presentation, 3);
                 }
-
-                @keyframes presentationSun {
-                    0% { background-position: 0 0; }
-                    100% { background-position: 0 1.5rem; }
-                }
             } // &-sun
             
             &-image {
@@ -615,6 +585,32 @@
 
 
 @if $loadall or not $critical {
+    @keyframes menuNavItem {
+        0% {
+            background: color(z);
+            opacity: 0;
+            clip: rect(0rem auto 0rem auto);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            animation-timing-function: linear;
+        }
+        50% {
+            opacity: 1;
+            clip: rect(1.5rem auto 3.5rem auto);
+            clip-path: polygon(0% 1.5rem, 100% 1.5rem, 100% 3.5rem, 0 3.5rem);
+        }
+        100% {
+            background: color(main);
+            opacity: 1;
+            clip: rect(3.75rem auto 4rem auto);
+            clip-path: polygon(0% 3.75rem, 100% 3.75rem, 100% 4rem, 0 4rem);
+        }
+    }
+
+    @keyframes presentationSun {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 1.5rem; }
+    }
+    
     .project {
         position: relative;
         cursor: pointer;

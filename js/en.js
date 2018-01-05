@@ -122,7 +122,7 @@ var projects = [
         'For the French marketing campaign of Hardcore Henry\'s theatrical release, I was tasked with Green Garden to make a banner that would engage users. I cut up several clips taken from the movie trailers to create an interactive "Quick Time Event" game, where the user\'s choices would show different aspects of this <acronym title="First Person Shooter">FPS</acronym>-inspired film. A timer was integrated so the quickest users could enroll to win a GoPro.',
         logo: './img/work/tb_hardcorehenry.png',
         background: './img/work/bg_hardcorehenry.jpg',
-        youtube: ''
+        youtube: 'vQa7cGklQYs'
     },
     { // Dexter
         name: 'Minimalist Dexter Intro',

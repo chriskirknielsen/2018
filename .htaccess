@@ -70,7 +70,7 @@ AddType image/svg+xml .svg
 	ExpiresByType application/x-javascript "access 1 month"
 	ExpiresByType image/x-icon "access 1 year"
 	ExpiresByType application/x-font-woff "access 1 year"
-	ExpiresByType image/svg+xml "access plus 1 year"
+	ExpiresByType image/svg+xml "access 1 year"
 	ExpiresDefault "access 2 days"
 </IfModule>
 
