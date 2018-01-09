@@ -3,6 +3,7 @@ $critical: false;
 @import 'colors',
         'vars',
         'mixins',
+        'icons',
         'base';
 
 @media screen and (max-width: #{$responsive-bp}) {

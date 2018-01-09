@@ -6,8 +6,7 @@ $critical: true;
         'mixins',
         'init',
         'helpers',
-        'base',
-        'icons';
+        'base';
 
 @media screen and (max-width: #{$responsive-bp}) {
     @import 'mobile';
