@@ -86,6 +86,11 @@ $grid-gutter: .5rem;
     }
     
     .section {
+        
+        &--padded {
+            padding: 1rem;
+        }
+        
         &::before { // Anchor offset
             height: #{$menu-offset};
             margin: -#{$menu-offset + $site-frame} 0 0;
@@ -112,10 +117,6 @@ $grid-gutter: .5rem;
 
     .width-constrain {
         max-width: 100%;
-    }
-
-    .padded-section {
-        padding: 1rem;
     }
     
     .portfolio {

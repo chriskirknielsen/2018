@@ -39,6 +39,8 @@
     body.main-font-loaded,
     body.no-js {
         font-family: $font-main, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        letter-spacing: 0;
+        word-spacing: 0;
     }
 
     h1 {
@@ -78,7 +80,7 @@
 @if $loadall or not $critical {
     a {
         &:not([href^="#"]) { // Not menu items (starting with a hash)
-            transition: all .2s #{$transition-function} .02s;
+            transition: all .35s #{$transition-function} .02s;
         }
 
         &:not([class]) {
@@ -86,7 +88,7 @@
             &:focus {
                 color: color(z);
                 @include text-shadow(color(a, 0), true);
-                background-size: 100% 1.25em;
+                background-size: 100% 1.5em;
             }
         }
     }
@@ -104,6 +106,7 @@
     }
 
     .button {
+        $button-shadow: .125rem;
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -114,10 +117,9 @@
         color: color(z);
         border: .125rem solid color(main);
         border-radius: $border-radius;
-        box-shadow: 0 .125rem 0 color(main-dark);
+        box-shadow: 0 #{$button-shadow} 0 color(main-dark);
         overflow: hidden;
         cursor: pointer;
-        transition: all .25s #{$transition-function} .02s;
         z-index: 1;
 
         &::after {
@@ -135,13 +137,13 @@
         &:hover,
         &:focus {
             &::after {
-                transform: scaleX(1.05) translateX(0);
+                transform: scaleX(1.1) translateX(0);
             }
         }
 
         &:active {
             box-shadow: 0 0 0 color(main-dark);
-            transform: translateY(.125rem);
+            transform: translateY(#{$button-shadow});
         }
 
         > span,
@@ -315,14 +317,14 @@
         margin: 0 auto;
     }
 
-    .padded-section {
-        padding: 0 #{$site-frame + 2rem};
-    }
-
     .section {
         position: relative;
         width: 100%;
         min-height: 80vh;
+        
+        &--padded {
+            padding: 0 #{$site-frame + 2rem};
+        }
         
         &:not(:last-child) {
             padding-bottom: #{$menu-offset * 2};
@@ -565,7 +567,6 @@
                 grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
                 grid-gap: $grid-gutter;
                 grid-auto-flow: row;
-                place-items: start;
                 justify-items: start;
                 align-items: start;
                 justify-content: space-between;
@@ -615,7 +616,7 @@
         position: relative;
         cursor: pointer;
         overflow: hidden;
-        transition: all .35s #{$transition-function} .02s;
+        transition: transform .35s #{$transition-function} .02s;
         z-index: z(projects, 1);
         
         /* CSS Grid Fallback */
@@ -738,7 +739,7 @@
             background-size: cover;
             opacity: .25;
             transform: scale(1.125);
-            transition-duration: .5s;
+            transition: all .5s #{$transition-function} .02s;
             z-index: -1;
         }
 
@@ -830,10 +831,17 @@
     }
 
     .contact {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        
+        &__block {
+            flex: 0 0 auto;
+        }
         
         &__list {
             display: inline-block;
+            margin-bottom: 2rem;
             list-style: none;
             
             &-item {
@@ -876,6 +884,20 @@
                 }
             }
         } // &__list
+        
+        &__illustration {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 8rem;
+            
+            &-image {
+                width: auto;
+                height: 100%;
+                max-height: 8rem;
+            }
+        }
     } //.contact
 
     .foot {
@@ -962,13 +984,20 @@
             display: flex;
             color: color(a);
             background: color(m);
-            transition: transform 0s linear;
+            box-shadow:
+                0 0 2rem color(m, 50),
+                -100vw 0 0 color(m, 0),
+                100vw 0 0 color(m, 0);
+            transition: transform 0s linear, box-shadow .3s ease-in-out;
             animation: projectModalContentReveal .25s cubic-bezier(0, .5, 0, 1);
             will-change: transform;
             z-index: z(modal, 10);
 
             &--loaded { // Add fake containers to each side for slide transitions
-                box-shadow: -100vw 0 0 color(m), 100vw 0 0 color(m);
+                box-shadow:
+                    0 0 2rem color(m, 50),
+                    -100vw 0 0 color(m),
+                     100vw 0 0 color(m);
             }
 
             &--previous {
@@ -980,7 +1009,7 @@
             }
 
             &--switch {
-                transition: transform .3s cubic-bezier(.5, 0, .5, 1);
+                transition: transform .3s cubic-bezier(.5, 0, .5, 1), box-shadow .3s ease-in-out;
             }
         } // &__content
 
@@ -1023,6 +1052,9 @@
         
         &__buttons {
             flex: none;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
             display: flex;
             width: 100%;
             margin-bottom: .5rem;
@@ -1192,7 +1224,7 @@
     @keyframes projectModalContentReveal {
         from {
             opacity: 0;
-            transform: translateX(100vw);
+            transform: scale(0);
         }
     }
 
@@ -1281,7 +1313,7 @@
             left: 50%;
             top: 50%;
             width: 6rem;
-            height: .5rem;
+            height: .25rem;
             transform: translate(-50%, -50%);
             z-index: -1;
         }

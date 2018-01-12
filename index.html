@@ -18,6 +18,8 @@
     <meta name="twitter:card" content="website">
     <meta name="twitter:image" content="https://chriskirknielsen.com/img/card.jpg">
     
+    <link rel="icon" href="./img/favicon.png">
+    
     <link rel="preload" href="./img/presentation-intro.svg" as="image" type="image/svg+xml">
     <link rel="preload" href="./img/presentation-name.svg" as="image" type="image/svg+xml">
     <link rel="preload" href="./img/presentation-skills.svg" as="image" type="image/svg+xml">
@@ -42,7 +44,7 @@
         <div class="menu__wrapper">
             <nav class="menu" role="navigation">
                 <a href="#portfolio" class="menu__logo" id="menu-logo">
-                    <svg viewBox="0 0 55 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="menu__logo-svg">
+                    <svg viewBox="0 0 55 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="menu__logo-svg" aria-labelledby="title">
                         <title>Christopher Kirk-Nielsen</title>
                         <desc>CKN Logo</desc>
                         <g fill-rule="evenodd" class="menu__logo-fill">
@@ -120,40 +122,78 @@
                     </h1>
                 </div>
                 
-                <div class="portfolio__projects padded-section">
+                <div class="portfolio__projects section--padded">
                     <p class="section__text portfolio__projects-text color__z-m text__center">
                         Here are a few selected works of mine. Click for details!
                     </p>
                     
                     <div class="portfolio__projects-list" id="projects-list">
-                        <a href="" target="_blank" rel="noopener" class="project">
+                        <a href="https://www.behance.net/gallery/60762635/Super-Mario-Odyssey-European-Marketing" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
-                                <div class="project__image" style="background-image: url(./img/work/bg_minines.jpg);"></div>
-                                <div class="project__logo" style="background-image: url(./img/work/tb_minines.png);"></div>
+                                <div class="project__image" style="background-image: url(./img/work/bg_mario.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_mario.png);"></div>
                             </div>
                         </a>
-
-                        <a href="" target="_blank" rel="noopener" class="project">
+                        <a href="https://www.ratchet-galaxy.com" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_rgv3.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_rgv3.png);"></div>
                             </div>
                         </a>
-
+                        <a href="https://www.footcenter.fr/cr7-chapter3-discovery" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_nike.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_nike.png);"></div>
+                            </div>
+                        </a>
+                        <a href="" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_dreadnought.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_dreadnought.png);"></div>
+                            </div>
+                        </a>
                         <a href="https://www.behance.net/gallery/50293285/PlayStation-an-illustration-project" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_playstation.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_playstation.png);"></div>
                             </div>
                         </a>
-
-                        <a href="https://www.behance.net/gallery/7349195/Dexter-Opening-Animation" target="_blank" rel="noopener" class="project">
+                        <a href="" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_hardcorehenry.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_hardcorehenry.png);"></div>
+                            </div>
+                        </a>
+                        <a href="https://www.behance.net/gallery/7349195/Minimalist-Dexter-Intro" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_dexter.jpg);"></div>
                                 <div class="project__logo" style="background-image: url(./img/work/tb_dexter.png);"></div>
                             </div>
                         </a>
-
+                        <a href="https://www.behance.net/gallery/7351791/Bjoerkfest-Poster" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_posters.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_posters.png);"></div>
+                            </div>
+                        </a>
+                        <a href="https://www.behance.net/gallery/13338895/AWESOME-Type-animation" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_awesome.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_awesome.png);"></div>
+                            </div>
+                        </a>
+                        <a href="https://www.behance.net/gallery/12701517/Commerce-EP-Primary-Colours-cover" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_covers.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_covers.png);"></div>
+                            </div>
+                        </a>
+                        <a href="https://chronoise.com" target="_blank" rel="noopener" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url(./img/work/bg_chronoise.jpg);"></div>
+                                <div class="project__logo" style="background-image: url(./img/work/tb_chronoise.png);"></div>
+                            </div>
+                        </a>
                         <a href="https://www.behance.net/gallery/7302177/Uncharted-Wallpaper-Contest" target="_blank" rel="noopener" class="project">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url(./img/work/bg_uncharted.jpg);"></div>
@@ -164,7 +204,7 @@
                 </div>
             </section>
             
-            <section class="section resume padded-section" id="resume">
+            <section class="section resume section--padded" id="resume">
                 <p class="section__text color__z-m text__center">
                     If I were to be summed up in lists, this would be a good start.
                 </p>
@@ -234,13 +274,13 @@
                 </div>
                 
                 <p class="text__center">
-                    <a href="./chriskirknielsen_resume.pdf" class="button resume__download">
+                    <a href="./chriskirknielsen_resume.pdf" class="button resume__download" download>
                         <span>Download my résumé (PDF)</span>
                     </a>
                 </p>
             </section>
             
-            <section class="section about width-constrain padded-section" id="about">
+            <section class="section about width-constrain section--padded" id="about">
                 <p class="section__text color__z-m text__center">
                     Learn more about me with this convenient poster.
                 </p>
@@ -258,7 +298,7 @@
                         For over a decade, he has been using tools such as Photoshop and After Effects as well as languages like HTML, CSS and JavaScript.
                         He has always been self-sufficient, but also a team player and a MacGyver-worthy problem solver (minus the hair).
                         He lives in New York, but he was born in Lyon, France.
-                        In addition to English, he also speaks French and Danish and you can throw some Italian his way, as well!
+                        In addition to English, he also speaks French and Danish and you can throw Italian his way, as well!
                         (however, he has a strong aversion for addressing himself in the third person…)" class="about__image">
                     </noscript>
                     
@@ -273,42 +313,48 @@
                     For over a decade, he has been using tools such as Photoshop and After Effects as well as languages like HTML, CSS and JavaScript.
                     He has always been self-sufficient, but also a team player and a MacGyver-worthy problem solver (minus the hair).
                     He lives in New York, but he was born in Lyon, France.
-                    In addition to English, he also speaks French and Danish and you can throw some Italian his way, as well!
+                    In addition to English, he also speaks French and Danish and you can throw Italian his way, as well!
                     (however, he has a strong aversion for addressing himself in the third person…)" class="about__image" id="about-image" style="display: none;">
                     
                     <script>
-                        // Removes the display: none; style of the image (avoids duplicate when JS is disabled)
+                        // Removes the display: none; style of the image (which avoids duplicate when JS is disabled)
                         document.getElementById('about-image').removeAttribute('style');
                     </script>
                 </p>
             </section>
             
-            <section class="section contact width-constrain padded-section" id="contact">
-                <p class="section__text color__z-m text__center">
+            <section class="section contact width-constrain section--padded" id="contact">
+                <p class="section__text color__z-m text__center contact__block">
                     You can get in touch with me several ways, which one is up to you!
                 </p>
                 
-                <ul class="contact__list">
-                    <li class="contact__list-item">
-                        <span class="contact__list-icon contact__list-icon_email"></span>
-                        <a href="mailto:chriskirknielsen@gmail.com">chriskirknielsen@gmail.com</a>
-                    </li>
-                    
-                    <li class="contact__list-item">
-                        <span class="contact__list-icon contact__list-icon_phone"></span>
-                        &#x2B;&#x31;&#x20;&#x28;&#x33;&#x34;&#x37;&#x29;&#x20;&#x39;&#x39;&#x38;&#8211;&#x35;&#x37;&#x37;&#x34;
-                    </li>
-                    
-                    <li class="contact__list-item">
-                        <span class="contact__list-icon contact__list-icon_skype"></span>
-                        <a href="skype:jakhris?chat">jakhris</a>
-                    </li>
+                <div class="contact__block text__center">
+                    <ul class="contact__list">
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_email"></span>
+                            <a href="mailto:chriskirknielsen@gmail.com">chriskirknielsen@gmail.com</a>
+                        </li>
 
-                    <li class="contact__list-item">
-                        <span class="contact__list-icon contact__list-icon_geo"></span>
-                        NYC
-                    </li>
-                </ul>
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_phone"></span>
+                            &#x2B;&#x31;&#x20;&#x28;&#x33;&#x34;&#x37;&#x29;&#x20;&#x39;&#x39;&#x38;&#8211;&#x35;&#x37;&#x37;&#x34;
+                        </li>
+
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_skype"></span>
+                            <a href="skype:jakhris?chat">jakhris</a>
+                        </li>
+
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_geo"></span>
+                            NYC
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact__illustration">
+                    <img src="./img/origami.svg" alt="Unicorn Origami Illustration" class="contact__illustration-image">
+                </div>
             </section>
         </main>
 
@@ -358,7 +404,7 @@
         }, function () { document.body.classList.remove('main-font-loaded'); });
     </script>
 
-    <script src="./js/en.js" defer></script>
+    <script src="./js/en.min.js" defer></script>
     <script src="./js/script.js" defer></script>
 </body>
 </html>

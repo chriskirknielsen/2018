@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             $(menuLinkClass + '[href="' + targetHash + '"]').parentElement.setAttribute('aria-active', 'true');
         }
         
+        /* Handle video play/pause states */
         if (portfolioVideo && targetElementId !== 'portfolio' && !portfolioVideo.paused) { // If the top part isn't active, we can pause the video
             portfolioVideo.pause();
         }
@@ -208,22 +209,22 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     for (p = 0 ; p < projects.length ; p++) { // Retrieve projects and repopulate the list with buttons to be interactive
         var proj = projects[p],
-            newButton = document.createElement('button');
+            pButton = document.createElement('button');
         
-        newButton.setAttribute('type', 'button');
-        newButton.setAttribute('class', 'project');
-        newButton.setAttribute('data-project-id', p);
+        pButton.setAttribute('type', 'button');
+        pButton.setAttribute('class', 'project');
+        pButton.setAttribute('data-project-id', p);
         
-        newButton.innerHTML += "\n" +
+        pButton.innerHTML += "\n" +
             '<div class="project__frame">' + "\n" +
                 '<div class="project__image" style="background-image: url(' + proj.background + ');"></div>' + "\n" +
                 '<div class="project__logo" style="background-image: url(' + proj.logo + ');"></div>' + "\n" +
             '</div>' + "\n" +
             "\n";
         
-        projectList.appendChild(newButton);
+        projectList.appendChild(pButton);
         
-        newButton.addEventListener('click', function (e) {
+        pButton.addEventListener('click', function (e) {
             var getParentId = e.currentTarget.getAttribute('data-project-id');
             var projectId = parseInt(getParentId, 10);
             
@@ -472,9 +473,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
             if (!this.dragging) { return; } // Cancel dragging if mouse button isn't pressed
 
             var pageWidth = window.innerWidth || document.documentElement.clientWidth,
-                dragPosition = (type === 'touch') ? e.touches[0].pageX : e.pageX;
+                dragPositionX = (type === 'touch') ? e.touches[0].pageX : e.pageX;
 
-            this.offsetX = (dragPosition - this.swipeX) / pageWidth * 100; // Percentage
+            this.offsetX = (dragPositionX - this.swipeX) / pageWidth * 100; // Percentage
 
             this.content.style.transform = 'translateX(' + this.offsetX + 'vw)';
             this.content.style.transition = 'transform 0s linear';
@@ -513,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     }
     
-    document.addEventListener('keyup', function (e) { // Enables easy keyboard navigation for project modal
+    document.addEventListener('keyup', function (e) { // Enables easy keyboard navigation for project modals
         e = e || window.event;
         
         if (projectModal) { // No point in checking if the modal isn't open…
