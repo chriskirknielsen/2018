@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
         projectCount = projects.length,
         projectModal = false,
         projectTransitionDuration = 350, // ms (CSS transition time + 50ms compensation for any delay)
-        portfolioVideo = $('#portfolio-video');
+        portfolioVideo = $('#portfolio-video'),
+        scroller = false;
     
     function menuSetActiveSection(targetElementId, doScroll, setHash) {
         var targetHash = '#' + targetElementId,
@@ -95,7 +96,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
 
         if (doScroll) {
-            scrollToTarget(sectionTarget);
+            scroller = false; // Resets object
+            scroller = new ScrollToTarget(sectionTarget);
+            ticker.addCallback('scroller', scroller.handleScrolling);
         }
         
         if (!sectionTarget.hasAttribute('aria-active')) { // No point in doing these operations if the menu is already active
@@ -114,46 +117,54 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     }
     
-    function scrollToTarget(scrollTarget, scrollTiming, initialScrollPos, initialTargetY) {
-        var scrollTopWindow = defaultVal(initialScrollPos, (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)),
-            targetYcalc = defaultVal(initialTargetY, (scrollTopWindow + parseInt(scrollTarget.getBoundingClientRect().top, 10))),
-            targetY = (targetYcalc < 0) ? 0 : targetYcalc,
-            targetOffset = targetY - scrollTopWindow,
-            scrollDirection = (targetOffset < 0) ? 1 : -1,
-            scrollTiming = defaultVal(scrollTiming, 0);
-        
-        if (scrollTiming < scrollDuration) { // We aren't done yet
-            var currentTimePercent = scrollTiming / scrollDuration,
-                factor = ease(currentTimePercent),
-                newScrollY = scrollTopWindow + targetOffset * factor;
-            
-            updateActiveMenuOn = false;
-            
-            window.scrollTo(0, newScrollY); // Redefine the scroll value
+    function ScrollToTarget(scrollTarget) {
+        var windowOffsetY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            targetOffsetY = windowOffsetY + parseInt(scrollTarget.getBoundingClientRect().top, 10),
+            targetY = (targetOffsetY < 0) ? 0 : targetOffsetY, // We wouldn't want to scroll beyond the top of the document
+            targetOffsetY = targetY - windowOffsetY,
+            timing = 0; // Defines how far in the scrolling animation we are
 
-            ticker.addCallback('scroller', function () { // Restart function
-                scrollToTarget(scrollTarget, (scrollTiming + repaintTick), scrollTopWindow, targetY)
-            });
+        updateActiveMenuOn = false; // Disable the update of the active section tab
+
+        this.handleScrolling = function () {
+            if (timing >= scrollDuration) {
+                // this.endScrolling();
+                updateActiveMenuOn = true; // Re-enable the update of the active section tab
+                ticker.removeCallback('scroller'); // The function no longer needs to be called
+                window.scrollTo(0, targetY); // Sets the scroll to the final target
+                scroller = false; // Unsets the object
+
+                return;   
+            }
+
+            var currentTimePercentage = timing / scrollDuration,
+                factor = ease(currentTimePercentage),
+                newScrollY = windowOffsetY + targetOffsetY * factor;
+
+            window.scrollTo(0, newScrollY); // Redefine the scroll value
+            timing += repaintTick;
         }
-        else { // We're done, we can stop the scrolling function and reallow the auto-update of the menu indicator
-            updateActiveMenuOn = true;
-            ticker.removeCallback('scroller');
-            window.scrollTo(0, targetY);
+        
+        this.endScrolling = function () {
+            updateActiveMenuOn = true; // Re-enable the update of the active section tab
+            ticker.removeCallback('scroller'); // The function no longer needs to be called
+            window.scrollTo(0, targetY); // Sets the scroll to the final target
+            scroller = false; // Unsets the object
         }
     }
     
     ticker.addCallback('updateActiveMenu', function () {
-        if (updateActiveMenuOn) { // We don't want this to work while the scrollToTgarget function is working
+        if (updateActiveMenuOn) { // We don't want this to work while the scrollToTarget function is working
             var windowHeight = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight,
-                windowHeightThreshold = Math.round(windowHeight / 4);
+                windowHeightThreshold = Math.round(windowHeight / 4),
+                menuActive;
 
             for (var i = 0 ; i < menuLinks.length ; i++) {
                 var menuTargetHash = menuLinks[i].getAttribute('href').split('#')[1],
                     menuLinkTarget = $('#' + menuTargetHash),
                     menuScrollY = menuLinkTarget.getBoundingClientRect(),
                     menuScrollYTop = parseInt(menuScrollY.top, 10),
-                    menuScrollYBottom = parseInt(menuScrollY.bottom, 10),
-                    menuActive;
+                    menuScrollYBottom = parseInt(menuScrollY.bottom, 10);
                 
                 if (menuScrollYTop <= windowHeightThreshold && menuScrollYBottom >= windowHeightThreshold) {
                     menuActive = menuTargetHash;
@@ -170,7 +181,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     function menuClick(event, targetHref) {
         menuSetActiveSection(targetHref, true, true);
-        document.activeElement.blur(); // Remove :focus on the menu button
+        
+        // Remove :focus on the menu button
+        document.activeElement.blur();
         
         // Avoid <a> anchor to jump
         event.preventDefault();
@@ -184,11 +197,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
     }
     
     logoLink.addEventListener('click', function (e) {
-        menuClick(e, menuLinks[0].getAttribute('href').split('#')[1]); // Same as above, retrieves target ID
+        menuClick(e, menuLinks[0].getAttribute('href').split('#')[1]); // This is used to retrieve the target ID
     });
     
     // Lazy-loading for the "About" image
-    (function lazyLoadAboutImage() {
+    (function () {
         var img = $('#about-image'),
             imageToLoad = new Image();
         
@@ -200,9 +213,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     })();
     
-    //******************//
-    // PROJECTS-RELATED //
-    //******************//
+    /* The following concerns the handling of the project grid content and modal */
     
     // Dynamically loads the projects list
     projectList.innerHTML = ''; // Empty the element, quick and dirty
