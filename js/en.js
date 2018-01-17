@@ -23,10 +23,10 @@ var lang = {
             name: 'Super Mario Odyssey European Marketing',
             type: ['Design','Motion','Integration'],
             tools: ['Photoshop','After Effects','Google Web Designer'],
-            description: 'For Nintendo of Europe, I worked with Green Garden Digital to deliver multiple assets for the European marketing campaign of Super Mario Odyssey on the Nintendo Switch. I produced master files for a set of banners and a dynamic takeover, starting from Photoshop mockups made by co-workers.<br><br>The banners (not shown here) were built in Google Web Designer, and the dynamic takeover was prepared in After Effects and integrated in HTML/CSS.',
+            description: 'For Nintendo of Europe, I worked with Green Garden Digital to deliver multiple assets for the European marketing campaign of Super Mario Odyssey on the Nintendo Switch. I produced master files for a set of banners and a dynamic takeover, starting from Photoshop mockups made by co-workers.<br><br>The banners were built in Google Web Designer, and the dynamic takeover was prepared in Photoshop, then built in After Effects, and integrated in HTML/CSS.',
             logo: './img/work/tb_mario.png',
             background: './img/work/bg_mario.jpg',
-            youtube: 'eICuNyWF2M0'
+            youtube: 'u0msoyr7Hyw'
         },
         { // Ratchet Galaxy
             name: 'Ratchet-Galaxy v3',
@@ -69,15 +69,10 @@ var lang = {
             type: ['Motion','Design','Integration'],
             tools: ['Photoshop','After Effects','Brackets'],
             description:
-            'In collaboration with Green Garden, I worked on several assets used for the promotion of the video game Dreadnought, focused on a cinematic sequence. This includes a set of banners, a dynamic takeover, as well as Facebook disruptive posts, for both European and North American markets.<br><br>The main asset was the dynamic takeover, which dictacted how the other elements would look.',
+            'In collaboration with Green Garden, I worked on several assets used for the promotion of the video game Dreadnought, focused on a cinematic sequence. This includes a set of banners, a dynamic takeover, as well as Facebook disruptive posts, for both European and North American markets.<br><br>After settling on the Dynamic Takeover\'s direction, the banners and disruptive posts were created using the same idea, in order to have a cohesive campaign across all platforms.',
             logo: './img/work/tb_dreadnought.png',
             background: './img/work/bg_dreadnought.jpg',
-            slideshow: [
-                {
-                    tb: './img/work/bg_dreadnought.jpg',
-                    o: './img/work/bg_dreadnought.jpg'
-                }
-            ]
+            youtube: 'BCmG6qN_t7Y'
         },
         { // PlayStation
             name: 'PlayStation: an illustration project',
@@ -182,8 +177,7 @@ var lang = {
                 {
                     tb: './img/work/tb_awesome-7.jpg',
                     o: './img/work/fs_awesome-7.gif'
-                },
-
+                }
             ]
         },
         { // Covers

@@ -29,7 +29,7 @@ function setHash(targetHash) {
 }
 
 /** Handles functions and binds them to requestAnimationFrame **/
-function Ticker() {	// By Alan Transon: https://gist.github.com/atranson/006bf0aa19237b29b8d435dcc7f866e7
+function Ticker() { // By Alan Transon: https://gist.github.com/atranson/006bf0aa19237b29b8d435dcc7f866e7
     var callbackQueue = {};
 
     /** Main ticker function (private) */
@@ -543,7 +543,7 @@ var ticker = new Ticker(),
 document.addEventListener('DOMContentLoaded', function (e) {
     var menuHandler = new MenuHandler(
             ticker,
-            document.querySelectorAll('.menu__nav-link'), // List of menu links
+            document.querySelectorAll('.js-menuLink'), // List of menu links
             $('#menu-logo') // Menu logo
         );
         

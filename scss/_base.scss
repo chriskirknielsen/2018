@@ -137,7 +137,6 @@
         &:hover,
         &:focus {
             &::after {
-                box-shadow: 0 0 0 color(z);
                 transform: translateX(0);
             }
         }
