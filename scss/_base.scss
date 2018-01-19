@@ -5,7 +5,10 @@
         position: relative;
         color: color(z);
         background-color: color(a);
-        transition: letter-spacing 0s, word-spacing 0s, font-weight 0s; // Fallback fonts shouldn't animate these properties
+        transition:
+            letter-spacing 0s,
+            word-spacing 0s,
+            font-weight 0s; // Fallback fonts shouldn't animate these properties
         z-index: z(body, 0);
 
         &::before,
@@ -79,11 +82,12 @@
 
 @if $loadall or not $critical {
     a {
-        &:not([href^="#"]) { // Not menu items (starting with a hash)
-            transition: all .35s #{$transition-function} .02s;
-        }
-
         &:not([class]) {
+            transition-property: text-shadow, background-size;
+            transition-duration: .35s;
+            transition-timing-function: #{$transition-function};
+            transition-delay: .02s;
+            
             &:hover,
             &:focus {
                 color: color(z);
@@ -275,7 +279,6 @@
                     clip: rect(4rem auto 4rem auto);
                     clip-path: polygon(0% 4rem, 100% 4rem, 100% 4rem, 0 4rem);
                     z-index: z(menu, 5);
-                    transition: .2s ease-in-out .02s;
                 }
             }
 
@@ -301,7 +304,7 @@
             &-icon {
                 vertical-align: middle;
                 filter: grayscale(100%);
-                transition: .2s ease-in-out .02s;
+                transition: filter .2s ease-in-out .02s;
             }
 
             &-link:hover > &-icon,
@@ -734,7 +737,10 @@
             background-size: cover;
             opacity: .25;
             transform: scale(1.125);
-            transition: all .5s #{$transition-function} .02s;
+            transition-property: opacity, transform;
+            transition-duration: .5s;
+            transition-timing-function: #{$transition-function};
+            transition-delay: .02s;
             z-index: -1;
         }
 
@@ -921,7 +927,10 @@
                 display: inline-block;
                 color: color(z);
                 box-shadow: 0 .0625rem 0 color(main, 0);
-                transition: .2s ease-in-out .02s;
+                transition-property: color, box-shadow;
+                transition-duration: .2s;
+                transition-timing-function: ease-in-out;
+                transition-delay: .02s;
 
                 &:hover,
                 &:focus {
@@ -983,9 +992,10 @@
                 0 0 2rem color(m, 50),
                 -100vw 0 0 color(m, 0),
                 100vw 0 0 color(m, 0);
-            transition: transform 0s linear, box-shadow .3s ease-in-out;
+            transition:
+                transform 0s linear,
+                box-shadow .3s ease-in-out;
             animation: projectModalContentReveal .25s cubic-bezier(0, .5, 0, 1);
-            will-change: transform;
             z-index: z(modal, 10);
 
             &--loaded { // Add fake containers to each side for slide transitions
@@ -1004,7 +1014,9 @@
             }
 
             &--switch {
-                transition: transform .3s cubic-bezier(.5, 0, .5, 1), box-shadow .3s ease-in-out;
+                transition:
+                    transform .3s cubic-bezier(.5, 0, .5, 1),
+                    box-shadow .3s ease-in-out;
             }
         } // &__content
 
@@ -1013,7 +1025,6 @@
             height: 100%;
             opacity: 1;
             transition: opacity .3s cubic-bezier(.5, 0, .5, 1);
-            will-change: opacity;
         }
         
         &__content--switch &__media,
@@ -1064,8 +1075,7 @@
             border: 0;
             color: color(z);
             cursor: pointer;
-            transition: all .15s cubic-bezier(.5, 0, .5, 1) .02s;
-            will-change: background-position;
+            transition: background-position .15s cubic-bezier(.5, 0, .5, 1) .02s;
 
             > span {
                 display: inline-block;

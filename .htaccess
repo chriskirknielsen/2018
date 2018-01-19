@@ -55,7 +55,7 @@ AddType image/svg+xml .svg
 
 	RewriteRule ^en(\.html)?$ /index.html [L]
     
-	RewriteRule ^fr(\.)?$ /fr.html [L]
+	RewriteRule ^fr?$ /fr.html [L]
 </IfModule>
 
 <IfModule mod_expires.c>
