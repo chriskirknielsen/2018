@@ -132,16 +132,18 @@
             @include pos(0);
             width: 100%;
             height: 100%;
-            box-shadow: 1rem 0 0 color(z);
+            box-shadow: 0 1rem 0 color(z);
             background-color: color(main);
-            transform: translateX(calc(-100% - 1rem));
+            transform: scaleY(.99) translateY(calc(-100% - 1rem));
+            transform-origin: center top;
+            transition: transform .35s #{$transition-function} .02s;
             z-index: 0;
         }
 
         &:hover,
         &:focus {
             &::after {
-                transform: translateX(0);
+                transform: scaleY(1.01) translateY(0);
             }
         }
 
