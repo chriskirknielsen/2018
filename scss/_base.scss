@@ -579,6 +579,11 @@
             }
         }
     } // .portfolio
+
+    @keyframes presentationSun {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 1.5rem; }
+    }
 } // end @if $critical
 
 
@@ -605,11 +610,6 @@
             clip: rect(3.75rem auto 4rem auto);
             clip-path: polygon(0% 3.75rem, 100% 3.75rem, 100% 4rem, 0 4rem);
         }
-    }
-
-    @keyframes presentationSun {
-        0% { background-position: 0 0; }
-        100% { background-position: 0 1.5rem; }
     }
     
     .project {
