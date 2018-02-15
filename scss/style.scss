@@ -1,10 +1,9 @@
 $loadall: true;
 @charset 'utf-8';
 @import 'colors',
-        'reset',
+        'init',
         'vars',
         'mixins',
-        'init',
         'helpers',
         'base',
         'icons';

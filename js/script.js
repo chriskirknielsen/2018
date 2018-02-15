@@ -577,6 +577,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             pButton.setAttribute('type', 'button');
             pButton.setAttribute('class', 'project');
+            pButton.setAttribute('name', proj.name);
             pButton.setAttribute('data-project-id', p);
 
             pButton.innerHTML += "\n" +
@@ -597,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     })();
     
-    /** Lazy-loading for the "About" image **/
+    /** Delay loading for the "About" image **/
     (function () {
         var image = $('#about-image'),
             imageToLoad = new Image();
