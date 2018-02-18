@@ -110,7 +110,7 @@
     }
 
     .button {
-        $button-shadow: .1875rem;
+        $button-shadow-length: .1875rem;
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -121,10 +121,14 @@
         color: color(z);
         border: .125rem solid color(main);
         border-radius: $border-radius;
-        box-shadow: 0 #{$button-shadow} 0 color(main-dark);
+        box-shadow: 0 #{$button-shadow-length} 0 color(main-dark);
         overflow: hidden;
         cursor: pointer;
         z-index: 1;
+        transition-property: transform, box-shadow;
+        transition-duration: .15s;
+        transition-timing-function: #{$transition-function};
+        transition-delay: .02s;
 
         &::after {
             content: '';
@@ -134,22 +138,23 @@
             height: 100%;
             box-shadow: 0 1rem 0 color(z);
             background-color: color(main);
-            transform: scaleY(.99) translateY(calc(-100% - 1rem));
+            transform: scale(1.05, .99) translateY(calc(-100% - 1rem));
             transform-origin: center top;
-            transition: transform .35s #{$transition-function} .02s;
+            transition-property: transform;
+            transition-duration: .35s;
             z-index: 0;
         }
 
         &:hover,
         &:focus {
             &::after {
-                transform: scaleY(1.01) translateY(0);
+                transform: scale(1.05, 1.01) translateY(0);
             }
         }
 
         &:active {
             box-shadow: 0 0 0 color(main-dark);
-            transform: translateY(#{$button-shadow});
+            transform: translateY(#{$button-shadow-length});
         }
 
         > span,
@@ -493,7 +498,6 @@
                             #{$intro-sun-bg} 1.5rem,
                             transparent 1.5rem
                         );
-                    transform: perspective(16rem) rotateX(-42deg);
                     animation: presentationSun 1.5s linear infinite;
                     z-index: z(presentation, 3);
                 }
@@ -575,14 +579,20 @@
                 justify-items: start;
                 align-items: start;
                 justify-content: space-between;
-                overflow: hidden; // Clears the floats for the fallback style
+                overflow: auto; // Clears the floats for the fallback style
             }
         }
     } // .portfolio
 
     @keyframes presentationSun {
-        0% { background-position: 0 0; }
-        100% { background-position: 0 1.5rem; }
+        0% {
+            //background-position: 0 0;
+            transform: perspective(16rem) rotateX(-42deg) translateY(0);
+        }
+        100% {
+            //background-position: 0 1.5rem;
+            transform: perspective(16rem) rotateX(-42deg) translateY(1.5rem);
+        }
     }
 } // end @if $critical
 
@@ -889,19 +899,77 @@
         } // &__list
         
         &__illustration {
+            position: relative;
             flex: 1 1 auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 8rem;
+            min-height: $blinds-size;
+
+            &-blinds {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                width: $blinds-size;
+                height: $blinds-size;
+                border-radius: 50%;
+                background-image: url(../img/pp.jpg);
+                background-size: cover;
+                overflow: hidden;
+                -webkit-mask-image: -webkit-radial-gradient(white, black); // Safari fix for overflow issue
+            }
             
-            &-image {
-                width: auto;
-                height: 100%;
-                max-height: 8rem;
+            &-blind {
+                flex: 1 1 auto;
+                background-image: inherit;
+                background-size: #{$blinds-size} #{$blinds-size};
+                transition: transform .25s ease-in-out;
+                
+                @for $b from 1 through $blinds-count {
+                    $blind-index: ($b - 1) * 1;
+                    $blind-direction-change: 1;
+                    
+                    @if ($b % 2 != 0) {
+                        $blind-direction-change: -1;
+                    }
+                    
+                    &:nth-child(#{$b}) {
+                        background-position: center calc(#{$blind-index} * -#{$blind-height});
+                        transform: translateX(calc(#{$blind-direction-change} * #{$blind-height / 2}));
+                        transition-delay: calc(#{$blind-delay} * #{$b - 1});
+                    }
+                }
+            }
+            
+            &-blinds:hover > &-blind {
+                transform: translateX(0);
+            }
+        } // &__illustration
+    } //.contact
+    
+    @supports (--b: 0) {
+        .contact {
+            &__illustration {
+                &-blind {
+                    animation:
+                        blindsSlide
+                        #{$blind-duration}
+                        ease-in-out
+                        calc(#{$blind-delay} * var(--b) - #{$blind-duration})
+                        alternate
+                        infinite;
+                    
+                    &:nth-child(odd) { --blindDirection: -1; }
+                    &:nth-child(even) { --blindDirection: 1; }
+                }
             }
         }
-    } //.contact
+
+        @keyframes blindsSlide {
+            from { transform: translateX(calc(var(--blindDirection) * #{$blind-height/2})); }
+            to { transform: translateX(0); }
+        }
+    }
 
     .foot {
         display: flex;
