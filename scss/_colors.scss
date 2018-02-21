@@ -13,8 +13,7 @@ $colors: (
     z-m: #9c9c9c,
     m: #686868,
     a-m: #343434,
-    a: #161616,
-    error: hue-adjust(#00a39b, 180deg)
+    a: #161616
 );
 
 @function color($name, $opacity: hex) {

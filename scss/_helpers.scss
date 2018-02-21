@@ -13,12 +13,12 @@ body:not(.title-font-loaded) .font__title {
 
 body.main-font-loaded .font__main,
 body.no-js .font__main {
-    font-family: $font-main, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: $font-main;
 }
 
 body.title-font-loaded .font__title,
 body.no-js .font__title {
-    font-family: $font-title, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: $font-title;
 }
 
 .text__uppercase { text-transform: uppercase; }

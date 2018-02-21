@@ -5,10 +5,6 @@
         position: relative;
         color: color(z);
         background-color: color(a);
-        transition:
-            letter-spacing 0s,
-            word-spacing 0s,
-            font-weight 0s; // Fallback fonts shouldn't animate these properties
         z-index: z(body, 0);
 
         &::before,
@@ -41,7 +37,7 @@
 
     body.main-font-loaded,
     body.no-js {
-        font-family: $font-main, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        font-family: $font-main;
         letter-spacing: 0;
         word-spacing: 0;
     }
@@ -225,6 +221,7 @@
             display: flex;
             align-items: center;
             width: #{$sqrt3 / 2 * 4rem}; // hexagon_width = sqrt(3) / 2 * hexagon_height
+            transition: filter .1s ease-in-out 0s;
             
             &-svg {
                 display: block;
@@ -233,6 +230,14 @@
             
             &-fill {
                 fill: color(z);
+            }
+            
+            &:hover {
+                filter: drop-shadow(-2px 0 0 color(main));
+            }
+            
+            &:hover &-svg {
+                filter: drop-shadow(2px 0 0 color(comp));
             }
         }
 
@@ -918,32 +923,6 @@
                 overflow: hidden;
                 -webkit-mask-image: -webkit-radial-gradient(white, black); // Safari fix for overflow issue
             }
-            
-            &-blind {
-                flex: 1 1 auto;
-                background-image: inherit;
-                background-size: #{$blinds-size} #{$blinds-size};
-                transition: transform .25s ease-in-out;
-                
-                @for $b from 1 through $blinds-count {
-                    $blind-index: ($b - 1) * 1;
-                    $blind-direction-change: 1;
-                    
-                    @if ($b % 2 != 0) {
-                        $blind-direction-change: -1;
-                    }
-                    
-                    &:nth-child(#{$b}) {
-                        background-position: center calc(#{$blind-index} * -#{$blind-height});
-                        transform: translateX(calc(#{$blind-direction-change} * #{$blind-height / 2}));
-                        transition-delay: calc(#{$blind-delay} * #{$b - 1});
-                    }
-                }
-            }
-            
-            &-blinds:hover > &-blind {
-                transform: translateX(0);
-            }
         } // &__illustration
     } //.contact
     
@@ -951,10 +930,15 @@
         .contact {
             &__illustration {
                 &-blind {
+                    flex: 1 1 auto;
+                    background-image: inherit;
+                    background-position: center calc(var(--b) * #{$blind-height} * -1);
+                    background-size: #{$blinds-size} #{$blinds-size};
+                    transform: translateX(calc(#{$blind-offset} * var(--blindDirection)));
                     animation:
                         blindsSlide
                         #{$blind-duration}
-                        ease-in-out
+                        cubic-bezier(.67, 0, .33, 1)
                         calc(#{$blind-delay} * var(--b) - #{$blind-duration})
                         alternate
                         infinite;
@@ -962,12 +946,16 @@
                     &:nth-child(odd) { --blindDirection: -1; }
                     &:nth-child(even) { --blindDirection: 1; }
                 }
+                
+                &-blinds:hover &-blind {
+                    --blindDirection: .5;
+                }
             }
         }
 
         @keyframes blindsSlide {
-            from { transform: translateX(calc(var(--blindDirection) * #{$blind-height/2})); }
-            to { transform: translateX(0); }
+            from { transform: translate(calc( var(--blindDirection) * #{$blind-offset} )); }
+            to { transform: translate(calc( var(--blindDirection) * #{$blind-offset} * -1 )); }
         }
     }
 
