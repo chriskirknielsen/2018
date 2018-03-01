@@ -177,12 +177,12 @@ function MenuHandler(ticker, menuElements, logoElement) {
     const TICKER_CALLBACK_NAME = 'updateActiveMenu';
     
     function assignActiveMenu(targetMenu) {
-        if (targetMenu.hasAttribute('aria-active')) { // No point in doing these operations if the menu is already active
+        if (targetMenu.hasAttribute('aria-selected')) { // No point in doing these operations if the menu is already active
             return;
         }
 
-        $('[aria-active="true"]').removeAttribute('aria-active');
-        targetMenu.parentElement.setAttribute('aria-active', 'true');
+        $('[aria-selected="true"]').removeAttribute('aria-selected');
+        targetMenu.parentElement.setAttribute('aria-selected', 'true');
     }
     
     function clickAction(evt, targetMenu) {
@@ -224,7 +224,7 @@ function MenuHandler(ticker, menuElements, logoElement) {
     
     this.getActiveMenuId = function () {
         /* Select the active menu's link and return its target href */
-        return $('[aria-active="true"] > a').getAttribute('href').split('#')[1];
+        return $('[aria-selected="true"] > a').getAttribute('href').split('#')[1];
     }
     
     var scroller = new ScrollToTarget(ticker);
@@ -412,26 +412,22 @@ function ProjectModal(projects) {
             projectMediaContent = projectData.embed;
         }
         else if (projectData.slideshow) { // Create simple slideshow
-            var original_i = 0,
-                thumbnail_i = 0;
-
-            projectMediaContent = '<div class="slideshow">' +
-                projectData.slideshow.map(function (i) { // Pure CSS slideshow
-                ++thumbnail_i;
-                // Create a radio input and an associated label to select an image
-                return '<input type="radio" name="slideshow" id="slideshow_item_' + thumbnail_i + '" class="slideshow__radio"' + ((thumbnail_i === 1) ? ' checked' : '') + '>' +
-                    '<label for="slideshow_item_' + thumbnail_i + '" class="slideshow__label"><div class="slideshow__label-thumbnail" style="background-image: url(' + i.tb + ')"></div></label>';
-            }).join(' ') +
-                '<div class="slideshow__container loader">' +
-                projectData.slideshow.map(function (i) {
-                original_i++;
-                return '<div class="slideshow__container-image" style="background-image: url(' + i.o + ')"></div>';
-            }).join('') +
-                '</div>' +
+            projectMediaContent =
+                '<div class="slideshow">' +
+                    projectData.slideshow.map(function (slide, i) { // Pure CSS slideshow
+                    // Create a radio input and an associated label to select an image
+                        return '<input type="radio" name="slideshow" id="slideshow_item_' + i + '" class="slideshow__radio"' + (i === 0 ? ' checked' : '') + '>' +
+                            '<label for="slideshow_item_' + i + '" class="slideshow__label"><div class="slideshow__label-thumbnail" style="background-image: url(' + slide.tb + ')" role="img" aria-label="Thumbnail for image '+(i+1)+' out of '+projectData.slideshow.length+'"></div></label>';
+                    }).join(' ') +
+                    '<div class="slideshow__container loader">' +
+                        projectData.slideshow.map(function (slide, i) {
+                return '<div class="slideshow__container-image" style="background-image: url(' + slide.o + ')" role="img" aria-label="Full-sized image '+(i+1)+' out of '+projectData.slideshow.length+'"></div>';
+                        }).join('') +
+                    '</div>' +
                 '</div>';
         }
         else { // Show single image
-            projectMediaContent = '<div class="modal__image loader" style="background-image: url(' + projectData.image + ');"></div>';
+            projectMediaContent = '<div class="modal__image loader" style="background-image: url(' + projectData.image + ');" role="img" aria-label="' + projectData.name + ' image"></div>';
         }
 
         setTimeout(function () { // Handle if a transition warrants a delay in the change of content or not
@@ -446,7 +442,7 @@ function ProjectModal(projects) {
             this.details.type.innerText = projectData.type.join(' / ');
 
             this.details.tools.innerHTML = projectData.tools.map(function (t) {
-                return '<span class="tool-icon tool-icon__' + t.toLowerCase().replace(/\s+/g, '') + '" data-tip="' + t + '" data-tip-nowrap="true" data-tip-reverse="true" data-tip-position="left">' + t + '</span>';
+                return '<span class="tool-icon tool-icon__' + t.toLowerCase().replace(/\s+/g, '') + '" data-tip="' + t + '" data-tip-nowrap="true" data-tip-reverse="true" data-tip-position="left" aria-label="' + t + '" role="img">' + t + '</span>';
             }).join(' '); // Creates a span for each tool in the array and associates a lowercase, spaceless classname to it
 
             this.description.innerHTML = projectData.description;

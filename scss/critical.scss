@@ -1,11 +1,11 @@
 $critical: true;
 @charset 'utf-8';
 @import 'colors',
-        'init',
-        'vars',
-        'mixins',
-        'helpers',
-        'base';
+    'init',
+    'vars',
+    'mixins',
+    'helpers',
+    'base';
 
 @media screen and (max-width: #{$responsive-bp}) {
     @import 'mobile';

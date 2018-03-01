@@ -232,11 +232,13 @@
                 fill: color(z);
             }
             
-            &:hover {
+            &:hover,
+            &:focus {
                 filter: drop-shadow(-2px 0 0 color(main));
             }
             
-            &:hover &-svg {
+            &:hover &-svg,
+            &:focus &-svg {
                 filter: drop-shadow(2px 0 0 color(comp));
             }
         }
@@ -265,17 +267,6 @@
                 }
             }
             
-            &-item[aria-active="true"] > &-link {
-                &::before {
-                    background: color(comp);
-                    clip: rect(3.75rem auto 4rem auto);
-                    clip-path: polygon(0% 3.75rem, 100% 3.75rem, 100% 4rem, 0 4rem);
-                    z-index: z(menu, 5);
-                    transition: none;
-                    animation: none;
-                }
-            }
-            
             &-link {
                 position: relative;
 
@@ -287,16 +278,39 @@
                     line-height: inherit;
                     vertical-align: middle;
                     color: color(a);
-                    background: color(main);
+                    background-color: color(main);
                     clip: rect(4rem auto 4rem auto);
-                    clip-path: polygon(0% 4rem, 100% 4rem, 100% 4rem, 0 4rem);
+                    clip-path: polygon(
+                        0% 4rem,
+                        100% 4rem,
+                        100% 4rem,
+                        0 4rem);
                     z-index: z(menu, 5);
+                    transition-property: background-color, clip, clip-path;
+                    transition-duration: .2s;
+                    transition-timing-function: ease-in-out;
+                    transition-delay: .02s;
                 }
             }
-
-            &-item:not([aria-active="true"]) > &-link:hover::before,
-            &-item:not([aria-active="true"]) > &-link:focus::before {
-                animation: menuNavItem .35s cubic-bezier(0, 0, 0, 1) both .02s;
+            
+            &-item:not([aria-selected="true"]) > &-link:hover::before,
+            &-item:not([aria-selected="true"]) > &-link:focus::before,
+            &-item[aria-selected="true"] > &-link::before {
+                clip: rect(3.75rem auto 4rem auto);
+                clip-path: polygon(
+                    0% 3.75rem,
+                    100% 3.75rem,
+                    100% 4rem,
+                    0 4rem);
+            }
+            
+            &-item[aria-selected="true"] > &-link::before {
+                background-color: color(comp);
+            }
+            
+            &-item:not([aria-selected="true"]) > &-link:hover::before,
+            &-item:not([aria-selected="true"]) > &-link:focus::before {
+                animation: menuNavItem .35s cubic-bezier(0, 0, .5, 1) backwards .02s;
             }
         }
 
@@ -592,11 +606,11 @@
     @keyframes presentationSun {
         0% {
             //background-position: 0 0;
-            transform: perspective(16rem) rotateX(-42deg) translateY(0);
+            transform: perspective(#{$intro-sun-pers}) rotateX(-60deg) translateY(0);
         }
         100% {
             //background-position: 0 1.5rem;
-            transform: perspective(16rem) rotateX(-42deg) translateY(1.5rem);
+            transform: perspective(#{$intro-sun-pers}) rotateX(-60deg) translateY(1.5rem);
         }
     }
 } // end @if $critical
@@ -608,20 +622,15 @@
 @if $loadall or not $critical {
     @keyframes menuNavItem {
         0% {
-            background: color(z);
-            opacity: 0;
             clip: rect(0rem auto 0rem auto);
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
             animation-timing-function: linear;
         }
         50% {
-            opacity: 1;
             clip: rect(1.5rem auto 3.5rem auto);
             clip-path: polygon(0% 1.5rem, 100% 1.5rem, 100% 3.5rem, 0 3.5rem);
         }
         100% {
-            background: color(main);
-            opacity: 1;
             clip: rect(3.75rem auto 4rem auto);
             clip-path: polygon(0% 3.75rem, 100% 3.75rem, 100% 4rem, 0 4rem);
         }
@@ -934,7 +943,6 @@
                     background-image: inherit;
                     background-position: center calc(var(--b) * #{$blind-height} * -1);
                     background-size: #{$blinds-size} #{$blinds-size};
-                    transform: translateX(calc(#{$blind-offset} * var(--blindDirection)));
                     animation:
                         blindsSlide
                         #{$blind-duration}
@@ -954,8 +962,8 @@
         }
 
         @keyframes blindsSlide {
-            from { transform: translate(calc( var(--blindDirection) * #{$blind-offset} )); }
-            to { transform: translate(calc( var(--blindDirection) * #{$blind-offset} * -1 )); }
+            from { transform: translate3d(calc( var(--blindDirection) * #{$blind-offset} ), 0, 0); }
+            to { transform: translate3d(calc( var(--blindDirection) * #{$blind-offset} * -1 ), 0, 0); }
         }
     }
 
@@ -1335,11 +1343,15 @@
         }
 
         &__container {
+            position: relative;
             width: calc(100% - 10rem);
             height: inherit;
 
             &-image {
-                display: none;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
                 width: 100%;
                 height: 100%;
                 background-position: center;
@@ -1350,7 +1362,7 @@
 
         @for $s from 1 through 8 {
             &__radio:nth-of-type(#{$s}):checked ~ &__container > &__container-image:nth-of-type(#{$s}) {
-                display: block;
+                opacity: 1;
             }
         }
         

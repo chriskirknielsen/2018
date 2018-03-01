@@ -1,10 +1,10 @@
 $critical: false;
 @charset 'utf-8';
 @import 'colors',
-        'vars',
-        'mixins',
-        'icons',
-        'base';
+    'vars',
+    'mixins',
+    'icons',
+    'base';
 
 @media screen and (max-width: #{$responsive-bp}) {
     @import 'mobile';

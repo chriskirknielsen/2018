@@ -162,7 +162,7 @@ $tip-move: 1rem;
         white-space: nowrap;
     }
     
-    &[data-tip-reverse="true"] {
+    &[data-tip-reverse="true"] { // Inverses colour scheme
         &:not([data-tip-position]),
         &[data-tip-position="bottom"] {
             &::before {
