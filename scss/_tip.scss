@@ -54,7 +54,7 @@ $tip-move: 1rem;
         &::before,
         &::after {
             left: 50%;
-            transform: translate(-50%, -#{$tip-move});
+            transform: translate(-50%, #{$tip-move * -1});
         }
 
         &::before {
@@ -135,7 +135,7 @@ $tip-move: 1rem;
         &::before,
         &::after {
             top: 50%;
-            transform: translate(-#{$tip-move}, -50%);
+            transform: translate(#{$tip-move * -1}, -50%);
         }
 
         &::before {

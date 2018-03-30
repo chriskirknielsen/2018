@@ -93,7 +93,7 @@ $grid-gutter: .5rem;
         
         &::before { // Anchor offset
             height: #{$menu-offset};
-            margin: -#{$menu-offset + $site-frame} 0 0;
+            margin: #{0 - $menu-offset - $site-frame} 0 0;
         }
 
         &:not(:last-child) {

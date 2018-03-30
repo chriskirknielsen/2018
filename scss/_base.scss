@@ -58,16 +58,29 @@
     }
 
     a {
+        position: relative;
         color: inherit;
         text-decoration: none;
         
         &:not([class]) {
             display: inline-block;
             @include text-shadow(color(a, 100));
-            background-image: linear-gradient(color(main), color(main));
-            background-repeat: no-repeat;
-            background-size: 100% .0625em;
-            background-position: 0 87.5%;
+            
+            > span {
+                position: relative;
+            }
+            
+            &::before {
+                content: '';
+                position: absolute;
+                left: -.0625em;
+                top: 0;
+                width: calc(100% + .125em);
+                height: 100%;
+                background-image: linear-gradient(0deg, color(main), color(main));
+                transform-origin: 50% 87.5%;
+                transform: scaleY(.042);
+            }
         }
     }
 } // end @if $critical
@@ -79,16 +92,21 @@
 @if $loadall or not $critical {
     a {
         &:not([class]) {
-            transition-property: text-shadow, background-size;
-            transition-duration: .35s;
-            transition-timing-function: #{$transition-function};
-            transition-delay: .02s;
+            transition: text-shadow .35s #{$transition-function} 0s;
+            
+            &::before {
+                transition: inherit;
+                transition-property: transform;
+            }
             
             &:hover,
             &:focus {
                 color: color(z);
                 @include text-shadow(color(a, 0), true);
-                background-size: 100% 1.5em;
+                
+                &::before {
+                    transform: scaleY(1);
+                }
             }
         }
     }
@@ -220,7 +238,7 @@
             flex: none;
             display: flex;
             align-items: center;
-            width: #{$sqrt3 / 2 * 4rem}; // hexagon_width = sqrt(3) / 2 * hexagon_height
+            width: #{$sqrt3 / 2 * $menu-height}; // hexagon_width = sqrt(3) / 2 * hexagon_height
             transition: filter .1s ease-in-out 0s;
             
             &-svg {
@@ -287,15 +305,14 @@
                         0 4rem);
                     z-index: z(menu, 5);
                     transition-property: background-color, clip, clip-path;
-                    transition-duration: .2s;
+                    transition-duration: .1s;
                     transition-timing-function: ease-in-out;
-                    transition-delay: .02s;
                 }
             }
             
-            &-item:not([aria-selected="true"]) > &-link:hover::before,
-            &-item:not([aria-selected="true"]) > &-link:focus::before,
-            &-item[aria-selected="true"] > &-link::before {
+            &-item:not([aria-current="true"]) > &-link:hover::before,
+            &-item:not([aria-current="true"]) > &-link:focus::before,
+            &-item[aria-current="true"] > &-link::before {
                 clip: rect(3.75rem auto 4rem auto);
                 clip-path: polygon(
                     0% 3.75rem,
@@ -304,13 +321,13 @@
                     0 4rem);
             }
             
-            &-item[aria-selected="true"] > &-link::before {
+            &-item[aria-current="true"] > &-link::before {
                 background-color: color(comp);
             }
             
-            &-item:not([aria-selected="true"]) > &-link:hover::before,
-            &-item:not([aria-selected="true"]) > &-link:focus::before {
-                animation: menuNavItem .35s cubic-bezier(0, 0, .5, 1) backwards .02s;
+            &-item:not([aria-current="true"]) > &-link:hover::before,
+            &-item:not([aria-current="true"]) > &-link:focus::before {
+                animation: menuNavItem .25s cubic-bezier(0, 0, .5, 1) backwards;
             }
         }
 
@@ -389,7 +406,7 @@
             display: block;
             width: inherit;
             height: #{$menu-offset};
-            margin: -#{$menu-offset + $site-frame} 0 0;
+            margin: #{0 - $menu-offset - $site-frame} 0 0;
             visibility: hidden; 
             z-index: -1;
             pointer-events: none;
@@ -946,24 +963,18 @@
                     animation:
                         blindsSlide
                         #{$blind-duration}
-                        cubic-bezier(.67, 0, .33, 1)
+                        ease-in-out
                         calc(#{$blind-delay} * var(--b) - #{$blind-duration})
                         alternate
                         infinite;
-                    
-                    &:nth-child(odd) { --blindDirection: -1; }
-                    &:nth-child(even) { --blindDirection: 1; }
-                }
-                
-                &-blinds:hover &-blind {
-                    --blindDirection: .5;
+                    will-change: transform;
                 }
             }
         }
 
         @keyframes blindsSlide {
-            from { transform: translate3d(calc( var(--blindDirection) * #{$blind-offset} ), 0, 0); }
-            to { transform: translate3d(calc( var(--blindDirection) * #{$blind-offset} * -1 ), 0, 0); }
+            from { transform: translateX( #{ $blind-offset * .5 }); }
+            to   { transform: translateX(#{ $blind-offset * -.5 }); }
         }
     }
 
@@ -1101,22 +1112,31 @@
 
         &__media {
             position: relative;
-            flex: 1 0 auto;
+            flex: 1 1 auto;
             display: flex;
             background: color(a);
         }
 
         &__image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
             height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
+            
+            &-img {
+                position: relative;
+                flex: 0;
+                max-height: 100%;
+                object-fit: contain;
+                z-index: 1;
+            }
         }
         
         &__info {
-            flex: 1 0 none;
+            flex: 1 1 auto;
             width: 25vw;
+            min-width: 20rem;
             max-width: 24rem;
             background: color(z);
             overflow-y: auto;
@@ -1279,6 +1299,7 @@
         &__description {
             > a { // Adjusted for modal background color
                 @include text-shadow(color(z, 100));
+                transition-property: color, text-shadow;
 
                 &:hover,
                 &:focus {
@@ -1357,6 +1378,8 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
+                transition: opacity .2s ease-in-out;
+                z-index: z(modal, 6);
             }
         }
 
@@ -1390,7 +1413,7 @@
             width: 6rem;
             height: .25rem;
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: 0;
         }
         
         &::before {

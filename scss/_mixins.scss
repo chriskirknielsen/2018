@@ -33,18 +33,18 @@
 @mixin text-shadow($color, $merge: false) {
     @if ($merge) {
         text-shadow:
-        0 0 0 #{$color},
-        0 0 0 #{$color},
-        0 0 0 #{$color},
-        0 0 0 #{$color},
-        0 0 0 #{$color};
+            0 0 0 #{$color},
+            0 0 0 #{$color},
+            0 0 0 #{$color},
+            0 0 0 #{$color},
+            0 0 0 #{$color};
     }
     @else {
         text-shadow:
-            -1px 0   0 #{$color},
-            1px 0   0 #{$color},
-            -1px 1px 0 #{$color},
-            0px 1px 0 #{$color},
-            1px 1px 0 #{$color};
+           -1px  0   0 #{$color},
+            1px  0   0 #{$color},
+           -1px  1px 0 #{$color},
+            0px  1px 0 #{$color},
+            1px  1px 0 #{$color};
     }
 }

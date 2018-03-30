@@ -177,12 +177,12 @@ function MenuHandler(ticker, menuElements, logoElement) {
     const TICKER_CALLBACK_NAME = 'updateActiveMenu';
     
     function assignActiveMenu(targetMenu) {
-        if (targetMenu.hasAttribute('aria-selected')) { // No point in doing these operations if the menu is already active
+        if (targetMenu.hasAttribute('aria-current')) { // No point in doing these operations if the menu is already active
             return;
         }
 
-        $('[aria-selected="true"]').removeAttribute('aria-selected');
-        targetMenu.parentElement.setAttribute('aria-selected', 'true');
+        $('[aria-current="true"]').removeAttribute('aria-current');
+        targetMenu.parentElement.setAttribute('aria-current', 'true');
     }
     
     function clickAction(evt, targetMenu) {
@@ -224,7 +224,7 @@ function MenuHandler(ticker, menuElements, logoElement) {
     
     this.getActiveMenuId = function () {
         /* Select the active menu's link and return its target href */
-        return $('[aria-selected="true"] > a').getAttribute('href').split('#')[1];
+        return $('[aria-current="true"] > a').getAttribute('href').split('#')[1];
     }
     
     var scroller = new ScrollToTarget(ticker);
@@ -427,7 +427,7 @@ function ProjectModal(projects) {
                 '</div>';
         }
         else { // Show single image
-            projectMediaContent = '<div class="modal__image loader" style="background-image: url(' + projectData.image + ');" role="img" aria-label="' + projectData.name + ' image"></div>';
+            projectMediaContent = '<div class="modal__image loader"><img src="' + projectData.image + '" alt="' + projectData.name + ' image" class="modal__image-img"></div>';
         }
 
         setTimeout(function () { // Handle if a transition warrants a delay in the change of content or not
@@ -629,3 +629,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
     /* And finally, we can get the ticker going */
     ticker.start();
 });
+
+// For browsers that support registration of custom properties
+if (CSS.registerProperty) {
+    CSS.registerProperty({
+        name: "--blindDirection", // Used in .contact__illustration-blind
+        syntax: "<number>",
+        inherits: true,
+        initialValue: "0"
+    });
+}

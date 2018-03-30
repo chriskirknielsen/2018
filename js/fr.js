@@ -33,7 +33,7 @@ var lang = {
             type: ['Web Design','Intégration'],
             tools: ['Sketch','Illustrator','Brackets'],
             description:
-                'Une refonte du site <a href="https://www.ratchet-galaxy.com" target="_blank">Ratchet-Galaxy.com</a> était nécessaire depuis longtemps. J\'ai suivi ce projet depuis sa génèse en 2005, et en ai créé son fameux logo. J\'ai eu l\'opportunité de pousser ceci plus loin en 2017, en renouvellant toute l\'identité visuelle du site, en m\'inspirant des récents jeux vidéo Ratchet &amp; Clank. Cette refonte a été fait avec un aspect plus moderne et une interface plus modulable, adaptée à toutes les résolutions.<br><br>Toutes les pages ont été maquettées dans Sketch, les icônes dessinées dans Illustrator et l\'intégration a été réalisée dans Brackets, en utilisant SASS comme pré-processeur de CSS.',
+            'Une refonte du site <a href="https://www.ratchet-galaxy.com" target="_blank"><span>Ratchet-Galaxy.com</span></a> était nécessaire depuis longtemps. J\'ai suivi ce projet depuis sa génèse en 2005, et en ai créé son fameux logo. J\'ai eu l\'opportunité de pousser ceci plus loin en 2017, en renouvellant toute l\'identité visuelle du site, en m\'inspirant des récents jeux vidéo Ratchet &amp; Clank. Cette refonte a été fait avec un aspect plus moderne et une interface plus modulable, adaptée à toutes les résolutions.<br><br>Toutes les pages ont été maquettées dans Sketch, les icônes dessinées dans Illustrator et l\'intégration a été réalisée dans Brackets, en utilisant SASS comme pré-processeur de CSS.',
             logo: './img/work/tb_rgv3.png',
             background: './img/work/bg_rgv3.jpg',
             slideshow: [
@@ -59,7 +59,7 @@ var lang = {
             name: 'CR7 Mercurial Superfly',
             type: ['Web Design'],
             tools: ['Photoshop','After Effects','Brackets'],
-            description: 'Pour le lancement d\'une nouvelle paire de chaussures Nike, la Mercurial Superfly, Green Garden et moi avons créé un e-corner pour ce produit centré autour de Cristiano Ronaldo. Basé sur des éléments statiques, j\'ai réalisé de légères animations sous After Effects et les ai implémentées dans une interface responsive pour FootCenter.<br><br><a href="https://www.footcenter.fr/cr7-chapter3-discovery" target="_blank" rel="noopener">Voir le e-corner sur FootCenter.fr</a>.',
+            description: 'Pour le lancement d\'une nouvelle paire de chaussures Nike, la Mercurial Superfly, Green Garden et moi avons créé un e-corner pour ce produit centré autour de Cristiano Ronaldo. Basé sur des éléments statiques, j\'ai réalisé de légères animations sous After Effects et les ai implémentées dans une interface responsive pour FootCenter.<br><br><a href="https://www.footcenter.fr/cr7-chapter3-discovery" target="_blank" rel="noopener"><span>Voir le e-corner sur FootCenter.fr</span></a>.',
             logo: './img/work/tb_nike.png',
             background: './img/work/bg_nike.jpg',
             youtube: 'Farr2gs1bMc'
@@ -199,7 +199,7 @@ var lang = {
             name: 'Identité Chronoise',
             type: ['Logotype'],
             tools: ['Illustrator'],
-            description: 'Chronoise est mon pseudonyme pour un projet personnel démarré en 2010, avant quoi je me suis découvert un intérêt grandissant pour la musique électronique. J\'ai appros de manière autonome comment créer de la musique sur mon ordinateur et ai depuis écrit de nombreuses mélodies, et sorti plusieurs morceaux. Ceci a créé un besoin pour moi d\'avoir une identité visuelle, qui a été ajustée et perfectionnée au fil des années. La géométrie est simple et la palette de couleurs évoque une atmosphère sub-aquatique, puisque créer cette musique me transporte ailleurs, me mettant dans un état d\'esprit calme.<br><br>Écouter de la musique sur <a href="https://chronoise.com" target="_blank" rel="noopener">Chronoise.com</a>, <a href="https://chronoise.bandcamp.com" target="_blank" rel="noopener" title="Chronoise on Bandcamp">Bandcamp</a>, et <a href="https://soundcloud.com/chronoise" target="_blank" rel="noopener" title="Chronoise on SoundCloud">SoundCloud</a>.',
+            description: 'Chronoise est mon pseudonyme pour un projet personnel démarré en 2010, avant quoi je me suis découvert un intérêt grandissant pour la musique électronique. J\'ai appros de manière autonome comment créer de la musique sur mon ordinateur et ai depuis écrit de nombreuses mélodies, et sorti plusieurs morceaux. Ceci a créé un besoin pour moi d\'avoir une identité visuelle, qui a été ajustée et perfectionnée au fil des années. La géométrie est simple et la palette de couleurs évoque une atmosphère sub-aquatique, puisque créer cette musique me transporte ailleurs, me mettant dans un état d\'esprit calme.<br><br>Écouter de la musique sur <a href="https://chronoise.com" target="_blank" rel="noopener"><span>Chronoise.com</span></a>, <a href="https://chronoise.bandcamp.com" target="_blank" rel="noopener" title="Chronoise on Bandcamp"><span>Bandcamp</span></a>, et <a href="https://soundcloud.com/chronoise" target="_blank" rel="noopener" title="Chronoise on SoundCloud"><span>SoundCloud</span></a>.',
             logo: './img/work/tb_chronoise.png',
             background: './img/work/bg_chronoise.jpg',
             image: './img/work/fs_chronoise.jpg'
