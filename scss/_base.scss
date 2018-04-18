@@ -4,6 +4,7 @@
     body {
         position: relative;
         color: color(z);
+        font-family: $font-main;
         background-color: color(a);
         z-index: z(body, 0);
 
@@ -27,19 +28,6 @@
         &::after {
             bottom: 0;
         }
-    }
-
-    body:not(.main-font-loaded) {
-        font-family: 'Trebuchet MS', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-        letter-spacing: -.0375em;
-        word-spacing: .05em;
-    }
-
-    body.main-font-loaded,
-    body.no-js {
-        font-family: $font-main;
-        letter-spacing: 0;
-        word-spacing: 0;
     }
 
     h1 {
@@ -305,7 +293,7 @@
                         0 4rem);
                     z-index: z(menu, 5);
                     transition-property: background-color, clip, clip-path;
-                    transition-duration: .1s;
+                    transition-duration: .2s;
                     transition-timing-function: ease-in-out;
                 }
             }
@@ -327,7 +315,7 @@
             
             &-item:not([aria-current="true"]) > &-link:hover::before,
             &-item:not([aria-current="true"]) > &-link:focus::before {
-                animation: menuNavItem .25s cubic-bezier(0, 0, .5, 1) backwards;
+                animation: menuNavItem .35s cubic-bezier(0, 0, .5, 1) backwards;
             }
         }
 
@@ -478,7 +466,7 @@
                 max-height: 100vmax;
                 background-image: linear-gradient(to bottom, color(a) 0%, #40112c 65.5%, #330723 65.5%, #303a4b 82.75%, color(a) 100%);
                 transform: translateX(-50%);
-            }
+            } // &-video
 
             &-text {
                 position: relative;
@@ -486,20 +474,24 @@
                 min-width: 19rem;
                 max-width: 100%;
                 margin: 0 auto;
+                text-align: center;
             } // &-text
             
             &-sun {
                 position: absolute;
-                left: 50%;
+                left: 0;
+                right: 0;
                 top: -2vmin;
+                bottom: 2vmin;
                 width: 56.25%;
+                margin: auto;
                 padding-top: 56.25%;
                 border-radius: 50%;
                 box-shadow:
                     0 0      0      .25rem color(a),
                     0 1.5rem 1.5rem        color(comp, 25);
-                transform: translateX(-50%);
                 overflow: hidden;
+                @include intro-reveal(0);
                 z-index: z(presentation, 1);
 
                 &::before,
@@ -812,6 +804,12 @@
             opacity: 0;
             transform: scale(1.25);
         }
+        
+        &__name {
+            position: absolute;
+            clip: rect(1px 1px 1px 1px); // syntax for IE6 & IE7
+            clip: rect(1px, 1px, 1px, 1px);
+        }
     }
     
     @supports (display: grid) {
@@ -896,8 +894,8 @@
                 text-align: left;
                 z-index: z(contact, 1);
                 
-                &:not(:last-child) {
-                    margin-bottom: 1rem;
+                & + & {
+                    margin-top: 1rem;
                 }
             }
             
@@ -1126,7 +1124,6 @@
             
             &-img {
                 position: relative;
-                flex: 0;
                 max-height: 100%;
                 object-fit: contain;
                 z-index: 1;

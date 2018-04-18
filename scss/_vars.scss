@@ -1,7 +1,7 @@
 $loadall: false !default; // Debugging option to load all CSS, bypassing critical CSS condition
 
-$font-main: 'Gidole Regular', 'DIN Pro', 'DIN', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Main font stack
-$font-title: 'Suez One Regular', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Titling font stack
+$font-main: 'gidole', 'DIN Pro', 'DIN', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Main font stack
+$font-title: 'suezone', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Titling font stack
 
 $responsive-bp: 960px; //60rem
 $site-max-width: 1920px; // 120rem

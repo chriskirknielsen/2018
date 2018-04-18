@@ -20,14 +20,14 @@
 }
 
 @mixin intro-reveal($order, $anim: null) {
-    $offset: .4; // Initial delay
-    $delay: .1s;
+    $offset: .4s; // Initial delay
+    $delay: .3s;
     
     @if ($anim == null) {
         $anim: introRevealUp;
     }
     
-    animation: #{$anim} 1s cubic-bezier(0, 0, 0, 1) both ($offset + ($order - 1) * $delay);
+    animation: #{$anim} 1s cubic-bezier(0, 0, 0, 1) both ($offset + $order * $delay);
 }
 
 @mixin text-shadow($color, $merge: false) {

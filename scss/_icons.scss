@@ -12,10 +12,10 @@ $icon-list: (behance, dribbble, github, codepen, linkedin);
 
 @for $icon from 1 through length($icon-list) {
     $current-icon: nth($icon-list, $icon);
-    $current-icon-pos: ($icon - 1) * -1;
+    $current-icon-pos: $icon - 1;
 
     .icon__#{$current-icon} {
-        background-position: $icon-size*$current-icon-pos 0;
+        background-position: #{$icon-size * $current-icon-pos * -1} 0;
     }
 }
 
@@ -39,10 +39,10 @@ $tool-list: (photoshop, illustrator, indesign, premierepro, aftereffects, sketch
 
 @for $tool from 1 through length($tool-list) {
     $current-tool: nth($tool-list, $tool);
-    $current-tool-pos: ($tool - 1) * -1;
+    $current-tool-pos: $tool - 1;
 
     .tool-icon__#{$current-tool} {
-        background-position: $tool-icon-size*$current-tool-pos 0;
+        background-position: #{$tool-icon-size * $current-tool-pos * -1} 0;
     }
 }
 
@@ -62,9 +62,9 @@ $contact-list: (email, phone, skype, geo);
 
 @for $contact from 1 through length($contact-list) {
     $current-contact: nth($contact-list, $contact);
-    $current-contact-pos: ($contact - 1) * -1;
+    $current-contact-pos: $contact - 1;
 
     .contact__list-icon_#{$current-contact} {
-        background-position: #{$contact-icon-size*$current-contact-pos} center;
+        background-position: #{$contact-icon-size * $current-contact-pos * -1} center;
     }
 }

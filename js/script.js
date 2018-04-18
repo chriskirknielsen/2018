@@ -573,13 +573,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             pButton.setAttribute('type', 'button');
             pButton.setAttribute('class', 'project');
-            pButton.setAttribute('aria-label', proj.name);
+            pButton.setAttribute('aria-labelledby', 'project-name-'+p);
             pButton.setAttribute('data-project-id', p);
 
             pButton.innerHTML += "\n" +
                 '<div class="project__frame">' + "\n" +
                 '<div class="project__image" style="background-image: url(' + proj.background + ');"></div>' + "\n" +
                 '<div class="project__logo" style="background-image: url(' + proj.logo + ');"></div>' + "\n" +
+                '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
                 '</div>' + "\n" +
                 "\n";
 
@@ -629,13 +630,3 @@ document.addEventListener('DOMContentLoaded', function (e) {
     /* And finally, we can get the ticker going */
     ticker.start();
 });
-
-// For browsers that support registration of custom properties
-if (CSS.registerProperty) {
-    CSS.registerProperty({
-        name: "--blindDirection", // Used in .contact__illustration-blind
-        syntax: "<number>",
-        inherits: true,
-        initialValue: "0"
-    });
-}
