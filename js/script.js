@@ -251,8 +251,8 @@ function MenuHandler(ticker, menuElements, logoElement) {
 function ProjectModal(projects) {
     const TRANSITION_DURATION = 350; // ms (CSS transition time 300ms + 50ms compensation for potential delay)
     
-    var opened = false,
-        projectCount = projects.length;
+    var opened = false;
+    var projectCount = projects.length;
     
     this.current = 0;
     this.dragging = false;
@@ -289,6 +289,7 @@ function ProjectModal(projects) {
         this.wrapper.setAttribute('data-projects', projectCount);
 
         this.content.setAttribute('class', 'modal__content');
+        this.content.setAttribute('tabindex', '0');
 
         this.media.setAttribute('class', 'modal__media');
 
@@ -310,11 +311,11 @@ function ProjectModal(projects) {
 
         this.logo.setAttribute('class', 'modal__logo');
 
-        this.name.setAttribute('class', 'modal__name font__title text__center');
+        this.name.setAttribute('class', 'modal__name font--title text--center');
 
         this.details.container.setAttribute('class', 'modal__details');
 
-        this.details.type.setAttribute('class', 'modal__details-type color__a-m');
+        this.details.type.setAttribute('class', 'modal__details-type color--a-m');
 
         this.details.tools.setAttribute('class', 'modal__details-tools');
 
@@ -360,7 +361,8 @@ function ProjectModal(projects) {
         
         opened = true;
 
-        document.activeElement.blur(); // Remove the focus on the project button
+        document.activeElement.blur(); // Remove the focus on the project button…
+        this.content.focus(); // …and focus the project modal
     }
 
     this.load = function (projectId) {
@@ -416,12 +418,12 @@ function ProjectModal(projects) {
                 '<div class="slideshow">' +
                     projectData.slideshow.map(function (slide, i) { // Pure CSS slideshow
                     // Create a radio input and an associated label to select an image
-                        return '<input type="radio" name="slideshow" id="slideshow_item_' + i + '" class="slideshow__radio"' + (i === 0 ? ' checked' : '') + '>' +
-                            '<label for="slideshow_item_' + i + '" class="slideshow__label"><div class="slideshow__label-thumbnail" style="background-image: url(' + slide.tb + ')" role="img" aria-label="Thumbnail for image '+(i+1)+' out of '+projectData.slideshow.length+'"></div></label>';
+                        return '<input type="radio" name="slideshow" id="slideshow_item_' + i + '" class="slideshow__radio visually-hidden" value="'+i+'" ' + (i === 0 ? ' checked' : '') + '>' +
+                        '<label for="slideshow_item_' + i + '" class="slideshow__label"><div class="slideshow__label-thumbnail" style="background-image: url(' + slide.tb + ')" role="img" aria-label="Thumbnail for image '+(i+1)+' out of '+projectData.slideshow.length+'"></div></label>';
                     }).join(' ') +
                     '<div class="slideshow__container loader">' +
                         projectData.slideshow.map(function (slide, i) {
-                return '<div class="slideshow__container-image" style="background-image: url(' + slide.o + ')" role="img" aria-label="Full-sized image '+(i+1)+' out of '+projectData.slideshow.length+'"></div>';
+                            return '<div class="slideshow__container-image" style="background-image: url(' + slide.o + ')" role="img" aria-label="Full-sized image '+(i+1)+' out of '+projectData.slideshow.length+'"></div>';
                         }).join('') +
                     '</div>' +
                 '</div>';
@@ -579,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             pButton.innerHTML += "\n" +
                 '<div class="project__frame">' + "\n" +
                 '<div class="project__image" style="background-image: url(' + proj.background + ');"></div>' + "\n" +
-                '<div class="project__logo" style="background-image: url(' + proj.logo + ');"></div>' + "\n" +
+                '<img src="' + proj.logo + '" class="project__logo" alt="' + proj.name + ' logo">' + "\n" +
                 '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
                 '</div>' + "\n" +
                 "\n";
@@ -614,6 +616,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
         
         if (projectModal.isOpened()) { // Only execute if the modal is open
             if (e.keyCode == 27 || e.key == "Esc" || e.key == "Escape") { // If the user presses 'escape'
+                if (projectModal.dragging) { // If Esc is pressed while dragging the modal, cancel dragging
+                    projectModal.onUp(false, 'mouse');
+                    return;
+                }
+                
                 projectModal.close();
             }
 

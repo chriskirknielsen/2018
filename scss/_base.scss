@@ -788,11 +788,9 @@
         &__logo {
             position: absolute;
             @include pos(0);
-            width: 100%;
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
+            max-width: 100%;
+            height: auto;
+            margin: auto;
             z-index: z(projects, 2);
             transition:
                 opacity .5s cubic-bezier(1, 0, 0, 1) .02s,
@@ -807,8 +805,12 @@
         
         &__name {
             position: absolute;
+            width: 1px; 
+            height: 1px;
+            overflow: hidden;
             clip: rect(1px 1px 1px 1px); // syntax for IE6 & IE7
             clip: rect(1px, 1px, 1px, 1px);
+            clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         }
     }
     
@@ -831,7 +833,7 @@
         &__group {
             flex: none;
             width: 50%;
-            margin-bottom: 2rem;
+            margin-bottom: 1.175rem;
 
             &:nth-of-type(odd) {
                 padding-right: 1rem;
@@ -840,6 +842,12 @@
 
             &:nth-of-type(even) {
                 padding-left: 1rem;
+            }
+            
+            &-title {
+                &:not(:first-child) {
+                    margin-top: 1.175rem;
+                }
             }
 
             &-list {
@@ -1034,7 +1042,7 @@
             background: color(a, 75);
             overflow: hidden;
             animation: projectModalBackgroundReveal .25s ease-out;
-            z-index: z(modal, 5);
+            z-index: z(modal, 2);
             overscroll-behavior-y: none;
 
             &::after {
@@ -1071,7 +1079,7 @@
                 transform 0s linear,
                 box-shadow .3s ease-in-out;
             animation: projectModalContentReveal .25s cubic-bezier(0, .5, 0, 1);
-            z-index: z(modal, 10);
+            z-index: z(modal, 5);
 
             &--loaded { // Add fake containers to each side for slide transitions
                 box-shadow:
@@ -1149,6 +1157,7 @@
             margin-bottom: .5rem;
             text-align: center;
             background-color: color(a-m);
+            z-index: z(modal, 7);
         } // &__buttons
         
         &__button {
@@ -1168,7 +1177,8 @@
                 font-size: 0;
             }
 
-            &:hover {
+            &:hover,
+            &:focus {
                 color: color(z);
             }
 
@@ -1182,7 +1192,8 @@
                 background-size: 200% 100%;
                 background-position: 0% 50%;
 
-                &:hover {
+                &:hover,
+                &:focus {
                     background-position: 100% 50%;
                 }
 
@@ -1197,7 +1208,8 @@
                 background-size: 200% 100%;
                 background-position: 100% 50%;
 
-                &:hover {
+                &:hover,
+                &:focus {
                     background-position: 0% 50%;
                 }
 
@@ -1228,7 +1240,8 @@
                 background-size: 100% 200%;
                 background-position: 50% 0%;
 
-                &:hover {
+                &:hover,
+                &:focus {
                     background-position: 50% 100%;
                 }
 
@@ -1318,6 +1331,8 @@
     }
 
     .slideshow {
+        $ancestor: &;
+        
         position: relative;
         display: flex;
         flex-flow: column wrap;
@@ -1325,12 +1340,11 @@
         height: 100%;
 
         &__radio {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
         }
 
         &__label {
+            $parent: &;
+            
             flex: 1 1 auto;
             display: flex;
             width: 10rem;
@@ -1347,17 +1361,18 @@
                 background-size: cover;
                 opacity: .5;
                 box-shadow: inset 0 0 0 .125rem color(m);
-
-                &:hover {
+                
+                #{$parent}:hover &,
+                #{$ancestor}__radio:focus + #{$parent} > & {
                     box-shadow: inset 0 0 0 .125rem color(z);
                     opacity: .75;
                 }
+                
+                #{$ancestor}__radio:checked + #{$parent} > & {
+                    opacity: 1;
+                    box-shadow: inset 0 0 0 .125rem color(main);
+                }
             }
-        }
-
-        &__radio:checked + &__label > &__label-thumbnail {
-            opacity: 1;
-            box-shadow: inset 0 0 0 .125rem color(main);
         }
 
         &__container {
@@ -1369,24 +1384,24 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                opacity: 0;
+                display: none;
                 width: 100%;
                 height: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
-                transition: opacity .2s ease-in-out;
-                z-index: z(modal, 6);
+                z-index: z(modal, 3);
             }
         }
 
         @for $s from 1 through 8 {
             &__radio:nth-of-type(#{$s}):checked ~ &__container > &__container-image:nth-of-type(#{$s}) {
-                opacity: 1;
+                display: block;
             }
         }
         
-        &__radio:nth-of-type(1):checked ~ &__radio:nth-of-type(2) + &__label:not(:hover) > &__label-thumbnail { // Flashing 2nd thumbnail to incite to click
+        &__radio:nth-of-type(1):checked ~ &__radio:nth-of-type(2) + &__label:not(:hover) > &__label-thumbnail,
+        &__radio:nth-of-type(1):checked ~ &__radio:nth-of-type(2) + &__label:not(:focus) > &__label-thumbnail { // Flashing 2nd thumbnail to incite to click
             animation: slideshowFlashingThumbnail 1s ease-in-out alternate infinite;
         }
         

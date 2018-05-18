@@ -33,7 +33,7 @@ var lang = {
             type: ['Web Design','Intégration'],
             tools: ['Sketch','Illustrator','Brackets'],
             description:
-            'Une refonte du site <a href="https://www.ratchet-galaxy.com" target="_blank"><span>Ratchet-Galaxy.com</span></a> était nécessaire depuis longtemps. J\'ai suivi ce projet depuis sa génèse en 2005, et en ai créé son fameux logo. J\'ai eu l\'opportunité de pousser ceci plus loin en 2017, en renouvellant toute l\'identité visuelle du site, en m\'inspirant des récents jeux vidéo Ratchet &amp; Clank. Cette refonte a été fait avec un aspect plus moderne et une interface plus modulable, adaptée à toutes les résolutions.<br><br>Toutes les pages ont été maquettées dans Sketch, les icônes dessinées dans Illustrator et l\'intégration a été réalisée dans Brackets, en utilisant SASS comme pré-processeur de CSS.',
+            'Une refonte du site <a href="https://www.ratchet-galaxy.com" target="_blank"><span>Ratchet-Galaxy.com</span></a> était nécessaire depuis longtemps. J\'ai suivi ce projet depuis sa génèse en 2005, et en ai créé son fameux logo. J\'ai eu l\'opportunité de pousser ceci plus loin en 2017, en renouvellant toute l\'identité visuelle du site, en m\'inspirant des récents jeux vidéo Ratchet &amp; Clank. Cette refonte a été fait avec un aspect plus moderne et une interface plus modulable, adaptée à toutes les résolutions.<br><br>Toutes les pages ont été maquettées dans Sketch, les icônes dessinées dans Illustrator et l\'intégration a été réalisée dans Brackets, en utilisant SASS comme pré-processeur de CSS.<br><br>J\'ai également mis à jour la police d\'écriture "Future" (basée sur le logo du jeu), redessinant chaque caractère dans Illustrator, étandant la version initiale pour faire des versions standard et italique.',
             logo: './img/work/tb_rgv3.png',
             background: './img/work/bg_rgv3.jpg',
             slideshow: [
@@ -52,6 +52,10 @@ var lang = {
                 {
                     tb: './img/work/tb_rgv3-4.jpg',
                     o: './img/work/fs_rgv3-4.jpg'
+                },
+                {
+                    tb: './img/work/tb_rgv3-5.jpg',
+                    o: './img/work/fs_rgv3-5.jpg'
                 }
             ]
         },
@@ -121,7 +125,7 @@ var lang = {
             name: 'Unrelated Posters',
             type: ['Design','Typography'],
             tools: ['Photoshop','Illustrator'],
-            description: 'Voici une poignée d\'affiches réalisées dans le but de m\'exercer.<br><br><span class="font__title">Houston :</span> Ceci est une affiche typographique avec différents niveaux de lecture menant à une célèbre citation.<br><br><span class="font__title">1984 :</span> Également un projet typographique, ceci est supposé être une couverture de livre mais fonctionne également comme affiche, évoquant la censure, qui est un thème majeur du livre.<br><br><span class="font__title">Björk :</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
+            description: 'Voici une poignée d\'affiches réalisées dans le but de m\'exercer.<br><br><span class="font--title">Houston :</span> Ceci est une affiche typographique avec différents niveaux de lecture menant à une célèbre citation.<br><br><span class="font--title">1984 :</span> Également un projet typographique, ceci est supposé être une couverture de livre mais fonctionne également comme affiche, évoquant la censure, qui est un thème majeur du livre.<br><br><span class="font--title">Björk :</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
             logo: './img/work/tb_posters.png',
             background: './img/work/bg_posters.jpg',
             slideshow: [
@@ -181,7 +185,7 @@ var lang = {
             name: 'Dissonant Covers',
             type: ['Design','Typography'],
             tools: ['Cinema 4D','Photoshop','Illustrator'],
-            description: 'Voici des jaquettes que j\'ai réalisées, commandées ou pour l\'exercice.<br><br><span class="font__title">Commerce. :</span> Commerce., un artiste de musique électronique, m\'a demandé de réaliser une jaquette pour son E.P. "Primary Colours". Il souhaite quelque chose d\'abstrait, j\'ai donc réalisé une forme biscornue en 3D et l\'ai travaillée dans Illustrator et Photoshop, lui donnant un aspect usé pour contraster avec la propreté de la forme 3D.<br><br><span class="font__title">Ghosts n’ Stuff :</span> Ceci est un exercice typographique où j\'ai tenté de réaliser une jaquette en utilisant une police d\'écriture de type Fraktur. Puisque je trouvais que la police ressemblait à des formes que l\'on trouve sur une portée de musique, j\'ai voulu illustrer "Ghosts \'n\' Stuff" par deadmau5. Le mot "Ghosts" m\'a rappelé of Pac-Man, j\'ai donc fusionné mes idées, en conservant la cohésion globale grâce à la police, que j\'ai réorganisée pour lui donner une structure plus intéressante.',
+            description: 'Voici des jaquettes que j\'ai réalisées, commandées ou pour l\'exercice.<br><br><span class="font--title">Commerce. :</span> Commerce., un artiste de musique électronique, m\'a demandé de réaliser une jaquette pour son E.P. "Primary Colours". Il souhaite quelque chose d\'abstrait, j\'ai donc réalisé une forme biscornue en 3D et l\'ai travaillée dans Illustrator et Photoshop, lui donnant un aspect usé pour contraster avec la propreté de la forme 3D.<br><br><span class="font--title">Ghosts n’ Stuff :</span> Ceci est un exercice typographique où j\'ai tenté de réaliser une jaquette en utilisant une police d\'écriture de type Fraktur. Puisque je trouvais que la police ressemblait à des formes que l\'on trouve sur une portée de musique, j\'ai voulu illustrer "Ghosts \'n\' Stuff" par deadmau5. Le mot "Ghosts" m\'a rappelé of Pac-Man, j\'ai donc fusionné mes idées, en conservant la cohésion globale grâce à la police, que j\'ai réorganisée pour lui donner une structure plus intéressante.',
             logo: './img/work/tb_covers.png',
             background: './img/work/bg_covers.jpg',
             slideshow: [

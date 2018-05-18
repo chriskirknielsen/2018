@@ -33,7 +33,7 @@ var lang = {
             type: ['Web Design','Integration'],
             tools: ['Sketch','Illustrator','Brackets'],
             description:
-            'A redesign for the website <a href="https://www.ratchet-galaxy.com" target="_blank"><span>Ratchet-Galaxy.com</span></a> was longtime overdue. I have been close to this project since its genesis in 2005, creating its now-standard logo. I was able to take it further in 2017 by renewing the entire visual identity of the website, drawing inspiration from the recent Ratchet &amp; Clank games. The design was redone for a more modern aspect and more modulable layout, with responsiveness in mind.<br><br>All the pages were mocked up in Sketch, while the icons were drawn in Illustrator, and the integration was done in Brackets, using SASS as a pre-processor for CSS.',
+            'A redesign for the website <a href="https://www.ratchet-galaxy.com" target="_blank"><span>Ratchet-Galaxy.com</span></a> was longtime overdue. I have been close to this project since its genesis in 2005, creating its now-standard logo. I was able to take it further in 2017 by renewing the entire visual identity of the website, drawing inspiration from the recent Ratchet &amp; Clank games. The design was redone for a more modern aspect and more modulable layout, with responsiveness in mind.<br><br>All the pages were mocked up in Sketch, while the icons were drawn in Illustrator, and the integration was done in Brackets, using SASS as a pre-processor for CSS.<br><br>Additionally, I updated the "Future" font (based on the game logo), redrawing all the characters in Illustrator, expanding on the initial version it to make regular and italic versions.',
             logo: './img/work/tb_rgv3.png',
             background: './img/work/bg_rgv3.jpg',
             slideshow: [
@@ -52,6 +52,10 @@ var lang = {
                 {
                     tb: './img/work/tb_rgv3-4.jpg',
                     o: './img/work/fs_rgv3-4.jpg'
+                },
+                {
+                    tb: './img/work/tb_rgv3-5.jpg',
+                    o: './img/work/fs_rgv3-5.jpg'
                 }
             ]
         },
@@ -124,7 +128,7 @@ var lang = {
             name: 'Unrelated Posters',
             type: ['Design','Typography'],
             tools: ['Photoshop','Illustrator'],
-            description: 'Here is a handful of posters I\'ve made for practice purposes (these were not commissioned).<br><br><span class="font__title">Houston:</span> This is a typography-oriented project with layers of text leading to a famous quote.<br><br><span class="font__title">1984:</span> Also typography-oriented, this was meant to be a book cover but also works in it own right as a poster, playing with the notion of censorship which is a main theme of the book.<br><br><span class="font__title">Björk:</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
+            description: 'Here is a handful of posters I\'ve made for practice purposes (these were not commissioned).<br><br><span class="font--title">Houston:</span> This is a typography-oriented project with layers of text leading to a famous quote.<br><br><span class="font--title">1984:</span> Also typography-oriented, this was meant to be a book cover but also works in it own right as a poster, playing with the notion of censorship which is a main theme of the book.<br><br><span class="font--title">Björk:</span> This poster is an excercise to play with low-poly vector art. Each triangle was individually drawn (reference photo used).',
             logo: './img/work/tb_posters.png',
             background: './img/work/bg_posters.jpg',
             slideshow: [
@@ -184,7 +188,7 @@ var lang = {
             name: 'Dissonant Covers',
             type: ['Design','Typography'],
             tools: ['Cinema 4D','Photoshop','Illustrator'],
-            description: 'Here are some covers I have made, commissioned or for practice.<br><br><span class="font__title">Commerce.:</span> Commerce., an electronic music artist, commissioned me to make a cover for his EP called "Primary Colours". He wanted something abstract, so I made a crazy shape in 3D and worked on it in Illustrator and Photoshop, giving it a used look to contrast with the cleanliness of the 3D shape.<br><br><span class="font__title">Ghosts n’ Stuff:</span> This is some typography practice, trying to make a music cover artwork using a Fraktur typeface. Since I thought the font looked like something you would find on a music sheet, I aimed at illustrating "Ghosts \'n\' Stuff" by deadmau5. The word "Ghosts" itself reminded me of Pac-Man, so I intertwinded my ideas, keeping the whole cohesive thanks to the font, which I reorganised to give it a more interesting structure.',
+            description: 'Here are some covers I have made, commissioned or for practice.<br><br><span class="font--title">Commerce.:</span> Commerce., an electronic music artist, commissioned me to make a cover for his EP called "Primary Colours". He wanted something abstract, so I made a crazy shape in 3D and worked on it in Illustrator and Photoshop, giving it a used look to contrast with the cleanliness of the 3D shape.<br><br><span class="font--title">Ghosts n’ Stuff:</span> This is some typography practice, trying to make a music cover artwork using a Fraktur typeface. Since I thought the font looked like something you would find on a music sheet, I aimed at illustrating "Ghosts \'n\' Stuff" by deadmau5. The word "Ghosts" itself reminded me of Pac-Man, so I intertwinded my ideas, keeping the whole cohesive thanks to the font, which I reorganised to give it a more interesting structure.',
             logo: './img/work/tb_covers.png',
             background: './img/work/bg_covers.jpg',
             slideshow: [
