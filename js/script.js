@@ -145,7 +145,7 @@ function ScrollToTarget(ticker) {
         callbacks['stop'] = callback;
     }
 
-    function scrollStep () {
+    function scrollStep() {
         var elapsedTime = new Date() - startDate;
 
         if (elapsedTime >= SCROLL_DURATION) {

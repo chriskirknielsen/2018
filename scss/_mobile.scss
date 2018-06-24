@@ -158,6 +158,10 @@ $grid-gutter: .5rem;
         &__group {
             width: 100%;
 
+            &--pullup {
+                margin-top: 0;
+            }
+
             &:nth-of-type(odd) {
                 padding-right: 0;
                 text-align: left;

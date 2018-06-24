@@ -835,6 +835,10 @@
             width: 50%;
             margin-bottom: 1.175rem;
 
+            &--pullup {
+                margin-top: -1.625rem; // Trick to pull the content up by a line of text
+            }
+
             &:nth-of-type(odd) {
                 padding-right: 1rem;
                 text-align: right;
