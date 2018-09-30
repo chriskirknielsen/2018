@@ -1,5 +1,6 @@
 css/
 css-dist/
+node_modules/
 .sass-cache/
 .vscode
 js/*.min.js

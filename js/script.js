@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             pButton.innerHTML += "\n" +
                 '<div class="project__frame">' + "\n" +
-                '<div class="project__image" style="background-image: url(' + proj.background + ');"></div>' + "\n" +
+                '<div class="project__image" style="background-image: url(' + proj.background + ');" aria-hidden="true"></div>' + "\n" +
                 '<img src="' + proj.logo + '" class="project__logo" alt="' + proj.name + ' logo">' + "\n" +
                 '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
                 '</div>' + "\n" +
