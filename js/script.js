@@ -637,3 +637,39 @@ document.addEventListener('DOMContentLoaded', function (e) {
     /* And finally, we can get the ticker going */
     ticker.start();
 });
+
+(function (){
+    var windowW = window.innerWidth;
+    var NOVIDEO_BREAKPOINT = 520;
+    var QUALITY_BREAKPOINT = 1440;
+    var VIDEO_ATTR = 'data-video-responsive';
+    var SRCSET_ATTR = 'data-video-srcset';
+    var POSTER_ATTR = 'data-video-poster';
+    var videos = document.querySelectorAll('[' + VIDEO_ATTR + ']');
+
+    var setVideoTag = function (el, url, poster) {
+        var elClasses = el.getAttribute('class');
+        var elId = el.getAttribute('id');
+
+        el.outerHTML =
+        '<video poster="'+poster+'" muted autoplay loop class="'+elClasses+'" id="'+elId+'" tabindex="-1">'
+        +'    <source src="'+url+'.webm" type="video/webm">'
+        +'    <source src="'+url+'.mp4" type="video/mp4">'
+        +'</video>'
+    }
+
+    for (var v = 0; v < videos.length; v++) {
+        var sdPoster = videos[v].getAttribute('src');
+        var hdPoster = videos[v].getAttribute(POSTER_ATTR);
+        var srcset = videos[v].getAttribute(SRCSET_ATTR).split(',').map(function(s){return s.trim()}); // URLs without the extension (webm and mp4 variants are exepcted)
+
+        if (windowW < NOVIDEO_BREAKPOINT) { continue; } // The screen is small, no video will be shown, skip the rest of the iteration
+
+        if (windowW <= QUALITY_BREAKPOINT) {
+            setVideoTag(videos[v], srcset[0], sdPoster);
+        }
+        else {
+            setVideoTag(videos[v], srcset[1], hdPoster);
+        }
+    }
+})();
