@@ -16,10 +16,10 @@ $colors: (
     a: #161616
 );
 
-// /** SCSS function to return a colour from a list, in hexidecimal or rgba value
-//  * @param name: key used in the $colors list associated with a hexadecimal colour
-//  * @param opacity: opacity value [0, 100] to be used by the rgba() colour; hex (default) to get the solid colour in hexadecimal value
-// **/
+/** SCSS function to return a colour from a list, in hexidecimal or rgba value
+ * @param name: key used in the $colors list associated with a hexadecimal colour
+ * @param opacity: opacity value [0, 100] to be used by the rgba() colour; hex (default) to get the solid colour in hexadecimal value
+**/
 @function color($name, $opacity: hex) {
     @if map-has-key($colors, $name) { // If the colour exists in the list…
         @if $opacity != hex { // …return RGBA value

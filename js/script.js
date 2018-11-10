@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     ticker.hook('portfolioVideo', introVideoStateHandler);
     
-    /** Dynamically loads the projects from the en/fr.js file **/
+    /** Dynamically loads the projects from the [en|fr].js file **/
     (function () {
         var projectList = $('#projects-list'); // Element containing the grid of project buttons
         projectList.innerHTML = ''; // First we remove the content, which is a series of <a> elements
@@ -638,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     ticker.start();
 });
 
-(function (){
+(function (){ // Handle the "hero" media to be displayed
     var windowW = window.innerWidth;
     var NOVIDEO_BREAKPOINT = 520;
     var QUALITY_BREAKPOINT = 1440;

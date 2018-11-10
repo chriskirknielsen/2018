@@ -279,6 +279,7 @@
                 &::before {
                     content: attr(data-content);
                     position: absolute;
+                    z-index: z(menu, 5);
                     width: inherit;
                     height: inherit;
                     line-height: inherit;
@@ -291,7 +292,6 @@
                         100% 4rem,
                         100% 4rem,
                         0 4rem);
-                    z-index: z(menu, 5);
                     transition-property: background-color, clip, clip-path;
                     transition-duration: .2s;
                     transition-timing-function: ease-in-out;
@@ -330,18 +330,24 @@
             
             &-link {
                 width: inherit;
+                color: color(z-m);
+                transition: color .2s ease-in-out .02s;
+
+                &:hover,
+                &:focus {
+                    color: color(main);
+                }
             }
             
             &-icon {
+                display: inline-block;
+                width: $icon-size;
+                height: $icon-size;
                 vertical-align: middle;
-                filter: grayscale(100%);
-                transition: filter .2s ease-in-out .02s;
+                fill: currentColor;
             }
 
-            &-link:hover > &-icon,
-            &-link:focus > &-icon {
-                filter: grayscale(0%);
-            }
+           
         }
     } // .menu
 
