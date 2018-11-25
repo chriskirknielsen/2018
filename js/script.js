@@ -14,11 +14,6 @@ function $(el, p) {
     return (p || document).querySelector(el);
 }
 
-/** Easing equation for transitions **/
-function ease(t) {
-    return (t * (2 - t)) / 1; // Ease-Out Quad
-}
-
 /** Handles the present of the hash in the page URL **/
 function setHash(targetHash) {
     if (history.replaceState) {
@@ -105,81 +100,13 @@ function Ticker() { // By Alan Transon: https://gist.github.com/atranson/006bf0a
     }
 }
 
-/** Scroller object to handle jumps to different sections in the page **/
-function ScrollToTarget(ticker) {
-    const TICKER_CALLBACK_NAME = 'scroller'; 
-    const SCROLL_DURATION = 500;
-
-    var initialOffsetY = 0,
-        targetOffsetY = 0,
-        startDate = null, // If not null, the scrolling behavior is active
-        callbacks = {};
-
-    this.start = function (scrollTarget) {
-        /* If start is called before the previous scroll was ended, we force it to end */
-        if (startDate != null) {
-            endScrolling();
-        }
-
-        // Various browser handling
-        initialOffsetY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-        // Compute needed Y offset
-        var targetY = initialOffsetY + parseInt(scrollTarget.getBoundingClientRect().top, 10);
-        targetOffsetY = (targetY < 0 ? 0 : targetY) - initialOffsetY;
-
-        startDate = new Date();
-        ticker.hook(TICKER_CALLBACK_NAME, scrollStep);
-        triggerCallback('start');
-    }
-
-    this.abort = function () {
-        endScrolling();
-    }
-
-    this.onStart = function (callback) {
-        callbacks['start'] = callback;
-    }
-
-    this.onStop = function (callback) {
-        callbacks['stop'] = callback;
-    }
-
-    function scrollStep() {
-        var elapsedTime = new Date() - startDate;
-
-        if (elapsedTime >= SCROLL_DURATION) {
-            window.scrollTo(0, targetOffsetY + initialOffsetY); // Sets the scroll to the final target
-            endScrolling();
-            return;   
-        }
-
-        var factor = ease(elapsedTime / SCROLL_DURATION);
-
-        window.scrollTo(0, initialOffsetY + targetOffsetY * factor); // Redefine the scroll value
-    }
-
-    function endScrolling() {
-        triggerCallback('stop');
-        ticker.unhook(TICKER_CALLBACK_NAME); // The function is no longer called
-        startDate = null; // Inactive
-    }
-
-    function triggerCallback(event) {
-        if (event in callbacks) {
-            callbacks[event]();
-        }
-    }
-}
-
 /** Handle menu operations **/
 function MenuHandler(ticker, menuElements, logoElement) {
     const TICKER_CALLBACK_NAME = 'updateActiveMenu';
     
     function assignActiveMenu(targetMenu) {
-        if (targetMenu.hasAttribute('aria-current')) { // No point in doing these operations if the menu is already active
-            return;
-        }
+        // No point in doing these operations if the menu is already active
+        if (targetMenu.hasAttribute('aria-current')) { return; }
 
         $('[aria-current="true"]').removeAttribute('aria-current');
         targetMenu.parentElement.setAttribute('aria-current', 'true');
@@ -196,7 +123,7 @@ function MenuHandler(ticker, menuElements, logoElement) {
         
         setHash(targetHash); // Change the hash in the page URL accordingly
         
-        scroller.start($(targetHash)); // Start scrolling to the target
+        $(targetHash).scrollIntoView( {block: "start", inline: "nearest", behavior: "smooth"} ); // Start scrolling to the target
 
         document.activeElement.blur(); // Remove the focus on the clicked element
     }
@@ -226,12 +153,6 @@ function MenuHandler(ticker, menuElements, logoElement) {
         /* Select the active menu's link and return its target href */
         return $('[aria-current="true"] > a').getAttribute('href').split('#')[1];
     }
-    
-    var scroller = new ScrollToTarget(ticker);
-
-    /* Handle the menu update while auto-scrolling */
-    scroller.onStart(function() { ticker.disable(TICKER_CALLBACK_NAME); });
-    scroller.onStop(function() { ticker.enable(TICKER_CALLBACK_NAME); });
     
     /* Bind menu links and logo to menuClick method */
     for (var i = 0 ; i < menuElements.length ; i++) {
@@ -535,8 +456,8 @@ function ProjectModal(projects) {
     }
 }
 
-var ticker = new Ticker(),
-    projectModal = new ProjectModal(projects);
+var ticker = new Ticker();
+var projectModal = new ProjectModal(projects);
 
 document.addEventListener('DOMContentLoaded', function (e) {
     var menuHandler = new MenuHandler(
@@ -570,8 +491,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
         projectList.innerHTML = ''; // First we remove the content, which is a series of <a> elements
 
         for (var p = 0 ; p < projects.length ; p++) { // Repopulate the grid with buttons instead
-            var proj = projects[p],
-                pButton = document.createElement('button');
+            var proj = projects[p];
+            var pButton = document.createElement('button');
 
             pButton.setAttribute('type', 'button');
             pButton.setAttribute('class', 'project');
@@ -589,8 +510,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
             projectList.appendChild(pButton);
 
             pButton.addEventListener('click', function (e) {
-                var getProjectId = e.currentTarget.getAttribute('data-project-id'),
-                    projectId = parseInt(getProjectId, 10);
+                var getProjectId = e.currentTarget.getAttribute('data-project-id');
+                var projectId = parseInt(getProjectId, 10);
 
                 projectModal.load(projectId); // Execute the project modal loading action
             });
@@ -599,8 +520,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     /** Delay loading for the "About" image **/
     (function () {
-        var image = $('#about-image'),
-            imageToLoad = new Image();
+        var image = $('#about-image');
+        var imageToLoad = new Image();
         
         imageToLoad.src = image.getAttribute('data-lazy-src');
         
@@ -652,7 +573,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var elId = el.getAttribute('id');
 
         el.outerHTML =
-        '<video poster="'+poster+'" muted autoplay loop class="'+elClasses+'" id="'+elId+'" tabindex="-1">'
+        '<video poster="'+poster+'" muted autoplay loop playsinline class="'+elClasses+'" id="'+elId+'" tabindex="-1">'
         +'    <source src="'+url+'.webm" type="video/webm">'
         +'    <source src="'+url+'.mp4" type="video/mp4">'
         +'</video>'

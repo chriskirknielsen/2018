@@ -874,15 +874,11 @@
         }
 
         &__download {
-            &::before {
-                content: '';
+            > svg {
                 display: inline-block;
                 width: 1rem;
                 height: 1rem;
                 margin-right: .5rem;
-                background: transparent url(../img/download.png) center no-repeat;
-                background-image: none, url(../img/download.svg);
-                background-size: contain;
                 z-index: 7;
             }
         }
