@@ -3,9 +3,9 @@
 @if $loadall or $critical {
     body {
         position: relative;
-        color: color(z);
+        color: color('z');
         font-family: $font-main;
-        background-color: color(a);
+        background-color: color('a');
         z-index: z(body, 0);
 
         &::before,
@@ -16,7 +16,7 @@
             right: 0;
             width: 100%;
             height: #{$site-frame};
-            background-color: color(main);
+            background-color: color('main');
             z-index: z(frame, 1);
             pointer-events: none;
         }
@@ -52,7 +52,7 @@
         
         &:not([class]) {
             display: inline-block;
-            @include text-shadow(color(a, 100));
+            @include text-shadow(color('a', 100));
             
             > span {
                 position: relative;
@@ -65,7 +65,7 @@
                 top: 0;
                 width: calc(100% + .125em);
                 height: 100%;
-                background-image: linear-gradient(0deg, color(main), color(main));
+                background-image: linear-gradient(0deg, color('main'), color('main'));
                 transform-origin: 50% 87.5%;
                 transform: scaleY(.042);
             }
@@ -89,8 +89,8 @@
             
             &:hover,
             &:focus {
-                color: color(z);
-                @include text-shadow(color(a, 0), true);
+                color: color('z');
+                @include text-shadow(color('a', 0), true);
                 
                 &::before {
                     transform: scaleY(1);
@@ -100,14 +100,14 @@
     }
     
     ::-moz-selection {
-        color: color(a);
-        background-color: color(main);
+        color: color('a');
+        background-color: color('main');
         text-shadow: none;
     }
 
     ::selection {
-        color: color(a);
-        background-color: color(main);
+        color: color('a');
+        background-color: color('main');
         text-shadow: none;
     }
 
@@ -120,10 +120,10 @@
         padding: 0 1rem;
         line-height: 2rem;
         vertical-align: middle;
-        color: color(z);
-        border: .125rem solid color(main);
+        color: color('z');
+        border: .125rem solid color('main');
         border-radius: $border-radius;
-        box-shadow: 0 #{$button-shadow-length} 0 color(main-dark);
+        box-shadow: 0 #{$button-shadow-length} 0 color('main-dark');
         overflow: hidden;
         cursor: pointer;
         z-index: 1;
@@ -138,8 +138,8 @@
             @include pos(0);
             width: 100%;
             height: 100%;
-            box-shadow: 0 1rem 0 color(z);
-            background-color: color(main);
+            box-shadow: 0 1rem 0 color('z');
+            background-color: color('main');
             transform: scale(1.05, .99) translateY(calc(-100% - 1rem));
             transform-origin: center top;
             transition-property: transform;
@@ -155,7 +155,7 @@
         }
 
         &:active {
-            box-shadow: 0 0 0 color(main-dark);
+            box-shadow: 0 0 0 color('main-dark');
             transform: translateY(#{$button-shadow-length});
         }
 
@@ -184,7 +184,7 @@
             top: 0;
             bottom: 0;
             width: #{$site-frame};
-            background-color: color(main);
+            background-color: color('main');
             z-index: z(frame, 1);
             pointer-events: none;
         }
@@ -205,7 +205,7 @@
             right: $site-frame;
             top: $site-frame;
             padding: #{$menu-top-gutter};
-            background-color: color(a, 90);
+            background-color: color('a', 90);
             z-index: z(menu, 0);
         }
 
@@ -213,7 +213,7 @@
         max-width: $site-max-width;
         height: $menu-height;
         margin: 0 auto;
-        color: color(main);
+        color: color('main');
         z-index: z(menu, 1);
 
         &__logo,
@@ -235,17 +235,14 @@
             }
             
             &-fill {
-                fill: color(z);
+                fill: color('z');
             }
             
             &:hover,
             &:focus {
-                filter: drop-shadow(-2px 0 0 color(main));
-            }
-            
-            &:hover &-svg,
-            &:focus &-svg {
-                filter: drop-shadow(2px 0 0 color(comp));
+                filter:
+                    drop-shadow(-2px 0 0 color('main'))
+                    drop-shadow( 2px 0 0 color('comp'));
             }
         }
 
@@ -277,15 +274,17 @@
                 position: relative;
 
                 &::before {
-                    content: attr(data-content);
+                    content: '';
                     position: absolute;
                     z-index: z(menu, 5);
-                    width: inherit;
+                    display: block;
+                    width: 100%;
                     height: inherit;
                     line-height: inherit;
                     vertical-align: middle;
-                    color: color(a);
-                    background-color: color(main);
+                    color: color('a');
+                    background-color: color('main');
+                    mix-blend-mode: difference;
                     clip: rect(4rem auto 4rem auto);
                     clip-path: polygon(
                         0% 4rem,
@@ -310,7 +309,7 @@
             }
             
             &-item[aria-current="true"] > &-link::before {
-                background-color: color(comp);
+                background-color: color('comp');
             }
             
             &-item:not([aria-current="true"]) > &-link:hover::before,
@@ -330,12 +329,12 @@
             
             &-link {
                 width: inherit;
-                color: color(z-m);
+                color: color('z-m');
                 transition: color .2s ease-in-out .02s;
 
                 &:hover,
                 &:focus {
-                    color: color(main);
+                    color: color('main');
                 }
             }
             
@@ -377,7 +376,7 @@
                 width: 20rem;
                 max-width: calc(100% - #{$site-frame * 2});
                 height: .0625rem;
-                background-image: linear-gradient(to right, color(comp, 0) 0%, color(comp, 75) 47.5%, color(comp, 100) 50%, color(comp, 75) 52.5%, color(comp, 0) 100%);
+                background-image: linear-gradient(to right, color('comp', 0) 0%, color('comp', 75) 47.5%, color('comp', 100) 50%, color('comp', 75) 52.5%, color('comp', 0) 100%);
                 background-position: 50% 50%;
                 background-size: 200% 100%;
                 transform: translateX(-50%);
@@ -415,7 +414,7 @@
             
             &::before,
             &::after {
-                color: color(comp);
+                color: color('comp');
             }
             
             &::before {
@@ -449,6 +448,7 @@
                 height: 100%;
                 overflow: hidden;
 
+                &::before,
                 &::after {
                     content: '';
                     position: absolute;
@@ -456,11 +456,23 @@
                     top: 0;
                     width: 100%;
                     height: 100%;
+                }
+                /*
+                &::before {
+                    @supports (mix-blend-mode: overlay) { // Scanlines
+                        background-image: repeating-linear-gradient(to bottom, color('m', 35) 0, color('m', 35) 4px, transparent 4px, transparent 8px);
+                        mix-blend-mode: overlay;
+                        z-index: z(presentation, 4);
+                    }
+                }//*/
+
+                &::after { // Fade-to-black
                     background-image:
-                        //linear-gradient(to bottom, color(a, 100), color(a, 0) 25%), // Top
-                        linear-gradient(to top, color(a, 100) 1.5%, color(a, 0) 15%), // Bottom
-                        linear-gradient(to left, color(a, 100) .5%, color(a, 0) 5%), // Left
-                        linear-gradient(to right, color(a, 100) .5%, color(a, 0) 5%); // Right
+                        //linear-gradient(to bottom, color('a', 100), color('a', 0) 25%), // Top
+                        linear-gradient(to top, color('a', 100) 1.5%, color('a', 0) 15%), // Bottom
+                        linear-gradient(to left, color('a', 100) .5%, color('a', 0) 5%), // Left
+                        linear-gradient(to right, color('a', 100) .5%, color('a', 0) 5%); // Right
+                    z-index: z(presentation, 5);
                 }
             } // &-illustration
             
@@ -472,7 +484,7 @@
                 height: 100%;
                 min-width: 100vmin;
                 max-height: 100vmax;
-                background-image: linear-gradient(to bottom, color(a) 0%, #40112c 65.5%, #330723 65.5%, #303a4b 82.75%, color(a) 100%);
+                background-image: linear-gradient(to bottom, color('a') 0%, #40112c 65.5%, #330723 65.5%, #303a4b 82.75%, color('a') 100%);
                 object-fit: cover;
                 object-position: 50% 100%;
                 transform: translateX(-50%);
@@ -498,10 +510,10 @@
                 padding-top: 56.25%;
                 border-radius: 50%;
                 box-shadow:
-                    0 0      0      .25rem color(a),
-                    0 1.5rem 1.5rem        color(comp, 25);
+                    0 0      0      .25rem color('a'),
+                    0 1.5rem 1.5rem        color('comp', 25);
                 overflow: hidden;
-                @include intro-reveal(0);
+                @include intro-reveal(.75);
                 z-index: z(presentation, 1);
 
                 &::before,
@@ -560,45 +572,37 @@
                 margin: 0 auto;
                 text-align: center;
                 text-shadow:
-                    .0625rem .0625rem 0 color(a),
-                    .1250rem .1250rem 0 color(a);
+                    .0625rem .0625rem 0 color('a'),
+                    .1250rem .1250rem 0 color('a');
             }
 
             &-intro {
                 font-size: .67em;
-                color: color(comp);
+                color: color('comp');
                 text-decoration: underline;
-                text-decoration-color: color(glow);
-                @include intro-reveal(1);
+                text-decoration-color: color('glow');
+                @include intro-reveal(0);
                 z-index: z(presentation, 6);
             }
 
             &-name {
                 font-size: 2.5em;
-                filter: drop-shadow(0 0 20px color(comp)); // Pink glow
-                @include intro-reveal(2);
+                filter: drop-shadow(0 0 20px color('comp')); // Pink glow
+                @include intro-reveal(0.5);
                 z-index: z(presentation, 5);
 
                 > img,
                 > svg {
-                    filter: drop-shadow(3px 3px 0 color(a)); // Black drop-shadow
+                    filter: drop-shadow(3px 3px 0 color('a')); // Black drop-shadow
                 }
             }
 
             &-skills {
                 font-size: .875em;
-                color: color(glow);
-                filter: drop-shadow(2px 2px 0 color(a)); // Black drop-shadow
-                @include intro-reveal(3);
+                color: color('glow');
+                filter: drop-shadow(2px 2px 0 color('a')); // Black drop-shadow
+                @include intro-reveal(1);
                 z-index: z(presentation, 6);
-            }
-
-            &-geo {
-                font-size: .5em;
-                text-transform: uppercase;
-                filter: drop-shadow(2px 2px 0 color(a)); // Black drop-shadow
-                @include intro-reveal(4);
-                z-index: z(presentation, 7);
             }
         }
         
@@ -704,14 +708,14 @@
         &::before {
             left: 0;
             top: 0;
-            background-image: linear-gradient(to right, color(comp) 0%, color(glow) 50%, color(z) 50%);
+            background-image: linear-gradient(to right, color('comp') 0%, color('glow') 50%, color('z') 50%);
             transform: translateX(-50%);
         }
         
         &__frame::before {
             right: 0;
             bottom: 0;
-            background-image: linear-gradient(to left, color(comp) 0%, color(glow) 50%, color(z) 50%);
+            background-image: linear-gradient(to left, color('comp') 0%, color('glow') 50%, color('z') 50%);
             transform: translateX(50%);
         }
 
@@ -745,14 +749,14 @@
         &::after {
             right: 0;
             top: 0;
-            background-image: linear-gradient(to bottom, color(comp) 0%, color(glow) 50%, color(z) 50%);
+            background-image: linear-gradient(to bottom, color('comp') 0%, color('glow') 50%, color('z') 50%);
             transform: translateY(-50%);
         }
 
         &__frame::after {
             left: 0;
             bottom: 0;
-            background-image: linear-gradient(to top, color(comp) 0%, color(glow) 50%, color(z) 50%);
+            background-image: linear-gradient(to top, color('comp') 0%, color('glow') 50%, color('z') 50%);
             transform: translateY(50%);
         }
 
@@ -921,7 +925,7 @@
                 position: relative;
                 display: inline-block;
                 margin-right: 1rem;
-                background-color: color(z);
+                background-color: color('z');
 
                 &::before,
                 &::after {
@@ -999,7 +1003,7 @@
         justify-content: space-between;
         padding: 2rem #{$site-frame + 2rem};
         font-size: .875rem;
-        color: color(z);
+        color: color('z');
         z-index: z(body, 9);
 
         &__legal,
@@ -1018,8 +1022,8 @@
 
             &-link {
                 display: inline-block;
-                color: color(z);
-                box-shadow: 0 .0625rem 0 color(main, 0);
+                color: color('z');
+                box-shadow: 0 .0625rem 0 color('main', 0);
                 transition-property: color, box-shadow;
                 transition-duration: .2s;
                 transition-timing-function: ease-in-out;
@@ -1027,18 +1031,18 @@
 
                 &:hover,
                 &:focus {
-                    color: color(main);
-                    box-shadow: 0 .0625rem 0 color(main, 100);
+                    color: color('main');
+                    box-shadow: 0 .0625rem 0 color('main', 100);
                 }
 
                 html[lang="en"] &[data-lang-link="en"],
                 html[lang="fr"] &[data-lang-link="fr"] {
-                    color: color(z);
-                    box-shadow: 0 .0625rem 0 color(z);
+                    color: color('z');
+                    box-shadow: 0 .0625rem 0 color('z');
                     
                     &:hover,
                     &:focus {
-                        color: color(main);
+                        color: color('main');
                     }
                 }
             }
@@ -1049,7 +1053,7 @@
         &__wrapper {
             position: fixed;
             @include pos($site-frame);
-            background: color(a, 75);
+            background: color('a', 75);
             overflow: hidden;
             animation: projectModalBackgroundReveal .25s ease-out;
             z-index: z(modal, 2);
@@ -1064,9 +1068,9 @@
                 padding: .25rem .75rem;
                 font-size: .75rem;
                 line-height: .75rem;
-                color: color(z);
+                color: color('z');
                 border-radius: .625rem;
-                background-color: color(a);
+                background-color: color('a');
                 transform: translateX(-50%);
             }
         }
@@ -1079,12 +1083,12 @@
             position: absolute;
             @include pos(2rem);
             display: flex;
-            color: color(a);
-            background: color(m);
+            color: color('a');
+            background: color('m');
             box-shadow:
-                0 0 2rem color(m, 50),
-                -100vw 0 0 color(m, 0),
-                100vw 0 0 color(m, 0);
+                0 0 2rem color('m', 50),
+                -100vw 0 0 color('m', 0),
+                100vw 0 0 color('m', 0);
             transition:
                 transform 0s linear,
                 box-shadow .3s ease-in-out;
@@ -1093,9 +1097,9 @@
 
             &--loaded { // Add fake containers to each side for slide transitions
                 box-shadow:
-                    0 0 2rem color(m, 50),
-                    -100vw 0 0 color(m),
-                     100vw 0 0 color(m);
+                    0 0 2rem color('m', 50),
+                    -100vw 0 0 color('m'),
+                     100vw 0 0 color('m');
             }
 
             &--previous {
@@ -1130,7 +1134,7 @@
             position: relative;
             flex: 1 1 auto;
             display: flex;
-            background: color(a);
+            background: color('a');
         }
 
         &__image {
@@ -1153,7 +1157,7 @@
             width: 25vw;
             min-width: 20rem;
             max-width: 24rem;
-            background: color(z);
+            background: color('z');
             overflow-y: auto;
         } // &__info
         
@@ -1166,7 +1170,7 @@
             width: 100%;
             margin-bottom: .5rem;
             text-align: center;
-            background-color: color(a-m);
+            background-color: color('a-m');
             z-index: z(modal, 7);
         } // &__buttons
         
@@ -1175,7 +1179,7 @@
             flex: 1 1 auto;
             height: 2rem;
             border: 0;
-            color: color(z);
+            color: color('z');
             cursor: pointer;
             transition: background-position .15s cubic-bezier(.5, 0, .5, 1) .02s;
 
@@ -1189,7 +1193,7 @@
 
             &:hover,
             &:focus {
-                color: color(z);
+                color: color('z');
             }
 
             &::after {
@@ -1198,7 +1202,7 @@
             }
             
             &-prev {
-                background: linear-gradient(to right, transparent 50%, color(comp) 50%);
+                background: linear-gradient(to right, transparent 50%, color('comp') 50%);
                 background-size: 200% 100%;
                 background-position: 0% 50%;
 
@@ -1214,7 +1218,7 @@
             }
 
             &-next {
-                background: linear-gradient(to left, transparent 50%, color(comp) 50%);
+                background: linear-gradient(to left, transparent 50%, color('comp') 50%);
                 background-size: 200% 100%;
                 background-position: 100% 50%;
 
@@ -1245,8 +1249,8 @@
             &-close {
                 border-style: solid;
                 border-width: 0 1px;
-                border-color: color(z);
-                background: linear-gradient(to bottom, transparent 50%, color(comp) 50%);
+                border-color: color('z');
+                background: linear-gradient(to bottom, transparent 50%, color('comp') 50%);
                 background-size: 100% 200%;
                 background-position: 50% 0%;
 
@@ -1301,7 +1305,7 @@
             margin-bottom: .5rem;
             padding: .5rem .5rem 0;
             border-style: solid;
-            border-color: color(z-m);
+            border-color: color('z-m');
             border-width: 1px 0;
 
             &-type {
@@ -1318,12 +1322,12 @@
 
         &__description {
             > a { // Adjusted for modal background color
-                @include text-shadow(color(z, 100));
+                @include text-shadow(color('z', 100));
                 transition-property: color, text-shadow;
 
                 &:hover,
                 &:focus {
-                    @include text-shadow(color(z, 0));
+                    @include text-shadow(color('z', 0));
                 }
             }
         }
@@ -1369,17 +1373,17 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 opacity: .5;
-                box-shadow: inset 0 0 0 .125rem color(m);
+                box-shadow: inset 0 0 0 .125rem color('m');
                 
                 #{$parent}:hover &,
                 #{$ancestor}__radio:focus + #{$parent} > & {
-                    box-shadow: inset 0 0 0 .125rem color(z);
+                    box-shadow: inset 0 0 0 .125rem color('z');
                     opacity: .75;
                 }
                 
                 #{$ancestor}__radio:checked + #{$parent} > & {
                     opacity: 1;
-                    box-shadow: inset 0 0 0 .125rem color(main);
+                    box-shadow: inset 0 0 0 .125rem color('main');
                 }
             }
         }
@@ -1416,7 +1420,7 @@
         
         @keyframes slideshowFlashingThumbnail {
             to {
-                box-shadow: inset 0 0 0 .125rem color(comp);
+                box-shadow: inset 0 0 0 .125rem color('comp');
                 opacity: .75;
             }
         }
@@ -1438,14 +1442,14 @@
         }
         
         &::before {
-            background-color: color(kitt, 10);
+            background-color: color('kitt', 10);
             background-image: linear-gradient(
                 to right,
-                color(kitt, 0) 0%,
-                color(kitt, 25) 33%,
-                color(kitt, 100) 50%,
-                color(kitt, 25) 67%,
-                color(kitt, 0) 100%
+                color('kitt', 0) 0%,
+                color('kitt', 25) 33%,
+                color('kitt', 100) 50%,
+                color('kitt', 25) 67%,
+                color('kitt', 0) 100%
             );
             background-size: 200% 100%;
             background-position: 0% 50%;
@@ -1453,7 +1457,7 @@
         }
         
         &::after {
-            background: repeating-linear-gradient(to right, transparent 0rem, transparent calc(1rem - 1px), color(a) calc(1rem - 1px), color(a) 1rem);
+            background: repeating-linear-gradient(to right, transparent 0rem, transparent calc(1rem - 1px), color('a') calc(1rem - 1px), color('a') 1rem);
         }
     } // .loader
 

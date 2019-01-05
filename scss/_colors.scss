@@ -1,19 +1,19 @@
 $colors: (
-    main: #00a39b,
-    main-light: lighten(#00a39b, 15%),
-    main-dark: darken(#00a39b, 15%),
-    comp: #cf0079,
-    comp-light: lighten(#cf0079, 15%),
-    comp-dark: darken(#cf0079, 15%),
-    glow: #ffd200,
-    glow-light: lighten(#ffd200, 15%),
-    glow-dark: darken(#ffd200, 15%),
-    kitt: #cf0000,
-    z: #e6e6e6,
-    z-m: #9c9c9c,
-    m: #686868,
-    a-m: #343434,
-    a: #161616
+    'main': #00a39b,
+    'main-light': lighten(#00a39b, 15%),
+    'main-dark': darken(#00a39b, 15%),
+    'comp': #cf0079,
+    'comp-light': lighten(#cf0079, 15%),
+    'comp-dark': darken(#cf0079, 15%),
+    'glow': #ffd200,
+    'glow-light': lighten(#ffd200, 15%),
+    'glow-dark': darken(#ffd200, 15%),
+    'kitt': #cf0000,
+    'z': #e6e6e6,
+    'z-m': #9c9c9c,
+    'm': #686868,
+    'a-m': #343434,
+    'a': #161616
 );
 
 /** SCSS function to return a colour from a list, in hexidecimal or rgba value

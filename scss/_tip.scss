@@ -1,5 +1,5 @@
-$tip-bg: color(z);
-$tip-txt: color(a);
+$tip-bg: color('z');
+$tip-txt: color('a');
 $tip-move: 1rem;
 
 [data-tip] {
@@ -87,7 +87,7 @@ $tip-move: 1rem;
         &::before {
             top: -.5rem;
             border-width: .25rem .25rem 0 .25rem;
-            border-color: $tip-bg transparent transparent transparent;
+            border-color: #{$tip-bg} transparent transparent transparent;
         }
 
         &::after {
@@ -114,7 +114,7 @@ $tip-move: 1rem;
         &::before {
             left: -.5rem;
             border-width: .25rem 0 .25rem .25rem;
-            border-color: transparent transparent transparent $tip-bg;
+            border-color: transparent transparent transparent #{$tip-bg};
         }
 
         &::after {
@@ -141,7 +141,7 @@ $tip-move: 1rem;
         &::before {
             right: -.5rem;
             border-width: .25rem .25rem .25rem 0;
-            border-color: transparent $tip-bg transparent transparent;
+            border-color: transparent #{$tip-bg} transparent transparent;
         }
 
         &::after {
@@ -166,25 +166,25 @@ $tip-move: 1rem;
         &:not([data-tip-position]),
         &[data-tip-position="bottom"] {
             &::before {
-                border-color: transparent transparent $tip-txt transparent;
+                border-color: transparent transparent #{$tip-txt} transparent;
             }
         }
         
         &[data-tip-position="top"] {
             &::before {
-                border-color: $tip-txt transparent transparent transparent;
+                border-color: #{$tip-txt} transparent transparent transparent;
             }
         }
         
         &[data-tip-position="left"] {
             &::before {
-                border-color: transparent transparent transparent $tip-txt;
+                border-color: transparent transparent transparent #{$tip-txt};
             }
         }
         
         &[data-tip-position="right"] {
             &::before {
-                border-color: transparent $tip-txt transparent transparent;
+                border-color: transparent #{$tip-txt} transparent transparent;
             }
         }
         

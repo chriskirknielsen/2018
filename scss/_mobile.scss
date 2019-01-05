@@ -49,7 +49,7 @@ $grid-gutter: .5rem;
 
                 &[aria-active="true"],
                 &:hover {
-                    box-shadow: inset 0 -.125rem 0 color(comp);
+                    box-shadow: inset 0 -.125rem 0 color('comp');
                 }
             }
         
@@ -61,7 +61,7 @@ $grid-gutter: .5rem;
                 }
 
                 &:hover {
-                    color: color(z);
+                    color: color('z');
                 }
             }
         }
@@ -107,7 +107,7 @@ $grid-gutter: .5rem;
         &__text {
             &::before,
             &::after {
-                content: '▪';
+                content: '\25AA';
                 display: block;
                 text-align: center;
                 line-height: .5em;
@@ -203,6 +203,7 @@ $grid-gutter: .5rem;
         }
 
         &__info {
+            min-width: 0;
             max-width: 100%;
         } // &-info
         

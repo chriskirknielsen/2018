@@ -27,7 +27,7 @@
         $anim: introRevealUp;
     }
     
-    animation: #{$anim} 1s cubic-bezier(0, 0, 0, 1) both ($offset + $order * $delay);
+    animation: #{$anim} 1s cubic-bezier(0, .25, 0, 1) both ($offset + $order * $delay);
 }
 
 @mixin text-shadow($color, $merge: false) {

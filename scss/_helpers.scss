@@ -14,13 +14,13 @@
 .text--center { text-align: center; }
 .text--right { text-align: right; }
 
-.color--a { color: color(a); }
-.color--a-m { color: color(a-m); }
-.color--m { color: color(m); }
-.color--z-m { color: color(z-m); }
-.color--z { color: color(z); }
-.color--main { color: color(main); }
-.color--comp { color: color(comp); }
+.color--a { color: color('a'); }
+.color--a-m { color: color('a-m'); }
+.color--m { color: color('m'); }
+.color--z-m { color: color('z-m'); }
+.color--z { color: color('z'); }
+.color--main { color: color('main'); }
+.color--comp { color: color('comp'); }
 
 .visually-hidden {
     position: absolute;

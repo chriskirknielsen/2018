@@ -14,7 +14,7 @@ function $(el, p) {
     return (p || document).querySelector(el);
 }
 
-/** Handles the present of the hash in the page URL **/
+/** Handles the presence of the hash in the page URL */
 function setHash(targetHash) {
     if (history.replaceState) {
         history.replaceState(targetHash, null, targetHash);
@@ -23,7 +23,7 @@ function setHash(targetHash) {
     }
 }
 
-/** Handles functions and binds them to requestAnimationFrame **/
+/** Handles functions and binds them to requestAnimationFrame */
 function Ticker() { // By Alan Transon: https://gist.github.com/atranson/006bf0aa19237b29b8d435dcc7f866e7
     var callbackQueue = {};
 
@@ -100,7 +100,7 @@ function Ticker() { // By Alan Transon: https://gist.github.com/atranson/006bf0a
     }
 }
 
-/** Handle menu operations **/
+/** Handle menu operations */
 function MenuHandler(ticker, menuElements, logoElement) {
     const TICKER_CALLBACK_NAME = 'updateActiveMenu';
     
@@ -158,17 +158,17 @@ function MenuHandler(ticker, menuElements, logoElement) {
     for (var i = 0 ; i < menuElements.length ; i++) {
         menuElements[i].addEventListener('click', function (e) {
             clickAction(e, e.currentTarget);
-        });
+        }, false);
     }
 
     logoElement.addEventListener('click', function (e) {
         clickAction(e, menuElements[0]); // The logo element should mirror the first menu element
-    });
+    }, false);
     
     ticker.hook(TICKER_CALLBACK_NAME, updateActiveMenu);
 }
 
-/** Object to handle the modal displaying project details **/
+/** Object to handle the modal displaying project details */
 function ProjectModal(projects) {
     const TRANSITION_DURATION = 350; // ms (CSS transition time 300ms + 50ms compensation for potential delay)
     
@@ -266,19 +266,19 @@ function ProjectModal(projects) {
             if (e.target === this.wrapper) { // If the user clicks the background, ensure it closes
                 this.close();
             }
-        }.bind(this));
+        }.bind(this), false);
 
-        this.buttons.previous.addEventListener('click', this.previous.bind(this));
-        this.buttons.close.addEventListener('click', this.close.bind(this));
-        this.buttons.next.addEventListener('click', this.next.bind(this));
+        this.buttons.previous.addEventListener('click', this.previous.bind(this), false);
+        this.buttons.close.addEventListener('click', this.close.bind(this), false);
+        this.buttons.next.addEventListener('click', this.next.bind(this), false);
 
         /* Swipping/dragging to previous/next project */
-        this.wrapper.addEventListener('mousedown', function (e) { this.onDown(e, 'mouse'); }.bind(this));
-        this.wrapper.addEventListener('touchstart', function (e) { this.onDown(e, 'touch'); }.bind(this));
-        this.wrapper.addEventListener('mousemove', function (e) { this.onMove(e, 'mouse'); }.bind(this));
-        this.wrapper.addEventListener('touchmove', function (e) { this.onMove(e, 'touch'); }.bind(this));
-        this.wrapper.addEventListener('mouseup', function (e) { this.onUp(e, 'mouse'); }.bind(this));
-        this.wrapper.addEventListener('touchend', function (e) { this.onUp(e, 'touch'); }.bind(this));
+        this.wrapper.addEventListener('mousedown', function (e) { this.onDown(e, 'mouse'); }.bind(this), false);
+        this.wrapper.addEventListener('touchstart', function (e) { this.onDown(e, 'touch'); }.bind(this), false);
+        this.wrapper.addEventListener('mousemove', function (e) { this.onMove(e, 'mouse'); }.bind(this), false);
+        this.wrapper.addEventListener('touchmove', function (e) { this.onMove(e, 'touch'); }.bind(this), false);
+        this.wrapper.addEventListener('mouseup', function (e) { this.onUp(e, 'mouse'); }.bind(this), false);
+        this.wrapper.addEventListener('touchend', function (e) { this.onUp(e, 'touch'); }.bind(this), false);
         
         opened = true;
 
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             $('#menu-logo') // Menu logo
         );
         
-    /** Determines whether the intro video should be in the playing or paused state **/
+    /** Determines whether the intro video should be in the playing or paused state */
     function introVideoStateHandler() {
         var portfolioVideo = $('#portfolio-video');
         
@@ -485,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     ticker.hook('portfolioVideo', introVideoStateHandler);
     
-    /** Dynamically loads the projects from the [en|fr].js file **/
+    /** Dynamically loads the projects from the [en|fr].js file */
     (function () {
         var projectList = $('#projects-list'); // Element containing the grid of project buttons
         projectList.innerHTML = ''; // First we remove the content, which is a series of <a> elements
@@ -501,9 +501,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             pButton.innerHTML += "\n" +
                 '<div class="project__frame">' + "\n" +
-                '<div class="project__image" style="background-image: url(' + proj.background + ');" aria-hidden="true"></div>' + "\n" +
-                '<img src="' + proj.logo + '" class="project__logo" alt="' + proj.name + ' logo">' + "\n" +
-                '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
+                    '<div class="project__image" style="background-image: url(' + proj.background + ');" aria-hidden="true"></div>' + "\n" +
+                    '<img src="' + proj.logo + '" class="project__logo" alt="' + proj.name + ' logo">' + "\n" +
+                    '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
                 '</div>' + "\n" +
                 "\n";
 
@@ -514,11 +514,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 var projectId = parseInt(getProjectId, 10);
 
                 projectModal.load(projectId); // Execute the project modal loading action
-            });
+            }, false);
         }
     })();
     
-    /** Delay loading for the "About" image **/
+    /** Delay loading for the "About" image */
     (function () {
         var image = $('#about-image');
         var imageToLoad = new Image();
@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     })();
     
-    /** Handling of the keyboard navigation for the project modal **/
+    /** Handling of the keyboard navigation for the project modal */
     document.addEventListener('keyup', function (e) {
         e = e || window.event;
         
@@ -553,11 +553,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 projectModal.next();
             }
         }
-    });
+    }, false);
     
     /* And finally, we can get the ticker going */
     ticker.start();
-});
+}, false);
 
 (function (){ // Handle the "hero" media to be displayed
     var windowW = window.innerWidth;
@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     for (var v = 0; v < videos.length; v++) {
         var sdPoster = videos[v].getAttribute('src');
         var hdPoster = videos[v].getAttribute(POSTER_ATTR);
-        var srcset = videos[v].getAttribute(SRCSET_ATTR).split(',').map(function(s){return s.trim()}); // URLs without the extension (webm and mp4 variants are exepcted)
+        var srcset = videos[v].getAttribute(SRCSET_ATTR).split(',').map(function(s){return s.trim()}); // URLs without the extension (webm and mp4 variants are expected)
 
         if (windowW < NOVIDEO_BREAKPOINT) { continue; } // The screen is small, no video will be shown, skip the rest of the iteration
 
