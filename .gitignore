@@ -1,9 +1,8 @@
-css/
-css-dist/
+./css/
 node_modules/
 .sass-cache/
 .vscode
-js/*.min.js
+./js/*.min.js
 title.ai
 palette.png
 card.psd
