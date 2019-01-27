@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="{{ settings.lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <meta name="description" content="{{ settings.meta.title }} | {{ settings.meta.role }} | {{ settings.meta.geo }}">
+    
+    <meta property="og:title" content="{{ settings.meta.title }}">
+    <meta property="og:site_name" content="{{ settings.domain }}">
+    <meta property="og:description" content="{{ settings.meta.title }} | {{ settings.meta.role }} | {{ settings.meta.geo }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ settings.domain }}/img/card.jpg">
+    <meta property="og:url" content="{{ settings.domain }}{{ settings.pageurl }}">
+    
+    <meta name="twitter:title" content="{{ settings.meta.title }}">
+    <meta name="twitter:description" content="{{ settings.meta.title }} | {{ settings.meta.role }} | {{ settings.meta.geo }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="{{ settings.domain }}/img/card.jpg">
+
+    <title>{{ settings.meta.title }}</title>
+    
+    <link rel="icon" href="./img/favicon@1x.png" sizes="16x16">
+    <link rel="icon" href="./img/favicon@2x.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="./img/icon-touch.png">
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    
+    <style id="critical">@import url('./css/critical.min.css');</style>
+
+    <link rel="preload" href="./css/noncritical.min.css" as="style">
+    <link rel="preload" href="./fonts/gidole-regular-webfont.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="./fonts/suezone-regular-webfont.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="./fonts/fonts.min.css" as="style">
+</head>
+<body>
+    <div class="site" id="top">
+        <div class="menu__wrapper">
+            <nav class="menu" role="navigation">
+                <a href="#portfolio" class="menu__logo" id="menu-logo">
+                    <svg viewBox="0 0 55 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="menu__logo-svg" aria-label="CKN Logo">
+                        <title>{{ settings.meta.title }}</title>
+                        <g fill-rule="evenodd" class="menu__logo-fill">
+                            <path d="M20.9,42.3c-5.4,0-9.7-4.4-9.7-9.8c0-5.4,4.4-9.8,9.7-9.8c0.5,0,0.9,0,1.4,0.1l1.9-3.2 c-1.1-0.3-2.1-0.4-3.2-0.4c-7.3,0-13.3,6-13.3,13.4s5.9,13.4,13.3,13.4c2.3,0,4.6-0.6,6.6-1.8L25.8,41 C24.3,41.8,22.7,42.3,20.9,42.3L20.9,42.3z M42.4,19.5v18.4L31.9,19.5l-5.4,0l-6.3,11v-5.8c-1.3,0.1-2.5,0.6-3.5,1.3V39 c1,0.7,2.2,1.1,3.5,1.3v-2.8l3-5.2l7.4,13h4.1l-9.5-16.5l3.4-6v8.1l3.5,6.1V27l10.5,18.4h3.3V19.5H42.4z M27.4,0L0,16v32l27.4,16 l27.4-16V16L27.4,0z M27.4,2.5l25.3,14.8v29.5L27.4,61.5L2.1,46.7V17.2L27.4,2.5L27.4,2.5z"/>
+                        </g>
+                    </svg>
+                </a>
+
+                <ul class="menu__nav">
+                    <li class="menu__nav-item" aria-current="true"><a href="#portfolio" class="menu__nav-link js-menuLink">{{ settings.menu.portfolio }}</a></li>
+                    <li class="menu__nav-item"><a href="#resume" class="menu__nav-link js-menuLink">{{ settings.menu.resume }}</a></li>
+                    <li class="menu__nav-item"><a href="#about" class="menu__nav-link js-menuLink">{{ settings.menu.about }}</a></li>
+                    <li class="menu__nav-item"><a href="#contact" class="menu__nav-link js-menuLink">{{ settings.menu.contact }}</a></li>
+                </ul>
+
+                <ul class="menu__links">
+                {% for link in settings.menu.links %}
+                    <li class="menu__links-item">
+                        <a href="{{ link.url }}" class="menu__links-link" data-tip="{{ link.title }}">
+                            <span class="visually-hidden">{{ link.title }}</span>
+                            <svg class="menu__links-icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="{{ link.svg.path }}" transform="{{ link.svg.transform }}" fill-rule="nonzero"/>
+                            </svg>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        
+        <main class="content" role="main">
+            <section class="section portfolio" id="portfolio">
+                <div class="portfolio__presentation">                    
+                    <div class="portfolio__presentation-illustration">
+                        <img src="./img/intro-sd.jpg" data-video-responsive data-video-srcset="./img/intro-sd,./img/intro" data-video-poster="./img/intro.jpg" alt="" class="portfolio__presentation-video" id="portfolio-video">
+                    </div>
+                    
+                    <h1 class="portfolio__presentation-text">
+                        <div class="portfolio__presentation-sun" aria-hidden="true"></div>
+                        
+                        <div class="portfolio__presentation-intro">
+                            <img src="./img/presentation-intro.svg" alt="Hey! My name is" class="portfolio__presentation-image">
+                        </div>
+                        
+                        <div class="portfolio__presentation-name font--title">
+                            <img src="./img/presentation-name.svg" alt="Chris" class="portfolio__presentation-image">
+                        </div>
+                        
+                        <div class="portfolio__presentation-skills font--title">
+                            <img src="./img/presentation-skills.svg" alt="Front-end Developer &amp;
+                            Motion / Graphic Designer" class="portfolio__presentation-image">
+                        </div>
+                    </h1>
+                </div>
+                
+                <div class="portfolio__projects section--padded">
+                    <p class="section__text portfolio__projects-text color--z-m text--center">
+                        {{ settings.section.portfolio.description }}
+                    </p>
+                    
+                    <div class="portfolio__projects-list" id="projects-list">
+                    {% for project in settings.section.portfolio.projects %}
+                        <a href="{{ project.url }}" class="project">
+                            <div class="project__frame">
+                                <div class="project__image" style="background-image: url({{ project.bg }});" aria-hidden="true"></div>
+                                <img src="{{ project.logo }}" class="project__logo" alt="Super Mario Odyssey logo">
+                                <span class="project__name">{{ project.title }}</span>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section resume section--padded" id="resume">
+                <p class="section__text color--z-m text--center">
+                    {{ settings.section.resume.description }}
+                </p>
+                
+                <div class="resume__area">
+                    <div class="resume__group">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.experience.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.experience.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="resume__group">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.skills.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.skills.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="resume__group">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.education.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.education.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="resume__group resume__group--pullup">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.languages.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.languages.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="resume__group">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.interests.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.interests.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                        
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.legaldocs.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for item in settings.section.resume.groups.legaldocs.items %}
+                            <li class="resume__group-item"><span class="font--title">{{ item.main }}</span> {{ item.copy }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="resume__group">
+                        <h1 class="resume__group-title color--main font--title">{{ settings.section.resume.groups.online.title }}</h1>
+                        <ul class="resume__group-list">
+                        {% for link in settings.section.resume.groups.online.links %}
+                            <li class="resume__group-item"><a href="https://{{ link }}"><span>{{ link }}</span></a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="text--center">
+                    <a href="./{{ settings.section.resume.pdflink }}" class="button resume__download" download="chriskirknielsen.pdf">
+                        <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M3 0v5c0 .6.4 1 1 1h8c.6 0 1-.4 1-1V0h1l2 2v13c0 .6-.4 1-1 1H1a1 1 0 0 1-1-1V1c0-.6.4-1 1-1h2zm10 15c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H3a1 1 0 0 0-1 1v6c0 .6.4 1 1 1h10zM10 5V1h2v4h-2z" fill="#E6E6E6" fill-rule="evenodd"/>
+                        </svg>
+                        
+                        <span>{{ settings.section.resume.download }} (PDF)</span>
+                    </a>
+                </p>
+            </section>
+            
+            <section class="section about width-constrain section--padded" id="about">
+                <p class="section__text color--z-m text--center">
+                    {{ settings.section.about.description }}
+                </p>
+                
+                <p class="text--center">
+                    <noscript>
+                        <img src="./img/about_{{ settings.lang }}.png" alt="{{ settings.section.about.alt }}"
+                        class="about__image">
+                    </noscript>
+                    
+                    <img src="./img/about_tb.png" data-lazy-src="./img/about_{{ settings.lang }}.png" alt="{{ settings.section.about.alt }}"
+                    class="about__image" id="about-image" style="display: none;">
+                    
+                    <script>document.getElementById('about-image').removeAttribute('style');</script>
+                </p>
+            </section>
+            
+            <section class="section contact width-constrain section--padded" id="contact">
+                <p class="section__text color--z-m text--center contact__block">
+                    {{ settings.section.contact.description }}
+                </p>
+                
+                <div class="contact__block text--center">
+                    <ul class="contact__list">
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_email" role="img" aria-label="{{ settings.section.contact.email.iconlabel }}"></span>
+                            <a href="mailto:{{ settings.section.contact.email.address }}"><span>{{ settings.section.contact.email.address }}</span></a>
+                        </li>
+
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_skype" role="img" aria-label="{{ settings.section.contact.skype.iconlabel }}"></span>
+                            <a href="skype:{{ settings.section.contact.skype.address }}?chat"><span>{{ settings.section.contact.skype.address }}</span></a>
+                        </li>
+
+                        <li class="contact__list-item">
+                            <span class="contact__list-icon contact__list-icon_geo" role="img" aria-label="{{ settings.section.contact.geo.iconlabel }}"></span>
+                            {{ settings.section.contact.geo.address }}
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact__illustration">
+                    <div class="contact__illustration-blinds" role="img" aria-label="Profile picture">
+                        <div class="contact__illustration-blind" style="--b: 0" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 1" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 2" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 3" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 4" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 5" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 6" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 7" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 8" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 9" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 10" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 11" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 12" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 13" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 14" aria-hidden="true"></div>
+                        <div class="contact__illustration-blind" style="--b: 15" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="foot">
+            <div class="foot__legal">&copy; {{ settings.year }} {{ settings.meta.title }} - {{ settings.footer.legal }}</div>
+            <div class="foot__love">{{ settings.footer.love }}</div>
+            <div class="foot__lang">
+                {{ settings.footer.language }}
+                {% for lang in settings.languages %}
+                <a href="./{{ lang.url }}" class="foot__lang-link" hreflang="{{ lang.code }}" data-tip="{{ lang.name }}" data-tip-position="top">{{ lang.code | upcase }}</a>
+                {% if forloop.last != true %}|{% endif %}
+                {% endfor %}
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Load Non-critical CSS + Fonts-->
+    <link rel="stylesheet" href="./css/noncritical.min.css">
+    <link rel="stylesheet" href="./fonts/fonts.min.css">
+
+    <script src="./js/{{ settings.lang }}.min.js" defer></script>
+    <script src="./js/script.min.js" defer></script>
+    
+    <script type="text/javascript">var sc_project=11881067;var sc_invisible=1;var sc_security="7a6ebfe7";var sc_https=1;</script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics" href="http://statcounter.com/" target="_blank" rel="noreferrer"><img class="statcounter" src="//c.statcounter.com/11881067/0/7a6ebfe7/1/" alt="Web Analytics"></a></div></noscript>
+</body>
+</html>

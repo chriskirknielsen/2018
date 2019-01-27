@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Christopher Kirk-Nielsen | Error 404</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            font-size: 16px;
+            font-family: Helvetica, Arial, sans-serif, system-ui;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #e6e6e6;
+            background: #0b5d59 radial-gradient(circle at center, #0b5b57 0%, #0b5a56 8.1%, #0c5854 15.5%, #0c5450 22.5%, #0d4f4c 29%, #0e4946 35.3%, #0f4340 41.2%, #103c3a 47.1%, #123634 52.9%, #132f2d 58.8%, #142928 64.7%, #152322 71%, #161e1e 77.5%, #161a1a 84.5%, #171818 91.9%, #171717 100%);
+        }
+        a { color: #ffd200; }
+        h1 {
+            --distance: .01em;
+            --dist-factor: 1;
+            position: relative;
+            display: block;
+            margin: 0;
+            font-size: 15vmax;
+            font-weight: normal;
+            font-family: monospace;
+            line-height: 1;
+            color: #db73b0;
+            -webkit-filter: saturate(150%);
+                    filter: saturate(150%);
+        }
+        h1 > [data-overlay] {
+            position: relative;
+        }
+        h1 > [data-overlay]::after {
+            --dist-factor: 32;
+            content: attr(data-overlay);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            color: #ffd200;
+            color: transparent;
+            text-shadow: 0 0 0 #e6e6e6;
+            font-size: .25em;
+        }
+        h1, h1::after,
+        h1 [data-overlay]::after {
+            -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+            -webkit-animation: animText 3s linear infinite;
+                    animation: animText 3s linear infinite;
+        }
+        h1::after {
+            --dist-factor: 2;
+            content: attr(data-txt);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #73c5c1;
+            mix-blend-mode: screen;
+        }
+        h1::after, h1 [data-overlay]::after {
+            animation-direction: reverse;
+        }
+        
+        p {
+            color: #e6e6e6;
+            text-align: center;
+        }
+        
+        @-webkit-keyframes animText {
+            0% {
+                -webkit-transform: rotate(0deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(0deg);
+                        transform: rotate(0deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(-360deg);
+                        transform: rotate(360deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(-360deg);
+            }
+        }
+        
+        @keyframes animText {
+            0% {
+                -webkit-transform: rotate(0deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(0deg);
+                        transform: rotate(0deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(-360deg);
+                        transform: rotate(360deg) translate(calc(var(--distance) * -1 * var(--dist-factor)), calc(var(--distance) * -1 * var(--dist-factor))) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 data-txt="4⬡4" aria-label="Not Found">4<span data-overlay="🤷‍♂️">⬡</span>4</h1>
+    <p>Sadly, the content you're looking for was not found…<br><br><a href="/">Go back home</a></p>
+</body>
+</html>

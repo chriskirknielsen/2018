@@ -1,4 +1,4 @@
-'use strict';
+
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, Math.round(1000 / 60)); }; // Set requestAnimationFrame with fallback
 
 /**
@@ -102,7 +102,7 @@ function Ticker() { // By Alan Transon: https://gist.github.com/atranson/006bf0a
 
 /** Handle menu operations */
 function MenuHandler(ticker, menuElements, logoElement) {
-    const TICKER_CALLBACK_NAME = 'updateActiveMenu';
+    var TICKER_CALLBACK_NAME = 'updateActiveMenu';
     
     function assignActiveMenu(targetMenu) {
         // No point in doing these operations if the menu is already active
@@ -170,7 +170,7 @@ function MenuHandler(ticker, menuElements, logoElement) {
 
 /** Object to handle the modal displaying project details */
 function ProjectModal(projects) {
-    const TRANSITION_DURATION = 350; // ms (CSS transition time 300ms + 50ms compensation for potential delay)
+    var TRANSITION_DURATION = 350; // ms (CSS transition time 300ms + 50ms compensation for potential delay)
     
     var opened = false;
     var projectCount = projects.length;

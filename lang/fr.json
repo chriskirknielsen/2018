@@ -1,0 +1,163 @@
+{
+    "settings": {
+        "lang": "fr",
+        "pageurl": "fr",
+        "meta": {
+            "title": "Christopher Kirk-Nielsen",
+            "role": "Développeur Front-end | Graphiste / Motion designer",
+            "geo": "New York"
+        },
+        "menu": {
+            "portfolio": "Portfolio",
+            "resume": "C.V.",
+            "about": "À propos",
+            "contact": "Contact"
+        },
+        "section": {
+            "portfolio": {
+                "description": "Voici quelques uns de mes travaux. Cliquez pour plus de détails !"
+            },
+            "resume": {
+                "description": "Si je devais être résumé en listes, ceci serait un bon début.",
+                "groups": {
+                    "experience": {
+                        "title": "Expérience",
+                        "items": [
+                            {
+                                "main": "2018–présent :",
+                                "copy": "développeur front-end chez MOJO PSG"
+                            },
+                            {
+                                "main": "2015–2018 :",
+                                "copy": "activité freelance en marketing numérique"
+                            },
+                            {
+                                "main": "2014–2015 :",
+                                "copy": "stage Wonderbanners (communication)"
+                            },
+                            {
+                                "main": "2014 :",
+                                "copy": "stage Green Garden Digital (marketing)"
+                            },
+                            {
+                                "main": "2013 :",
+                                "copy": "stage EG Digital (webdesign &amp; PAO)"
+                            }
+                        ]
+                    },
+                    "skills": {
+                        "title": "Compétences",
+                        "items": [
+                            {
+                                "main": "Dev :",
+                                "copy": "HTML5, CSS3, JavaScript, PHP, MySQL, Git"
+                            },
+                            {
+                                "main": "Design :",
+                                "copy": "Photoshop, Illustrator, InDesign"
+                            },
+                            {
+                                "main": "Motion :",
+                                "copy": "After Effects, Premiere Pro, Cinema 4D"
+                            },
+                            {
+                                "main": "UI / UX :",
+                                "copy": "Sketch, Google Web Designer"
+                            }
+                        ]
+                    },
+                    "education": {
+                        "title": "Éducation",
+                        "items": [
+                            {
+                                "main": "2015 :",
+                                "copy": "Certificat Digital Transformation de HEC Paris"
+                            },
+                            {
+                                "main": "2014–2015 :",
+                                "copy": "études de motion design à e-artsup Paris"
+                            },
+                            {
+                                "main": "2011–2014 :",
+                                "copy": "études de graphisme à e-artsup Lyon"
+                            }
+                        ]
+                    },
+                    "languages": {
+                        "title": "Langues",
+                        "items": [
+                            {
+                                "main": "Français :",
+                                "copy": "courant"
+                            },
+                            {
+                                "main": "Anglais :",
+                                "copy": "courant"
+                            },
+                            {
+                                "main": "Danois :",
+                                "copy": "courant"
+                            },
+                            {
+                                "main": "Italien :",
+                                "copy": "intermédiaire"
+                            }
+                        ]
+                    },
+                    "interests": {
+                        "title": "Intérêts",
+                        "items": [
+                            {
+                                "main": "Dose quotidienne :",
+                                "copy": "thé, musique, films et séries T.V."
+                            },
+                            {
+                                "main": "Chronoise:",
+                                "copy": "création de musique électronique depuis 2010"
+                            },
+                            {
+                                "main": "Geekometric:",
+                                "copy": "blog sur les jeux vidéo / films depuis 2013"
+                            }
+                        ]
+                    },
+                    "legaldocs": {
+                        "title": "Documents Légaux",
+                        "items": [
+                            {
+                                "main": "Travail :",
+                                "copy": "Green Card américaine"
+                            }
+                        ]
+                    },
+                    "online": {
+                        "title": "Numérique",
+                        "links": [
+                            "behance.net/chriskirknielsen",
+                            "linkedin.com/in/chriskirknielsen",
+                            "codepen.io/chriskirknielsen",
+                            "dribbble.com/chriskirknielsen",
+                            "github.com/chriskirknielsen",
+                            "chronoise.com",
+                            "geekometric.com"
+                        ]
+                    }
+                },
+                "pdflink": "./chriskirknielsen_cv.pdf",
+                "download": "Télécharger mon C.V."
+            },
+            "about": {
+                "description": "Apprenez-en davantage sur moi avec cette affiche fort pratique.",
+                "alt": "Qui est Christopher Kirk-Nielsen ?\nC'est tout simplement un geek. Et si on creusait un peu plus ?\nIl compose de la musique électronique sous le pseudonyme Chronoise.\nIl adore la synthwave et l'inspiration des années 80.\nIl aime souvent regarder des films classiques et des séries T.V.\nQuand il a du temps, il se plonge dans un jeu vidéo afin de se détendre et explorer de nouveaux mondes.\nSi vous êtes curieux de ses goûts musicaux, il écoute beaucoup de rock et d'electronica.\nIl apprécie lire un bon livre avec une tasse de thé.\nDepuis plus de dix ans, il utilise des outils comme Photoshop et After Effects et des langages comme le HTML, CSS et JavaScript.\nIl a toujours été autonome mais sait travailler en équipe et règle  les problèmes comme MacGyver (sans les cheveux).\nIl vit à New York mais il est né à Lyon, en France.\nEn plus du français, il parle également anglais et danois et un peu d'italien ne lui fait pas peur !\n(cependant, il est fortement agacé de parler de soi à la troisième personne…)"
+            },
+            "contact": {
+                "description": "Vous pouvez me contacter de plusieurs manières, à vous de choisir !"
+            }
+        },
+        "footer": {
+            "legal": "Tous droits réservés",
+            "love": "Conçu &amp; codé avec amour",
+            "language": "Langue :"
+        }
+    }
+}

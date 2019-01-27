@@ -281,7 +281,6 @@
                     width: 100%;
                     height: inherit;
                     line-height: inherit;
-                    vertical-align: middle;
                     color: color('a');
                     background-color: color('main');
                     mix-blend-mode: difference;
@@ -1035,8 +1034,8 @@
                     box-shadow: 0 .0625rem 0 color('main', 100);
                 }
 
-                html[lang="en"] &[data-lang-link="en"],
-                html[lang="fr"] &[data-lang-link="fr"] {
+                html[lang="en"] &[hreflang="en"],
+                html[lang="fr"] &[hreflang="fr"] {
                     color: color('z');
                     box-shadow: 0 .0625rem 0 color('z');
                     
