@@ -5,11 +5,9 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var fs = require("fs");
-var through = require('through2');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
 var liquid = require('gulp-liquidjs');
-// var copy = require('gulp-copy');
 
 var templateFile = './template.liquid';
 var langFolder = 'lang/';
@@ -18,41 +16,32 @@ var langs = [
     { code: 'en', file: 'index' },
     { code: 'fr', file: 'fr' }
 ];
-var htmlDocuments = ['./index.html', './fr.html'];
 var fileFolders = ['./fonts', './img'];
 var extraDocs = ['./404.html', './chriskirknielsen_cv.pdf', 'chriskirknielsen_resume.pdf'];
 var outputFolder = 'build/';
 
 var deepMerge = function(...sources) { // From https://stackoverflow.com/a/49798508/3624336
-    let acc = {}
-    for (const source of sources) {
-      if (source instanceof Array) {
-        if (!(acc instanceof Array)) {
-          acc = []
-        }
-        acc = [...acc, ...source]
-      } else if (source instanceof Object) {
-        for (let [key, value] of Object.entries(source)) {
-          if (value instanceof Object && key in acc) {
-            value = deepMerge(acc[key], value)
-          }
-          acc = { ...acc, [key]: value }
-        }
-      }
-    }
-    return acc
-  }
+    let acc = {};
 
-var inlineStyles = function(file){ // Inject the inline styles to the HTML file
-    return gulp.src(file)
-        .pipe(inject(gulp.src(['./'+outputFolder+'css/critical.min.css']), {
-            starttag: '<style id="critical-css">',
-            endtag: '</style>',
-            transform: function (filePath, file) {
-                return file.contents.toString('utf8');
+    for (const source of sources) {
+        if (source instanceof Array) {
+            if (!(acc instanceof Array)) {
+                acc = [];
             }
-        }))
-};
+            acc = [...acc, ...source];
+        }
+        else if (source instanceof Object) {
+            for (let [key, value] of Object.entries(source)) {
+                if (value instanceof Object && key in acc) {
+                    value = deepMerge(acc[key], value);
+                }
+                acc = { ...acc, [key]: value };
+            }
+        }
+    }
+
+    return acc;
+}
 
 var copyFiles = function(){ // Copy non-dynamic files and folders to the destination folder
     gulp.src(fileFolders.map(function(f) { return f+'/**/*'; }), { base: './' })
