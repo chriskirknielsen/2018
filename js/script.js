@@ -488,34 +488,31 @@ document.addEventListener('DOMContentLoaded', function (e) {
     /** Dynamically loads the projects from the [en|fr].js file */
     (function () {
         var projectList = $('#projects-list'); // Element containing the grid of project buttons
-        projectList.innerHTML = ''; // First we remove the content, which is a series of <a> elements
+        var projectElements = projectList.children;
+        var pIdAttr = 'data-project-id';
 
-        for (var p = 0 ; p < projects.length ; p++) { // Repopulate the grid with buttons instead
-            var proj = projects[p];
+        for (var p = 0 ; p < projectElements.length ; p++) { // Repopulate the grid with buttons instead
+            var pAnchor = projectElements[p];
             var pButton = document.createElement('button');
 
+            Array.prototype.slice.call(pAnchor.attributes).forEach(function(attr) { // Copy the anchor's attributes into the button, except href
+                if(attr.name === 'href') { return; }
+                pButton.setAttribute(attr.name, attr.value);
+            });
             pButton.setAttribute('type', 'button');
-            pButton.setAttribute('class', 'project');
-            pButton.setAttribute('aria-labelledby', 'project-name-'+p);
-            pButton.setAttribute('data-project-id', p);
+            pButton.innerHTML = pAnchor.innerHTML;
 
-            pButton.innerHTML += "\n" +
-                '<div class="project__frame">' + "\n" +
-                    '<div class="project__image" style="background-image: url(' + proj.background + ');" aria-hidden="true"></div>' + "\n" +
-                    '<img src="' + proj.logo + '" class="project__logo" alt="' + proj.name + ' logo">' + "\n" +
-                    '<span class="project__name" id="project-name-'+p+'">' + proj.name + '</span>' + "\n" +
-                '</div>' + "\n" +
-                "\n";
-
-            projectList.appendChild(pButton);
-
-            pButton.addEventListener('click', function (e) {
-                var getProjectId = e.currentTarget.getAttribute('data-project-id');
-                var projectId = parseInt(getProjectId, 10);
-
-                projectModal.load(projectId); // Execute the project modal loading action
-            }, false);
+            projectList.replaceChild(pButton, pAnchor); // Replace <a> element with <button> element
         }
+
+        window.addEventListener('click', function (e) {
+            var buttonTarget = e.target.closest('['+pIdAttr+']');
+            if (!buttonTarget) { return; }
+            var getProjectId = buttonTarget.getAttribute(pIdAttr);
+            var projectId = parseInt(getProjectId, 10);
+
+            projectModal.load(projectId); // Execute the project modal loading action
+        }, false);
     })();
     
     /** Delay loading for the "About" image */

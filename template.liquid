@@ -99,11 +99,11 @@
                     
                     <div class="portfolio__projects-list" id="projects-list">
                     {% for project in settings.section.portfolio.projects %}
-                        <a href="{{ project.url }}" class="project">
+                        <a href="{{ project.url }}" class="project" data-project-id="{{ forloop.index0 }}" aria-labelledby="project-name-{{ forloop.index0 }}">
                             <div class="project__frame">
                                 <div class="project__image" style="background-image: url({{ project.bg }});" aria-hidden="true"></div>
                                 <img src="{{ project.logo }}" class="project__logo" alt="{{ project.title }} logo">
-                                <span class="project__name">{{ project.title }}</span>
+                                <span class="project__name" id="project-name-{{ forloop.index0 }}">{{ project.title }}</span>
                             </div>
                         </a>
                     {% endfor %}
